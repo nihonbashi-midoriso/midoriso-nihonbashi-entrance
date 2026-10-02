@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+
+      background: #f5f5f5;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: #222;
+    }
+
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+
+      margin: 40px auto;
+
+      padding: 28px 24px;
+
+      background: white;
+
+      border-radius: 16px;
+
+      box-shadow:
+        0 4px 20px
+        rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* =========================
+       Language
+       ========================= */
+
+    .languages {
+      display: flex;
+      justify-content: center;
+
+      gap: 6px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .languageButton {
+      width: auto;
+
+      padding: 7px 10px;
+
+      border:
+        1px solid #ddd;
+
+      border-radius: 8px;
+
+      background: white;
+
+      color: #555;
+
+      font-size: 12px;
+
+      cursor: pointer;
+    }
+
+
+    .languageButton.active {
+      background: #222;
+
+      color: white;
+
+      border-color: #222;
+    }
+
+
+    /* =========================
+       Heading
+       ========================= */
+
+    h1 {
+      margin: 0 0 10px;
+
+      text-align: center;
+
+      font-size: 28px;
+
+      line-height: 1.3;
+    }
+
+
+    .subtitle {
+      margin-bottom: 30px;
+
+      text-align: center;
+
+      color: #666;
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+
+    label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 17px;
+
+      font-weight: 600;
+    }
+
+
+    .hint {
+      margin-top: -3px;
+
+      margin-bottom: 10px;
+
+      color: #777;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+    input {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      margin-bottom: 18px;
+
+      border:
+        1px solid #ccc;
+
+      border-radius: 9px;
+
+      font-size: 17px;
+
+      background: white;
+
+      outline: none;
+    }
+
+
+    input:focus {
+      border-color: #555;
+    }
+
+
+    /* =========================
+       Buttons
+       ========================= */
+
+    button {
+      width: 100%;
+
+      padding: 12px 15px;
+
+      border: none;
+
+      border-radius: 9px;
+
+      background: #222;
+
+      color: white;
+
+      font-size: 16px;
+
+      line-height: 1.4;
+
+      cursor: pointer;
+    }
+
+
+    button:disabled {
+      background: #999;
+
+      cursor: default;
+    }
+
+
+    #message {
+      margin-top: 18px;
+
+      text-align: center;
+
+      color: #d00;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       Result
+       ========================= */
+
+    #result {
+      display: none;
+
+      margin-top: 10px;
+
+      padding-top: 10px;
+
+      text-align: center;
+    }
+
+
+    .confirmed {
+      margin-bottom: 24px;
+
+      font-size: 19px;
+
+      line-height: 1.8;
+    }
+
+
+    .question {
+      margin-bottom: 18px;
+
+      font-size: 19px;
+
+      font-weight: 600;
+
+      line-height: 1.8;
+    }
+
+
+    .instruction {
+      margin-bottom: 18px;
+
+      padding: 18px;
+
+      border-radius: 10px;
+
+      background: #f5f5f5;
+
+      text-align: left;
+
+      font-size: 17px;
+
+      line-height: 1.9;
+    }
+
+
+    .linkButton {
+      display: block;
+
+      width: 100%;
+
+      padding: 13px 15px;
+
+      margin-bottom: 10px;
+
+      border-radius: 9px;
+
+      color: white;
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 16px;
+
+      line-height: 1.5;
+
+      background: #222;
+    }
+
+
+    .choiceButton {
+      margin-bottom: 10px;
+    }
+
+
+    .secondaryButton {
+      background: white;
+
+      color: #222;
+
+      border:
+        1px solid #ccc;
+    }
+
+
+    .helpTitle {
+      margin-top: 28px;
+
+      margin-bottom: 12px;
+
+      font-size: 16px;
+
+      font-weight: 600;
+
+      text-align: center;
+    }
+
+
+
+    .initialHelpSection {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+
+    .initialHelpButton {
+      width: 100%;
+      margin-top: 10px;
+      background: white;
+      color: #222;
+      border: 1px solid #ccc;
+    }
+
+    .initialHelpMessage {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .compactHelpTitle {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    .compactHelpLinks {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .compactHelpLink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 7px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      color: #222;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .arrivalSection {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    .arrivalMessage {
+      display: none;
+      margin-top: 12px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       Mobile
+       ========================= */
+
+    @media (max-width: 600px) {
+
+      body {
+        padding: 0;
+
+        background: white;
+      }
+
+
+      .container {
+        width: 100%;
+
+        max-width: none;
+
+        min-height: 100vh;
+
+        margin: 0;
+
+        padding:
+          28px
+          22px
+          40px;
+
+        border-radius: 0;
+
+        box-shadow: none;
+      }
+
+
+      .languages {
+        gap: 7px;
+
+        margin-bottom: 32px;
+      }
+
+
+      .languageButton {
+        padding: 8px 12px;
+
+        border-radius: 8px;
+
+        font-size: 13px;
+      }
+
+
+      h1 {
+        font-size: 30px;
+
+        margin-bottom: 13px;
+      }
+
+
+      .subtitle {
+        margin-bottom: 34px;
+
+        font-size: 17px;
+
+        line-height: 1.8;
+      }
+
+
+      label {
+        margin-bottom: 9px;
+
+        font-size: 18px;
+      }
+
+
+      .hint {
+        margin-bottom: 12px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+      }
+
+
+      input {
+        padding: 15px 14px;
+
+        margin-bottom: 18px;
+
+        border-radius: 9px;
+
+        font-size: 18px;
+
+        -webkit-appearance: none;
+      }
+
+
+      #checkButton {
+        padding: 14px;
+
+        border-radius: 9px;
+
+        font-size: 17px;
+
+        min-height: 50px;
+      }
+
+
+      #message {
+        margin-top: 20px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+      }
+
+
+      .confirmed {
+        font-size: 19px;
+
+        line-height: 1.8;
+
+        margin-bottom: 26px;
+      }
+
+
+      .question {
+        font-size: 19px;
+
+        line-height: 1.8;
+
+        margin-bottom: 20px;
+      }
+
+
+      .instruction {
+        padding: 18px;
+
+        font-size: 17px;
+
+        line-height: 1.9;
+      }
+
+
+      .linkButton,
+      .choiceButton {
+        padding: 14px;
+
+        min-height: 50px;
+
+        font-size: 17px;
+
+        line-height: 1.5;
+      }
+
+    }
+
+
+    @media (max-width: 380px) {
+
+      .container {
+        padding-left: 18px;
+
+        padding-right: 18px;
+      }
+
+
+      h1 {
+        font-size: 28px;
+      }
+
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+
+      input {
+        font-size: 18px;
+      }
+
+
+      #checkButton {
+        font-size: 17px;
+      }
+
+
+      .question {
+        font-size: 18px;
+      }
+
+
+      .instruction {
+        font-size: 16px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+  <!-- =========================
+       Language
+       ========================= -->
+
+  <div class="languages">
+
+    <button
+      class="languageButton active"
+      id="lang-en"
+      onclick="setLanguage('en')"
+    >
+      EN
+    </button>
+
+    <button
+      class="languageButton"
+      id="lang-ja"
+      onclick="setLanguage('ja')"
+    >
+      日本語
+    </button>
+
+    <button
+      class="languageButton"
+      id="lang-ko"
+      onclick="setLanguage('ko')"
+    >
+      한국어
+    </button>
+
+    <button
+      class="languageButton"
+      id="lang-zh"
+      onclick="setLanguage('zh')"
+    >
+      中文
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       Check-in form
+       ========================= -->
+
+  <div id="checkinForm">
+
+    <h1 id="title">
+      Check-in
+    </h1>
+
+
+    <div
+      class="subtitle"
+      id="subtitle"
+    >
+      Please enter the full name<br>
+      used for your reservation.
+    </div>
+
+
+    <label id="nameLabel">
+      Full Name
+    </label>
+
+
+    <div
+      class="hint"
+      id="nameHint"
+    >
+      Enter your name as it appears on your reservation.<br>
+      Example: <strong>John Smith</strong>
+    </div>
+
+
+    <input
+      type="text"
+      id="fullName"
+      placeholder="Your full name"
+      autocomplete="name"
+      autocapitalize="words"
+    >
+
+
+    <button
+      id="checkButton"
+      onclick="checkReservation()"
+    >
+      Continue
+    </button>
+
+
+    <div id="message"></div>
+
+
+    <!-- =========================
+         Initial help
+         ========================= -->
+
+    <div class="initialHelpSection" id="initialHelpSection">
+      <button
+        class="initialHelpButton"
+        id="doorIssueButton"
+        type="button"
+        onclick="notifyDoorIssue()"
+      >
+        Door won't open
+      </button>
+
+      <div class="compactHelpTitle" id="initialHelpTitle">Need Help?</div>
+
+      <div class="compactHelpLinks">
+        <a
+          class="compactHelpLink"
+          id="phoneHelpButton"
+          href="tel:07093818951"
+        >
+          Call Staff
+        </a>
+
+        <a
+          class="compactHelpLink"
+          id="whatsappHelpButton"
+          href="https://wa.me/817093818951"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+      </div>
+
+      <div class="initialHelpMessage" id="doorIssueMessage"></div>
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       Result
+       ========================= -->
+
+  <div id="result">
+
+
+    <div
+      class="confirmed"
+      id="confirmedText"
+    ></div>
+
+
+    <!-- =========================
+         Form question
+         ========================= -->
+
+    <div
+      class="question"
+      id="formQuestion"
+    ></div>
+
+
+    <button
+      class="choiceButton"
+      id="yesButton"
+      onclick="showCompleted()"
+    ></button>
+
+
+    <button
+      class="choiceButton secondaryButton"
+      id="noButton"
+      onclick="showNotCompleted()"
+    ></button>
+
+
+    <!-- =========================
+         Final instruction
+         ========================= -->
+
+    <div
+      class="instruction"
+      id="instructionText"
+      style="display:none"
+    ></div>
+
+
+    <!-- =========================
+         Entrance key
+         ========================= -->
+
+    <a
+      id="openKey"
+      class="linkButton"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="display:none"
+    >
+    </a>
+
+
+    <!-- =========================
+         Google Form
+         ========================= -->
+
+    <a
+      id="formButton"
+      class="linkButton"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="display:none"
+    >
+    </a>
+
+
+    <!-- =========================
+         Staff arrival notification
+         ========================= -->
+
+    <div class="arrivalSection" id="arrivalSection" style="display:none">
+      <div class="instruction" id="arrivalInstruction">
+        If there is no staff at the lounge, please press the button below and wait.
+      </div>
+      <button id="arrivalButton" type="button" onclick="notifyStaffArrival()">
+        Notify Staff of My Arrival
+      </button>
+      <div class="arrivalMessage" id="arrivalMessage"></div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+/* ==================================================
+   Text
+   ================================================== */
+
+const texts = {
+
+
+  en: {
+
+    title:
+      "Check-in",
+
+    subtitle:
+      "Please enter the full name<br>used for your reservation.",
+
+    nameLabel:
+      "Full Name",
+
+    nameHint:
+      'Enter your name as it appears on your reservation.<br>Example: <strong>John Smith</strong>',
+
+    placeholder:
+      "Your full name",
+
+    continue:
+      "Continue",
+
+    helpTitle:
+      "Need Help?",
+    phoneHelp:
+      "Call Staff",
+    whatsappHelp:
+      "WhatsApp",
+
+    doorIssueButton:
+      "Door won't open",
+
+    doorIssueSending:
+      "Sending...",
+
+    doorIssueSuccess:
+      "Staff have been notified. Please wait.",
+
+    doorIssueError:
+      "Could not notify staff. Please contact staff.",
+
+    checking:
+      "Checking...",
+
+    confirmed:
+      "Reservation confirmed.",
+
+    question:
+      "Have you completed the check-in form?",
+
+    yes:
+      "Yes, I have completed it",
+
+    no:
+      "No, I haven't",
+
+    doneInstruction:
+      "Thank you. Please open the entrance key and go to the 2F lounge. Please wait there for staff.",
+
+    notDoneInstruction:
+      "Please complete the check-in form at the 2F lounge.",
+
+    key:
+      "Open Entrance Key",
+
+    form:
+      "Complete Check-in Form",
+
+    arrivalInstruction:
+      "If there is no staff at the lounge, please press the button below and wait.",
+    arrivalButton:
+      "Notify Staff of My Arrival",
+    arrivalSending:
+      "Sending...",
+    arrivalSuccess:
+      "Arrival notification sent to staff. Please wait at the 2F lounge.",
+    arrivalError:
+      "Could not notify staff. Please contact staff.",
+
+    empty:
+      "Please enter your full name.",
+
+    error:
+      "Something went wrong. Please try again."
+
+  },
+
+
+  ja: {
+
+    title:
+      "チェックイン",
+
+    subtitle:
+      "ご予約時のお名前を<br>フルネームで入力してください。",
+
+    nameLabel:
+      "フルネーム",
+
+    nameHint:
+      'ご予約時のお名前を入力してください。<br>例：<strong>John Smith</strong>',
+
+    placeholder:
+      "フルネームを入力",
+
+    continue:
+      "次へ",
+
+    helpTitle:
+      "Need Help?",
+    phoneHelp:
+      "スタッフに電話",
+    whatsappHelp:
+      "WhatsApp",
+
+    doorIssueButton:
+      "扉が開かない",
+
+    doorIssueSending:
+      "通知中...",
+
+    doorIssueSuccess:
+      "スタッフに通知しました。少々お待ちください。",
+
+    doorIssueError:
+      "スタッフへの通知に失敗しました。直接スタッフへご連絡ください。",
+
+    checking:
+      "確認中...",
+
+    confirmed:
+      "ご予約を確認しました。",
+
+    question:
+      "チェックインフォームの入力はお済みですか？",
+
+    yes:
+      "はい、入力済みです",
+
+    no:
+      "いいえ、まだです",
+
+    doneInstruction:
+      "ありがとうございます。入口の鍵を開けて、2階ラウンジへお越しください。スタッフがお声がけするまでお待ちください。",
+
+    notDoneInstruction:
+      "2階ラウンジでチェックインフォームへの入力をお願いします。",
+
+    key:
+      "エントランスキーを開く",
+
+    form:
+      "チェックインフォームを入力",
+
+    arrivalInstruction:
+      "スタッフがいない場合は、下記のボタンを押してお待ちください。",
+    arrivalButton:
+      "スタッフに到着を知らせる",
+    arrivalSending:
+      "送信中...",
+    arrivalSuccess:
+      "到着をスタッフに知らせました。2階ラウンジでお待ちください。",
+    arrivalError:
+      "スタッフへの通知に失敗しました。スタッフへ直接ご連絡ください。",
+
+    empty:
+      "フルネームを入力してください。",
+
+    error:
+      "エラーが発生しました。もう一度お試しください。"
+
+  },
+
+
+  ko: {
+
+    title:
+      "체크인",
+
+    subtitle:
+      "예약 시 사용한 이름을<br>전체 이름으로 입력해 주세요.",
+
+    nameLabel:
+      "성명",
+
+    nameHint:
+      '예약 시 사용한 이름을 입력해 주세요.<br>예: <strong>John Smith</strong>',
+
+    placeholder:
+      "성명을 입력해 주세요",
+
+    continue:
+      "다음",
+
+    helpTitle:
+      "도움이 필요하신가요?",
+    phoneHelp:
+      "직원에게 전화",
+    whatsappHelp:
+      "WhatsApp",
+
+    doorIssueButton:
+      "문이 열리지 않아요",
+
+    doorIssueSending:
+      "전송 중...",
+
+    doorIssueSuccess:
+      "직원에게 알렸습니다. 잠시 기다려 주세요.",
+
+    doorIssueError:
+      "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
+
+    checking:
+      "확인 중...",
+
+    confirmed:
+      "예약 정보를 확인했습니다.",
+
+    question:
+      "체크인 양식을 작성하셨나요?",
+
+    yes:
+      "네, 작성했습니다",
+
+    no:
+      "아니요, 아직입니다",
+
+    doneInstruction:
+      "감사합니다. 입구 키를 열고 2층 라운지로 와 주세요. 직원이 안내할 때까지 기다려 주세요.",
+
+    notDoneInstruction:
+      "2층 라운지에서 체크인 양식을 작성해 주세요.",
+
+    key:
+      "입구 키 열기",
+
+    form:
+      "체크인 양식 작성",
+
+    arrivalInstruction:
+      "라운지에 직원이 없으면 아래 버튼을 누르고 기다려 주세요.",
+    arrivalButton:
+      "직원에게 도착 알리기",
+    arrivalSending:
+      "전송 중...",
+    arrivalSuccess:
+      "직원에게 도착을 알렸습니다. 2층 라운지에서 기다려 주세요.",
+    arrivalError:
+      "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
+
+    empty:
+      "성명을 입력해 주세요.",
+
+    error:
+      "오류가 발생했습니다. 다시 시도해 주세요."
+
+  },
+
+
+  zh: {
+
+    title:
+      "入住",
+
+    subtitle:
+      "请输入您预订时使用的<br>姓名。",
+
+    nameLabel:
+      "姓名",
+
+    nameHint:
+      '请输入您预订时使用的姓名。<br>例如：<strong>John Smith</strong>',
+
+    placeholder:
+      "请输入姓名",
+
+    continue:
+      "继续",
+
+    helpTitle:
+      "需要帮助吗？",
+    phoneHelp:
+      "联系工作人员",
+    whatsappHelp:
+      "WhatsApp",
+
+    doorIssueButton:
+      "门打不开",
+
+    doorIssueSending:
+      "发送中...",
+
+    doorIssueSuccess:
+      "已通知工作人员，请稍等。",
+
+    doorIssueError:
+      "无法通知工作人员，请直接联系工作人员。",
+
+    checking:
+      "确认中...",
+
+    confirmed:
+      "已确认您的预订。",
+
+    question:
+      "您已经填写入住登记表了吗？",
+
+    yes:
+      "是的，我已经填写",
+
+    no:
+      "没有，还没有",
+
+    doneInstruction:
+      "谢谢。请打开入口钥匙，然后前往2楼休息室。请在那里等待工作人员。",
+
+    notDoneInstruction:
+      "请在2楼休息室填写入住登记表。",
+
+    key:
+      "打开入口钥匙",
+
+    form:
+      "填写入住登记表",
+
+    arrivalInstruction:
+      "如果休息室没有工作人员，请按下方按钮并等待。",
+    arrivalButton:
+      "通知工作人员我已到达",
+    arrivalSending:
+      "发送中...",
+    arrivalSuccess:
+      "已通知工作人员您已到达。请在2楼休息室等待。",
+    arrivalError:
+      "无法通知工作人员，请直接联系工作人员。",
+
+    empty:
+      "请输入您的姓名。",
+
+    error:
+      "发生错误，请重试。"
+
+  }
+
+};
+
+
+/* ==================================================
+   State
+   ================================================== */
+
+let currentLanguage =
+  "en";
+
+let reservationData =
+  null;
+
+let arrivalNotificationSent =
+  false;
+
+let doorIssueNotificationSent =
+  false;
+
+let doorIssueMessageType =
+  "";
+
+
+/* ==================================================
+   Language
+   ================================================== */
+
+function setLanguage(language) {
+
+  currentLanguage =
+    language;
+
+  const t =
+    texts[language];
+
+
+  document
+    .getElementById("title")
+    .innerHTML =
+    t.title;
+
+
+  document
+    .getElementById("subtitle")
+    .innerHTML =
+    t.subtitle;
+
+
+  document
+    .getElementById("nameLabel")
+    .textContent =
+    t.nameLabel;
+
+
+  document
+    .getElementById("nameHint")
+    .innerHTML =
+    t.nameHint;
+
+
+  document
+    .getElementById("fullName")
+    .placeholder =
+    t.placeholder;
+
+
+  document
+    .getElementById("checkButton")
+    .textContent =
+    t.continue;
+
+  document
+    .getElementById("initialHelpTitle")
+    .textContent =
+    t.helpTitle;
+
+  document
+    .getElementById("phoneHelpButton")
+    .textContent =
+    t.phoneHelp;
+
+  document
+    .getElementById("whatsappHelpButton")
+    .textContent =
+    t.whatsappHelp;
+
+  document
+    .getElementById("doorIssueButton")
+    .textContent =
+    t.doorIssueButton;
+
+  if (doorIssueMessageType === "success") {
+    document.getElementById("doorIssueMessage").textContent =
+      t.doorIssueSuccess;
+  } else if (doorIssueMessageType === "error") {
+    document.getElementById("doorIssueMessage").textContent =
+      t.doorIssueError;
+  }
+
+
+  document
+    .getElementById("formQuestion")
+    .textContent =
+    t.question;
+
+
+  document
+    .getElementById("yesButton")
+    .textContent =
+    t.yes;
+
+
+  document
+    .getElementById("noButton")
+    .textContent =
+    t.no;
+
+
+  document
+    .getElementById("arrivalInstruction")
+    .textContent =
+    t.arrivalInstruction;
+
+  document
+    .getElementById("arrivalButton")
+    .textContent =
+    t.arrivalButton;
+
+
+  document
+    .getElementById("openKey")
+    .textContent =
+    t.key;
+
+
+  document
+    .getElementById("formButton")
+    .textContent =
+    t.form;
+
+
+  document
+    .querySelectorAll(".languageButton")
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "lang-" + language
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  if (
+    document
+      .getElementById("result")
+      .style
+      .display === "block"
+  ) {
+
+    if (
+      document
+        .getElementById("instructionText")
+        .style
+        .display !== "none"
+    ) {
+
+      if (
+        document
+          .getElementById("formButton")
+          .style
+          .display !== "none"
+      ) {
+
+        document
+          .getElementById("instructionText")
+          .textContent =
+          t.notDoneInstruction;
+
+      } else {
+
+        document
+          .getElementById("instructionText")
+          .textContent =
+          t.doneInstruction;
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* ==================================================
+   Standalone website API bridge
+   ================================================== */
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/exec";
+
+let apiRequestCounter = 0;
+
+function apiCall(action, params, successHandler, failureHandler) {
+  const callbackName =
+    "midoriApiCallback_" + (++apiRequestCounter) + "_" + Date.now();
+  const script = document.createElement("script");
+  const query = new URLSearchParams();
+
+  query.set("api", "1");
+  query.set("action", action);
+  query.set("callback", callbackName);
+  Object.keys(params || {}).forEach(function(key) {
+    query.set(key, params[key] == null ? "" : String(params[key]));
+  });
+
+  let finished = false;
+  const timeoutId = setTimeout(function() {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (failureHandler) failureHandler(new Error("API request timed out."));
+  }, 15000);
+
+  function cleanup() {
+    clearTimeout(timeoutId);
+    try { delete window[callbackName]; } catch (e) {}
+    if (script.parentNode) script.parentNode.removeChild(script);
+  }
+
+  window[callbackName] = function(data) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (successHandler) successHandler(data);
+  };
+
+  script.onerror = function(error) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (failureHandler) failureHandler(error);
+  };
+
+  script.src = API_URL + "?" + query.toString();
+  document.head.appendChild(script);
+}
+
+
+/* ==================================================
+   Reservation check
+   ================================================== */
+
+function checkReservation() {
+
+  const fullName =
+    document
+      .getElementById("fullName")
+      .value
+      .trim();
+
+
+  const button =
+    document
+      .getElementById("checkButton");
+
+
+  const message =
+    document
+      .getElementById("message");
+
+
+  const t =
+    texts[currentLanguage];
+
+
+  message.textContent =
+    "";
+
+
+  if (!fullName) {
+
+    message.textContent =
+      t.empty;
+
+    return;
+
+  }
+
+
+  button.disabled =
+    true;
+
+  button.textContent =
+    t.checking;
+
+
+  apiCall(
+    "checkGuest",
+    { fullName: fullName },
+    function(data) {
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          t.continue;
+
+
+        if (!data || !data.success) {
+
+          message.style.color =
+            "#d00";
+
+          message.textContent =
+            data && data.message
+              ? data.message
+              : t.error;
+
+          return;
+
+        }
+
+
+        reservationData =
+          data;
+
+
+        document
+          .getElementById("checkinForm")
+          .style
+          .display =
+          "none";
+
+
+        document
+          .getElementById("result")
+          .style
+          .display =
+          "block";
+
+
+        document
+          .getElementById("confirmedText")
+          .textContent =
+          t.confirmed;
+
+
+        document
+          .getElementById("formQuestion")
+          .textContent =
+          t.question;
+
+
+        document
+          .getElementById("yesButton")
+          .textContent =
+          t.yes;
+
+
+        document
+          .getElementById("noButton")
+          .textContent =
+          t.no;
+
+
+        document
+          .getElementById("instructionText")
+          .style
+          .display =
+          "none";
+
+
+        document
+          .getElementById("openKey")
+          .style
+          .display =
+          "none";
+
+
+        document
+          .getElementById("formButton")
+          .style
+          .display =
+          "none";
+
+
+        document
+          .getElementById("openKey")
+          .href =
+          data.keyUrl;
+
+
+        document
+          .getElementById("formButton")
+          .href =
+          data.formUrl;
+
+
+        message.textContent =
+          "";
+
+      },
+    function(error) {
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          t.continue;
+
+        message.style.color =
+          "#d00";
+
+        message.textContent =
+          t.error;
+
+        console.error(error);
+
+      }
+  );
+
+}
+
+
+/* ==================================================
+   "Yes"
+   ================================================== */
+
+function showCompleted() {
+
+  const t =
+    texts[currentLanguage];
+
+
+  document
+    .getElementById("formQuestion")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("yesButton")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("noButton")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("instructionText")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("instructionText")
+    .textContent =
+    t.doneInstruction;
+
+
+  document
+    .getElementById("openKey")
+    .style
+    .display =
+    "flex";
+
+
+  document
+    .getElementById("formButton")
+    .style
+    .display =
+    "none";
+
+  document.getElementById("arrivalSection").style.display = "block";
+
+}
+
+
+/* ==================================================
+   "No"
+   ================================================== */
+
+function showNotCompleted() {
+
+  const t =
+    texts[currentLanguage];
+
+
+  document
+    .getElementById("formQuestion")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("yesButton")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("noButton")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("instructionText")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("instructionText")
+    .textContent =
+    t.notDoneInstruction;
+
+
+  document
+    .getElementById("openKey")
+    .style
+    .display =
+    "flex";
+
+
+  document
+    .getElementById("formButton")
+    .style
+    .display =
+    "flex";
+
+  document.getElementById("arrivalSection").style.display = "block";
+
+}
+
+
+/* ==================================================
+   Staff arrival notification
+   ================================================== */
+
+function notifyDoorIssue() {
+  const fullName = document.getElementById("fullName").value.trim();
+  const button = document.getElementById("doorIssueButton");
+  const message = document.getElementById("doorIssueMessage");
+  const t = texts[currentLanguage];
+
+  if (doorIssueNotificationSent) return;
+
+  doorIssueNotificationSent = true;
+  button.disabled = true;
+  button.textContent = t.doorIssueSending;
+  message.style.display = "none";
+
+  apiCall(
+    "notifyDoorIssue",
+    { fullName: fullName },
+    function(data) {
+      if (data && data.success) {
+        doorIssueMessageType = "success";
+        message.style.display = "block";
+        message.style.color = "#222";
+        message.textContent = t.doorIssueSuccess;
+        button.style.display = "none";
+      } else {
+        doorIssueNotificationSent = false;
+        doorIssueMessageType = "error";
+        button.disabled = false;
+        button.textContent = t.doorIssueButton;
+        message.style.display = "block";
+        message.style.color = "#d00";
+        message.textContent = t.doorIssueError;
+      }
+    },
+    function(error) {
+      console.error(error);
+      doorIssueNotificationSent = false;
+      doorIssueMessageType = "error";
+      button.disabled = false;
+      button.textContent = t.doorIssueButton;
+      message.style.display = "block";
+      message.style.color = "#d00";
+      message.textContent = t.doorIssueError;
+    }
+  );
+}
+
+
+function notifyStaffArrival() {
+  const fullName = document.getElementById("fullName").value.trim();
+  const button = document.getElementById("arrivalButton");
+  const message = document.getElementById("arrivalMessage");
+  const t = texts[currentLanguage];
+
+  if (!fullName) {
+    message.style.display = "block";
+    message.style.color = "#d00";
+    message.textContent = t.empty;
+    return;
+  }
+
+  if (arrivalNotificationSent) return;
+
+  button.disabled = true;
+  button.textContent = t.arrivalSending;
+  message.style.display = "none";
+
+  apiCall(
+    "notifyStaffArrival",
+    { fullName: fullName },
+    function(data) {
+      if (data && data.success) {
+        arrivalNotificationSent = true;
+        message.style.display = "block";
+        message.style.color = "#222";
+        message.textContent = t.arrivalSuccess;
+        button.style.display = "none";
+      } else {
+        button.disabled = false;
+        button.textContent = t.arrivalButton;
+        message.style.display = "block";
+        message.style.color = "#d00";
+        message.textContent = t.arrivalError;
+      }
+    },
+    function(error) {
+      console.error(error);
+      button.disabled = false;
+      button.textContent = t.arrivalButton;
+      message.style.display = "block";
+      message.style.color = "#d00";
+      message.textContent = t.arrivalError;
+    }
+  );
+}
+
+
+/* ==================================================
+   Reset
+   ================================================== */
+
+function resetPage() {
+
+  reservationData =
+    null;
+
+  arrivalNotificationSent =
+    false;
+
+  doorIssueNotificationSent =
+    false;
+
+  doorIssueMessageType =
+    "";
+
+
+  document
+    .getElementById("result")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("checkinForm")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("fullName")
+    .value =
+    "";
+
+
+  document
+    .getElementById("message")
+    .textContent =
+    "";
+
+
+  document
+    .getElementById("formQuestion")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("yesButton")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("noButton")
+    .style
+    .display =
+    "block";
+
+
+  document
+    .getElementById("instructionText")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("openKey")
+    .style
+    .display =
+    "none";
+
+
+  document
+    .getElementById("formButton")
+    .style
+    .display =
+    "none";
+
+  document.getElementById("arrivalSection").style.display = "none";
+  document.getElementById("arrivalButton").style.display = "block";
+  document.getElementById("arrivalButton").disabled = false;
+  document.getElementById("arrivalButton").textContent = texts[currentLanguage].arrivalButton;
+  document.getElementById("arrivalMessage").style.display = "none";
+  document.getElementById("arrivalMessage").textContent = "";
+
+  document.getElementById("doorIssueButton").style.display = "block";
+  document.getElementById("doorIssueButton").disabled = false;
+  document.getElementById("doorIssueButton").textContent = texts[currentLanguage].doorIssueButton;
+  document.getElementById("doorIssueMessage").style.display = "none";
+  document.getElementById("doorIssueMessage").textContent = "";
+
+}
+
+
+/* ==================================================
+   Enter key
+   ================================================== */
+
+document
+  .getElementById("fullName")
+  .addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        checkReservation();
+
+      }
+
+    }
+  );
+
+
+/* ==================================================
+   Initial language
+   ================================================== */
+
+setLanguage(
+  currentLanguage
+);
+
+</script>
+
+
+</body>
+
+</html>
