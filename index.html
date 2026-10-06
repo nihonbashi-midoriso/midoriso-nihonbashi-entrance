@@ -239,17 +239,6 @@
     }
 
 
-    .question {
-      margin-bottom: 18px;
-
-      font-size: 19px;
-
-      font-weight: 600;
-
-      line-height: 1.8;
-    }
-
-
     .instruction {
       margin-bottom: 18px;
 
@@ -289,21 +278,6 @@
       line-height: 1.5;
 
       background: #222;
-    }
-
-
-    .choiceButton {
-      margin-bottom: 10px;
-    }
-
-
-    .secondaryButton {
-      background: white;
-
-      color: #222;
-
-      border:
-        1px solid #ccc;
     }
 
 
@@ -510,15 +484,6 @@
       }
 
 
-      .question {
-        font-size: 19px;
-
-        line-height: 1.8;
-
-        margin-bottom: 20px;
-      }
-
-
       .instruction {
         padding: 18px;
 
@@ -529,15 +494,6 @@
 
 
       .linkButton,
-      .choiceButton {
-        padding: 14px;
-
-        min-height: 50px;
-
-        font-size: 17px;
-
-        line-height: 1.5;
-      }
 
     }
 
@@ -568,11 +524,6 @@
 
       #checkButton {
         font-size: 17px;
-      }
-
-
-      .question {
-        font-size: 18px;
       }
 
 
@@ -736,66 +687,15 @@
 
   <div id="result">
 
-
     <div
       class="confirmed"
       id="confirmedText"
     ></div>
 
-
-    <!-- =========================
-         Form question
-         ========================= -->
-
-    <div
-      class="question"
-      id="formQuestion"
-    ></div>
-
-
-    <button
-      class="choiceButton"
-      id="yesButton"
-      onclick="showCompleted()"
-    ></button>
-
-
-    <button
-      class="choiceButton secondaryButton"
-      id="noButton"
-      onclick="showNotCompleted()"
-    ></button>
-
-
-    <!-- =========================
-         Final instruction
-         ========================= -->
-
     <div
       class="instruction"
       id="instructionText"
-      style="display:none"
     ></div>
-
-
-    <!-- =========================
-         Entrance key
-         ========================= -->
-
-    <a
-      id="openKey"
-      class="linkButton"
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
-      style="display:none"
-    >
-    </a>
-
-
-    <!-- =========================
-         Google Form
-         ========================= -->
 
     <a
       id="formButton"
@@ -803,25 +703,54 @@
       href="#"
       target="_blank"
       rel="noopener noreferrer"
-      style="display:none"
-    >
-    </a>
+    ></a>
 
+    <a
+      id="openKey"
+      class="linkButton"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    ></a>
 
-    <!-- =========================
-         Staff arrival notification
-         ========================= -->
+    <div class="arrivalSection" id="arrivalSection">
+      <div class="instruction" id="arrivalInstruction"></div>
 
-    <div class="arrivalSection" id="arrivalSection" style="display:none">
-      <div class="instruction" id="arrivalInstruction">
-        If there is no staff at the lounge, please press the button below and wait.
-      </div>
-      <button id="arrivalButton" type="button" onclick="notifyStaffArrival()">
-        Notify Staff of My Arrival
-      </button>
+      <button
+        id="arrivalButton"
+        type="button"
+        onclick="notifyStaffArrival()"
+      ></button>
+
       <div class="arrivalMessage" id="arrivalMessage"></div>
     </div>
 
+    <div
+      class="helpTitle"
+      id="resultHelpTitle"
+    >
+      Need Help?
+    </div>
+
+    <div class="compactHelpLinks">
+      <a
+        class="compactHelpLink"
+        id="resultPhoneHelpButton"
+        href="tel:07093818951"
+      >
+        Call
+      </a>
+
+      <a
+        class="compactHelpLink"
+        id="resultWhatsappHelpButton"
+        href="https://wa.me/817093818951"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+    </div>
 
   </div>
 
@@ -841,7 +770,7 @@ const texts = {
   en: {
 
     title:
-      "Check-in",
+      "Reservation Check",
 
     subtitle:
       "Please enter the full name used for your reservation.<br>Once your reservation is confirmed, you can open the entrance door.",
@@ -856,17 +785,19 @@ const texts = {
       "Your full name",
 
     continue:
-      "Continue",
+      "Check Reservation",
 
     helpTitle:
       "Need Help?",
     phoneHelp:
       "Call Staff",
+    phoneHelpShort:
+      "Call",
     whatsappHelp:
       "WhatsApp",
 
     doorIssueButton:
-      "If you cannot check in",
+      "If you cannot confirm your reservation",
 
     doorIssueSending:
       "Sending...",
@@ -884,34 +815,34 @@ const texts = {
       "Reservation confirmed.",
 
     question:
-      "Have you completed the check-in form?",
+      "",
 
     yes:
-      "Yes, I have completed it",
+      "",
 
     no:
-      "No, I haven't",
+      "",
 
     doneInstruction:
-      "Thank you. Please open the entrance key and go to the 2F lounge. Please wait there for staff.",
+      "Please complete the check-in form, then come to the 2F lounge. Please call a staff member to complete your check-in.",
 
     notDoneInstruction:
-      "Please complete the check-in form at the 2F lounge.",
+      "Please complete the check-in form, then come to the 2F lounge. Please call a staff member to complete your check-in.",
 
     key:
-      "Open Entrance Key",
+      "Enter the Building",
 
     form:
-      "Complete Check-in Form",
+      "Open Check-in Form",
 
     arrivalInstruction:
-      "If there is no staff at the lounge, please press the button below and wait.",
+      "If there is no staff at the 2F lounge, please press the button below.",
     arrivalButton:
-      "Notify Staff of My Arrival",
+      "Call Staff to Complete Check-in",
     arrivalSending:
       "Sending...",
     arrivalSuccess:
-      "Arrival notification sent to staff. Please wait at the 2F lounge.",
+      "Staff have been notified. Please wait at the 2F lounge.",
     arrivalError:
       "Could not notify staff. Please contact staff.",
 
@@ -927,7 +858,7 @@ const texts = {
   ja: {
 
     title:
-      "チェックイン",
+      "予約確認",
 
     subtitle:
       "ご予約時のお名前を入力してください。<br>予約が確認されると、入口の鍵を開けられます。",
@@ -942,17 +873,19 @@ const texts = {
       "フルネームを入力",
 
     continue:
-      "次へ",
+      "予約を確認する",
 
     helpTitle:
       "Need Help?",
     phoneHelp:
       "スタッフに電話",
+    phoneHelpShort:
+      "Call",
     whatsappHelp:
       "WhatsApp",
 
     doorIssueButton:
-      "チェックインできない場合",
+      "予約を確認できない場合",
 
     doorIssueSending:
       "通知中...",
@@ -970,34 +903,34 @@ const texts = {
       "ご予約を確認しました。",
 
     question:
-      "チェックインフォームの入力はお済みですか？",
+      "",
 
     yes:
-      "はい、入力済みです",
+      "",
 
     no:
-      "いいえ、まだです",
+      "",
 
     doneInstruction:
-      "ありがとうございます。入口の鍵を開けて、2階ラウンジへお越しください。スタッフがお声がけするまでお待ちください。",
+      "チェックインフォームの入力にご協力ください。入力後、2階ラウンジでチェックインを完了してください。",
 
     notDoneInstruction:
-      "2階ラウンジでチェックインフォームへの入力をお願いします。",
+      "チェックインフォームの入力にご協力ください。入力後、2階ラウンジでチェックインを完了してください。",
 
     key:
-      "エントランスキーを開く",
+      "入館する",
 
     form:
       "チェックインフォームを入力",
 
     arrivalInstruction:
-      "スタッフがいない場合は、下記のボタンを押してお待ちください。",
+      "2階ラウンジにスタッフがいない場合は、下記のボタンを押してください。",
     arrivalButton:
-      "スタッフに到着を知らせる",
+      "スタッフを呼び出す",
     arrivalSending:
       "送信中...",
     arrivalSuccess:
-      "到着をスタッフに知らせました。2階ラウンジでお待ちください。",
+      "スタッフに通知しました。2階ラウンジでお待ちください。",
     arrivalError:
       "スタッフへの通知に失敗しました。スタッフへ直接ご連絡ください。",
 
@@ -1013,7 +946,7 @@ const texts = {
   ko: {
 
     title:
-      "체크인",
+      "예약 확인",
 
     subtitle:
       "예약 시 사용한 이름을 입력해 주세요.<br>예약이 확인되면 입구 문을 열 수 있습니다.",
@@ -1028,17 +961,19 @@ const texts = {
       "성명을 입력해 주세요",
 
     continue:
-      "다음",
+      "예약 확인",
 
     helpTitle:
       "도움이 필요하신가요?",
     phoneHelp:
       "직원에게 전화",
+    phoneHelpShort:
+      "전화",
     whatsappHelp:
       "WhatsApp",
 
     doorIssueButton:
-      "체크인할 수 없는 경우",
+      "예약을 확인할 수 없는 경우",
 
     doorIssueSending:
       "전송 중...",
@@ -1056,34 +991,34 @@ const texts = {
       "예약 정보를 확인했습니다.",
 
     question:
-      "체크인 양식을 작성하셨나요?",
+      "",
 
     yes:
-      "네, 작성했습니다",
+      "",
 
     no:
-      "아니요, 아직입니다",
+      "",
 
     doneInstruction:
-      "감사합니다. 입구 키를 열고 2층 라운지로 와 주세요. 직원이 안내할 때까지 기다려 주세요.",
+      "체크인 양식을 작성해 주세요. 작성 후 2층 라운지로 와 주세요. 체크인을 완료하려면 직원을 호출해 주세요.",
 
     notDoneInstruction:
-      "2층 라운지에서 체크인 양식을 작성해 주세요.",
+      "체크인 양식을 작성해 주세요. 작성 후 2층 라운지로 와 주세요. 체크인을 완료하려면 직원을 호출해 주세요.",
 
     key:
-      "입구 키 열기",
+      "입장하기",
 
     form:
       "체크인 양식 작성",
 
     arrivalInstruction:
-      "라운지에 직원이 없으면 아래 버튼을 누르고 기다려 주세요.",
+      "2층 라운지에 직원이 없으면 아래 버튼을 눌러 주세요.",
     arrivalButton:
-      "직원에게 도착 알리기",
+      "직원 호출하기",
     arrivalSending:
       "전송 중...",
     arrivalSuccess:
-      "직원에게 도착을 알렸습니다. 2층 라운지에서 기다려 주세요.",
+      "직원에게 알렸습니다. 2층 라운지에서 기다려 주세요.",
     arrivalError:
       "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
 
@@ -1099,7 +1034,7 @@ const texts = {
   zh: {
 
     title:
-      "入住",
+      "预订确认",
 
     subtitle:
       "请输入您预订时使用的姓名。<br>确认预订后，您就可以打开入口门。",
@@ -1114,17 +1049,19 @@ const texts = {
       "请输入姓名",
 
     continue:
-      "继续",
+      "确认预订",
 
     helpTitle:
       "需要帮助吗？",
     phoneHelp:
       "联系工作人员",
+    phoneHelpShort:
+      "电话",
     whatsappHelp:
       "WhatsApp",
 
     doorIssueButton:
-      "无法办理入住",
+      "无法确认预订",
 
     doorIssueSending:
       "发送中...",
@@ -1142,34 +1079,34 @@ const texts = {
       "已确认您的预订。",
 
     question:
-      "您已经填写入住登记表了吗？",
+      "",
 
     yes:
-      "是的，我已经填写",
+      "",
 
     no:
-      "没有，还没有",
+      "",
 
     doneInstruction:
-      "谢谢。请打开入口钥匙，然后前往2楼休息室。请在那里等待工作人员。",
+      "请填写入住登记表。填写后，请前往2楼休息室。要完成入住手续，请呼叫工作人员。",
 
     notDoneInstruction:
-      "请在2楼休息室填写入住登记表。",
+      "请填写入住登记表。填写后，请前往2楼休息室。要完成入住手续，请呼叫工作人员。",
 
     key:
-      "打开入口钥匙",
+      "进入大楼",
 
     form:
       "填写入住登记表",
 
     arrivalInstruction:
-      "如果休息室没有工作人员，请按下方按钮并等待。",
+      "如果2楼休息室没有工作人员，请按下方按钮。",
     arrivalButton:
-      "通知工作人员我已到达",
+      "呼叫工作人员",
     arrivalSending:
       "发送中...",
     arrivalSuccess:
-      "已通知工作人员您已到达。请在2楼休息室等待。",
+      "已通知工作人员。请在2楼休息室等待。",
     arrivalError:
       "无法通知工作人员，请直接联系工作人员。",
 
@@ -1210,179 +1147,45 @@ let doorIssueMessageType =
 
 function setLanguage(language) {
 
-  currentLanguage =
-    language;
+  currentLanguage = language;
+  const t = texts[language];
 
-  const t =
-    texts[language];
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("subtitle").innerHTML = t.subtitle;
+  document.getElementById("nameLabel").textContent = t.nameLabel;
+  document.getElementById("nameHint").innerHTML = t.nameHint;
+  document.getElementById("fullName").placeholder = t.placeholder;
+  document.getElementById("checkButton").textContent = t.continue;
 
-
-  document
-    .getElementById("title")
-    .innerHTML =
-    t.title;
-
-
-  document
-    .getElementById("subtitle")
-    .innerHTML =
-    t.subtitle;
-
-
-  document
-    .getElementById("nameLabel")
-    .textContent =
-    t.nameLabel;
-
-
-  document
-    .getElementById("nameHint")
-    .innerHTML =
-    t.nameHint;
-
-
-  document
-    .getElementById("fullName")
-    .placeholder =
-    t.placeholder;
-
-
-  document
-    .getElementById("checkButton")
-    .textContent =
-    t.continue;
-
-  document
-    .getElementById("initialHelpTitle")
-    .textContent =
-    t.helpTitle;
-
-  document
-    .getElementById("phoneHelpButton")
-    .textContent =
-    t.phoneHelp;
-
-  document
-    .getElementById("whatsappHelpButton")
-    .textContent =
-    t.whatsappHelp;
-
-  document
-    .getElementById("doorIssueButton")
-    .textContent =
-    t.doorIssueButton;
+  document.getElementById("initialHelpTitle").textContent = t.helpTitle;
+  document.getElementById("phoneHelpButton").textContent = t.phoneHelp;
+  document.getElementById("whatsappHelpButton").textContent = t.whatsappHelp;
+  document.getElementById("doorIssueButton").textContent = t.doorIssueButton;
 
   if (doorIssueMessageType === "success") {
-    document.getElementById("doorIssueMessage").textContent =
-      t.doorIssueSuccess;
+    document.getElementById("doorIssueMessage").textContent = t.doorIssueSuccess;
   } else if (doorIssueMessageType === "error") {
-    document.getElementById("doorIssueMessage").textContent =
-      t.doorIssueError;
+    document.getElementById("doorIssueMessage").textContent = t.doorIssueError;
   }
 
+  document.getElementById("arrivalInstruction").textContent = t.arrivalInstruction;
+  document.getElementById("arrivalButton").textContent = t.arrivalButton;
+  document.getElementById("openKey").textContent = t.key;
+  document.getElementById("formButton").textContent = t.form;
 
-  document
-    .getElementById("formQuestion")
-    .textContent =
-    t.question;
+  document.getElementById("resultHelpTitle").textContent = t.helpTitle;
+  document.getElementById("resultPhoneHelpButton").textContent = t.phoneHelpShort;
+  document.getElementById("resultWhatsappHelpButton").textContent = t.whatsappHelp;
 
+  document.querySelectorAll(".languageButton").forEach(function(button) {
+    button.classList.remove("active");
+  });
 
-  document
-    .getElementById("yesButton")
-    .textContent =
-    t.yes;
+  document.getElementById("lang-" + language).classList.add("active");
 
-
-  document
-    .getElementById("noButton")
-    .textContent =
-    t.no;
-
-
-  document
-    .getElementById("arrivalInstruction")
-    .textContent =
-    t.arrivalInstruction;
-
-  document
-    .getElementById("arrivalButton")
-    .textContent =
-    t.arrivalButton;
-
-
-  document
-    .getElementById("openKey")
-    .textContent =
-    t.key;
-
-
-  document
-    .getElementById("formButton")
-    .textContent =
-    t.form;
-
-
-  document
-    .querySelectorAll(".languageButton")
-    .forEach(
-      function(button) {
-
-        button.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "lang-" + language
-    )
-    .classList.add(
-      "active"
-    );
-
-
-  if (
-    document
-      .getElementById("result")
-      .style
-      .display === "block"
-  ) {
-
-    if (
-      document
-        .getElementById("instructionText")
-        .style
-        .display !== "none"
-    ) {
-
-      if (
-        document
-          .getElementById("formButton")
-          .style
-          .display !== "none"
-      ) {
-
-        document
-          .getElementById("instructionText")
-          .textContent =
-          t.notDoneInstruction;
-
-      } else {
-
-        document
-          .getElementById("instructionText")
-          .textContent =
-          t.doneInstruction;
-
-      }
-
-    }
-
+  if (document.getElementById("result").style.display === "block") {
+    document.getElementById("instructionText").textContent = t.doneInstruction;
   }
-
 }
 
 
@@ -1448,296 +1251,74 @@ function apiCall(action, params, successHandler, failureHandler) {
 function checkReservation() {
 
   const fullName =
-    document
-      .getElementById("fullName")
-      .value
-      .trim();
-
+    document.getElementById("fullName").value.trim();
 
   const button =
-    document
-      .getElementById("checkButton");
-
+    document.getElementById("checkButton");
 
   const message =
-    document
-      .getElementById("message");
-
+    document.getElementById("message");
 
   const t =
     texts[currentLanguage];
 
-
-  message.textContent =
-    "";
-
+  message.textContent = "";
 
   if (!fullName) {
-
-    message.textContent =
-      t.empty;
-
+    message.textContent = t.empty;
     return;
-
   }
 
-
-  button.disabled =
-    true;
-
-  button.textContent =
-    t.checking;
-
+  button.disabled = true;
+  button.textContent = t.checking;
 
   apiCall(
     "checkGuest",
     { fullName: fullName },
     function(data) {
 
-        button.disabled =
-          false;
+      button.disabled = false;
+      button.textContent = t.continue;
 
-        button.textContent =
-          t.continue;
-
-
-        if (!data || !data.success) {
-
-          message.style.color =
-            "#d00";
-
-          message.textContent =
-            data && data.message
-              ? data.message
-              : t.error;
-
-          return;
-
-        }
-
-
-        reservationData =
-          data;
-
-
-        document
-          .getElementById("checkinForm")
-          .style
-          .display =
-          "none";
-
-
-        document
-          .getElementById("result")
-          .style
-          .display =
-          "block";
-
-
-        document
-          .getElementById("confirmedText")
-          .textContent =
-          t.confirmed;
-
-
-        document
-          .getElementById("formQuestion")
-          .textContent =
-          t.question;
-
-
-        document
-          .getElementById("yesButton")
-          .textContent =
-          t.yes;
-
-
-        document
-          .getElementById("noButton")
-          .textContent =
-          t.no;
-
-
-        document
-          .getElementById("instructionText")
-          .style
-          .display =
-          "none";
-
-
-        document
-          .getElementById("openKey")
-          .style
-          .display =
-          "none";
-
-
-        document
-          .getElementById("formButton")
-          .style
-          .display =
-          "none";
-
-
-        document
-          .getElementById("openKey")
-          .href =
-          data.keyUrl;
-
-
-        document
-          .getElementById("formButton")
-          .href =
-          data.formUrl;
-
-
+      if (!data || !data.success) {
+        message.style.color = "#d00";
         message.textContent =
-          "";
+          data && data.message
+            ? data.message
+            : t.error;
+        return;
+      }
 
-      },
+      reservationData = data;
+
+      document.getElementById("checkinForm").style.display = "none";
+      document.getElementById("result").style.display = "block";
+
+      document.getElementById("confirmedText").textContent = t.confirmed;
+      document.getElementById("instructionText").textContent = t.doneInstruction;
+      document.getElementById("instructionText").style.display = "block";
+
+      document.getElementById("formButton").href = data.formUrl;
+      document.getElementById("formButton").style.display = "flex";
+
+      document.getElementById("openKey").href = data.keyUrl;
+      document.getElementById("openKey").style.display = "flex";
+
+      document.getElementById("arrivalSection").style.display = "block";
+
+      message.textContent = "";
+    },
     function(error) {
 
-        button.disabled =
-          false;
+      button.disabled = false;
+      button.textContent = t.continue;
 
-        button.textContent =
-          t.continue;
+      message.style.color = "#d00";
+      message.textContent = t.error;
 
-        message.style.color =
-          "#d00";
-
-        message.textContent =
-          t.error;
-
-        console.error(error);
-
-      }
+      console.error(error);
+    }
   );
-
-}
-
-
-/* ==================================================
-   "Yes"
-   ================================================== */
-
-function showCompleted() {
-
-  const t =
-    texts[currentLanguage];
-
-
-  document
-    .getElementById("formQuestion")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("yesButton")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("noButton")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("instructionText")
-    .style
-    .display =
-    "block";
-
-
-  document
-    .getElementById("instructionText")
-    .textContent =
-    t.doneInstruction;
-
-
-  document
-    .getElementById("openKey")
-    .style
-    .display =
-    "flex";
-
-
-  document
-    .getElementById("formButton")
-    .style
-    .display =
-    "none";
-
-  document.getElementById("arrivalSection").style.display = "block";
-
-}
-
-
-/* ==================================================
-   "No"
-   ================================================== */
-
-function showNotCompleted() {
-
-  const t =
-    texts[currentLanguage];
-
-
-  document
-    .getElementById("formQuestion")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("yesButton")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("noButton")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("instructionText")
-    .style
-    .display =
-    "block";
-
-
-  document
-    .getElementById("instructionText")
-    .textContent =
-    t.notDoneInstruction;
-
-
-  document
-    .getElementById("openKey")
-    .style
-    .display =
-    "flex";
-
-
-  document
-    .getElementById("formButton")
-    .style
-    .display =
-    "flex";
-
-  document.getElementById("arrivalSection").style.display = "block";
-
 }
 
 
@@ -1847,99 +1428,34 @@ function notifyStaffArrival() {
 
 function resetPage() {
 
-  reservationData =
-    null;
+  reservationData = null;
+  arrivalNotificationSent = false;
+  doorIssueNotificationSent = false;
+  doorIssueMessageType = "";
 
-  arrivalNotificationSent =
-    false;
+  document.getElementById("result").style.display = "none";
+  document.getElementById("checkinForm").style.display = "block";
+  document.getElementById("fullName").value = "";
+  document.getElementById("message").textContent = "";
 
-  doorIssueNotificationSent =
-    false;
-
-  doorIssueMessageType =
-    "";
-
-
-  document
-    .getElementById("result")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("checkinForm")
-    .style
-    .display =
-    "block";
-
-
-  document
-    .getElementById("fullName")
-    .value =
-    "";
-
-
-  document
-    .getElementById("message")
-    .textContent =
-    "";
-
-
-  document
-    .getElementById("formQuestion")
-    .style
-    .display =
-    "block";
-
-
-  document
-    .getElementById("yesButton")
-    .style
-    .display =
-    "block";
-
-
-  document
-    .getElementById("noButton")
-    .style
-    .display =
-    "block";
-
-
-  document
-    .getElementById("instructionText")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("openKey")
-    .style
-    .display =
-    "none";
-
-
-  document
-    .getElementById("formButton")
-    .style
-    .display =
-    "none";
-
+  document.getElementById("instructionText").style.display = "none";
+  document.getElementById("openKey").style.display = "none";
+  document.getElementById("formButton").style.display = "none";
   document.getElementById("arrivalSection").style.display = "none";
+
   document.getElementById("arrivalButton").style.display = "block";
   document.getElementById("arrivalButton").disabled = false;
-  document.getElementById("arrivalButton").textContent = texts[currentLanguage].arrivalButton;
+  document.getElementById("arrivalButton").textContent =
+    texts[currentLanguage].arrivalButton;
   document.getElementById("arrivalMessage").style.display = "none";
   document.getElementById("arrivalMessage").textContent = "";
 
   document.getElementById("doorIssueButton").style.display = "block";
   document.getElementById("doorIssueButton").disabled = false;
-  document.getElementById("doorIssueButton").textContent = texts[currentLanguage].doorIssueButton;
+  document.getElementById("doorIssueButton").textContent =
+    texts[currentLanguage].doorIssueButton;
   document.getElementById("doorIssueMessage").style.display = "none";
   document.getElementById("doorIssueMessage").textContent = "";
-
 }
 
 
