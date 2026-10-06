@@ -296,18 +296,64 @@
 
 
     .initialHelpSection {
-      margin-top: 24px;
-      padding-top: 18px;
+      margin-top: 28px;
+      padding-top: 24px;
       border-top: 1px solid #eee;
-      text-align: center;
+    }
+
+    .reservationHelpPanel {
+      padding: 20px 18px;
+      background: #fff1f3;
+      border-radius: 16px;
+    }
+
+    .reservationHelpTitle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .reservationHelpIcon {
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #f04b63;
+      border-radius: 50%;
+      color: #f04b63;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .reservationHelpText {
+      margin: 10px 0 16px 40px;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.7;
     }
 
     .initialHelpButton {
       width: 100%;
-      margin-top: 10px;
-      background: white;
-      color: #222;
-      border: 1px solid #ccc;
+      min-height: 52px;
+      margin-top: 0;
+      padding: 12px 15px;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .initialHelpButton:active {
+      transform: scale(0.99);
+      opacity: 0.9;
     }
 
     .initialHelpMessage {
@@ -319,11 +365,12 @@
     }
 
     .compactHelpTitle {
-      margin-top: 16px;
-      margin-bottom: 8px;
-      font-size: 13px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      font-size: 15px;
       font-weight: 600;
       color: #666;
+      text-align: center;
     }
 
     .compactHelpLinks {
@@ -336,10 +383,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 36px;
-      padding: 7px 14px;
+      min-height: 44px;
+      padding: 8px 14px;
       border: 1px solid #ddd;
-      border-radius: 8px;
+      border-radius: 9px;
       background: #fff;
       color: #222;
       text-decoration: none;
@@ -463,6 +510,29 @@
         font-size: 17px;
 
         min-height: 50px;
+      }
+
+      .reservationHelpPanel {
+        padding: 18px 16px;
+      }
+
+      .reservationHelpTitle {
+        font-size: 16px;
+      }
+
+      .reservationHelpText {
+        margin-left: 40px;
+        font-size: 13px;
+      }
+
+      .initialHelpButton {
+        min-height: 50px;
+        font-size: 15px;
+      }
+
+      .compactHelpLink {
+        min-height: 44px;
+        font-size: 13px;
       }
 
 
@@ -644,14 +714,28 @@
          ========================= -->
 
     <div class="initialHelpSection" id="initialHelpSection">
-      <button
-        class="initialHelpButton"
-        id="doorIssueButton"
-        type="button"
-        onclick="notifyDoorIssue()"
-      >
-        Door won't open
-      </button>
+
+      <div class="reservationHelpPanel">
+
+        <div class="reservationHelpTitle">
+          <span class="reservationHelpIcon">?</span>
+          <span id="doorIssueTitle">If you cannot confirm your reservation</span>
+        </div>
+
+        <div class="reservationHelpText" id="doorIssueText">
+          If you cannot find your reservation or get an error after entering your name, please tap the button below.
+        </div>
+
+        <button
+          class="initialHelpButton"
+          id="doorIssueButton"
+          type="button"
+          onclick="notifyDoorIssue()"
+        >
+          Reservation not found? Tap here
+        </button>
+
+      </div>
 
       <div class="compactHelpTitle" id="initialHelpTitle">Need Help?</div>
 
@@ -796,8 +880,14 @@ const texts = {
     whatsappHelp:
       "WhatsApp",
 
-    doorIssueButton:
+    doorIssueTitle:
       "If you cannot confirm your reservation",
+
+    doorIssueText:
+      "If you cannot find your reservation or get an error after entering your name, please tap the button below.",
+
+    doorIssueButton:
+      "Reservation not found? Tap here",
 
     doorIssueSending:
       "Sending...",
@@ -884,8 +974,14 @@ const texts = {
     whatsappHelp:
       "WhatsApp",
 
+    doorIssueTitle:
+      "予約が確認できない場合",
+
+    doorIssueText:
+      "予約が見つからない・入力してもエラーになる場合はこちらをタップしてください。",
+
     doorIssueButton:
-      "予約を確認できない場合",
+      "予約が見つからない場合はこちら",
 
     doorIssueSending:
       "通知中...",
@@ -972,8 +1068,14 @@ const texts = {
     whatsappHelp:
       "WhatsApp",
 
-    doorIssueButton:
+    doorIssueTitle:
       "예약을 확인할 수 없는 경우",
+
+    doorIssueText:
+      "예약을 찾을 수 없거나 이름을 입력해도 오류가 발생하는 경우 아래 버튼을 눌러 주세요.",
+
+    doorIssueButton:
+      "예약을 찾을 수 없는 경우 여기를 눌러 주세요",
 
     doorIssueSending:
       "전송 중...",
@@ -1060,8 +1162,14 @@ const texts = {
     whatsappHelp:
       "WhatsApp",
 
-    doorIssueButton:
+    doorIssueTitle:
       "无法确认预订",
+
+    doorIssueText:
+      "如果找不到您的预订，或输入姓名后出现错误，请点击下方按钮。",
+
+    doorIssueButton:
+      "找不到预订时请点击这里",
 
     doorIssueSending:
       "发送中...",
@@ -1160,6 +1268,8 @@ function setLanguage(language) {
   document.getElementById("initialHelpTitle").textContent = t.helpTitle;
   document.getElementById("phoneHelpButton").textContent = t.phoneHelp;
   document.getElementById("whatsappHelpButton").textContent = t.whatsappHelp;
+  document.getElementById("doorIssueTitle").textContent = t.doorIssueTitle;
+  document.getElementById("doorIssueText").textContent = t.doorIssueText;
   document.getElementById("doorIssueButton").textContent = t.doorIssueButton;
 
   if (doorIssueMessageType === "success") {
