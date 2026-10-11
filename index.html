@@ -41,6 +41,29 @@
     .languageButtons { display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid #394139; border-radius: 999px; }
     .languageButton { width: auto; min-height: 36px; padding: 6px 11px; border: 0; border-radius: 999px; background: transparent; color: #b7c0b7; font-size: 13px; }
     .languageButton.active { background: #252c25; color: #f4f7f2; }
+    .welcomeScreen { display: none; }
+    .welcomeScreen h1 { margin: 0 0 9px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
+    .welcomeLead { margin: 0 0 20px; color: #b7c0b7; font-size: 14px; line-height: 1.6; }
+    .welcomeSteps { display: grid; gap: 9px; margin: 0 0 22px; padding: 14px; border: 1px solid #3a433b; border-radius: 15px; background: #202520; }
+    .welcomeStepsTitle { margin: 0 0 2px; color: #a9d5b0; font-size: 13px; font-weight: 700; }
+    .welcomeStep { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 9px; align-items: start; color: #e7ece6; font-size: 13px; line-height: 1.45; }
+    .welcomeStepNumber { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #a9d5b0; color: #1b281d; font-size: 12px; font-weight: 700; }
+    .choiceTitle { margin: 0 0 11px; font-size: 17px; }
+    .welcomeChoices { display: grid; gap: 11px; }
+    .welcomeChoice { display: block; width: 100%; min-height: 0; padding: 16px; border: 1px solid #435044; border-radius: 16px; background: #222822; color: #f3f5f1; text-align: left; cursor: pointer; }
+    .welcomeChoiceTitle { display: block; margin-bottom: 5px; font-size: 16px; font-weight: 700; line-height: 1.4; }
+    .welcomeChoiceCopy { display: block; color: #b7c0b7; font-size: 13px; line-height: 1.5; }
+    .welcomeChoiceAction { display: block; margin-top: 12px; color: #cde5d0; font-size: 13px; font-weight: 650; }
+    .welcomeHelp { margin: 18px 0 0; color: #aeb8af; font-size: 12px; line-height: 1.5; }
+    .routeBack { margin: 0 0 20px; padding: 0; min-height: 36px; width: auto; background: transparent; color: #cde5d0; font-size: 13px; text-align: left; }
+    .directFormScreen { display: none; }
+    .directFormScreen h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
+    .directFormFrame { display: block; width: 100%; height: 980px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .directFormFrame { display: block; width: 100%; height: 2300px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .directFormScreen .formFallback { display: block; }
+    .directStaffHelp { margin: 16px 0; padding: 14px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; color: #b7c0b7; font-size: 13px; line-height: 1.6; }
+    .directStaffHelp button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 11px; padding: 11px 14px; border: 1px solid #4c5a4d; border-radius: 11px; background: transparent; color: #d5e6d6; font: inherit; font-weight: 600; }
+    .directStaffMessage { display: none; margin-top: 10px; color: #d5e6d6; font-size: 13px; line-height: 1.5; }
     #checkinForm h1 { margin: 0 0 10px; text-align: left; font-size: 36px; line-height: 1.2; letter-spacing: -.025em; }
     .eyebrow { margin: 0 0 16px; color: #a9d5b0; font-size: 13px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
     .subtitle { margin: 0 0 34px; color: #b7c0b7; text-align: left; font-size: 17px; line-height: 1.55; }
@@ -87,6 +110,7 @@
     .flowText { color: #b7c0b7; font-size: 13px; line-height: 1.6; }
     .flowStep .linkButton { margin: 13px 0 0; }
     .formFrame { display: none; width: 100%; height: 980px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .formFrame { display: none; width: 100%; height: 2300px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .formFallback { display: none; margin-top: 10px; color: #d5e6d6; text-align: center; font-size: 13px; line-height: 1.5; }
     .flowStep .arrivalSection { margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid #343c35; }
     .linkButton { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin: 0 0 10px; padding: 11px 14px; border-radius: 11px; background: #a9d5b0; color: #1b281d; text-decoration: none; text-align: center; font-size: 14px; font-weight: 600; line-height: 1.45; }
@@ -103,6 +127,9 @@
       #checkinForm h1 { font-size: 34px; }
       .subtitle { margin-bottom: 30px; }
       .formFrame { height: 900px; }
+      .directFormFrame { height: 900px; }
+      .formFrame { height: 2600px; }
+      .directFormFrame { height: 2600px; }
     }
     @media (max-width: 380px) {
       .container { padding-left: 18px; padding-right: 18px; }
@@ -112,6 +139,7 @@
       .languages { gap: 8px; }
       .languageButton { min-height: 32px; padding: 5px 6px; font-size: 11px; }
       #checkinForm h1 { font-size: 30px; }
+      .welcomeScreen h1 { font-size: 27px; }
     }
   </style>
 </head>
@@ -168,7 +196,46 @@
   <!-- =========================
        Check-in form
        ========================= -->
+  <div id="welcomeScreen" class="welcomeScreen">
+    <p class="eyebrow" id="welcomeEyebrow"></p>
+    <h1 id="welcomeTitle"></h1>
+    <p class="welcomeLead" id="welcomeLead"></p>
+    <section class="welcomeSteps" aria-labelledby="welcomeStepsTitle">
+      <h2 class="welcomeStepsTitle" id="welcomeStepsTitle"></h2>
+      <div class="welcomeStep"><span class="welcomeStepNumber">1</span><span id="welcomeStep1"></span></div>
+      <div class="welcomeStep"><span class="welcomeStepNumber">2</span><span id="welcomeStep2"></span></div>
+      <div class="welcomeStep"><span class="welcomeStepNumber">3</span><span id="welcomeStep3"></span></div>
+    </section>
+    <h2 class="choiceTitle" id="welcomeChoiceTitle"></h2>
+    <div class="welcomeChoices">
+      <button class="welcomeChoice" type="button" onclick="showReservationRoute()">
+        <span class="welcomeChoiceTitle" id="entryChoiceTitle"></span>
+        <span class="welcomeChoiceCopy" id="entryChoiceCopy"></span>
+        <span class="welcomeChoiceAction" id="entryChoiceAction"></span>
+      </button>
+      <button class="welcomeChoice" type="button" onclick="showDirectFormRoute()">
+        <span class="welcomeChoiceTitle" id="formChoiceTitle"></span>
+        <span class="welcomeChoiceCopy" id="formChoiceCopy"></span>
+        <span class="welcomeChoiceAction" id="formChoiceAction"></span>
+      </button>
+    </div>
+    <p class="welcomeHelp" id="welcomeHelp"></p>
+  </div>
+  <div id="directFormScreen" class="directFormScreen">
+    <button type="button" class="routeBack" id="directFormBack" onclick="returnToWelcome()"></button>
+    <p class="eyebrow" id="directFormEyebrow"></p>
+    <h1 id="directFormTitle"></h1>
+    <p class="subtitle" id="directFormIntro"></p>
+    <div class="directStaffHelp" id="directStaffHelp">
+      <span id="directStaffText"></span>
+      <button id="directStaffCall" type="button" onclick="notifyStaffArrival()"></button>
+      <div id="directStaffMessage" class="directStaffMessage"></div>
+    </div>
+    <iframe id="directFormFrame" class="directFormFrame" title="MIDORI.so check-in form" loading="lazy"></iframe>
+    <a id="directFormFallback" class="formFallback" href="#" target="_blank" rel="noopener noreferrer"></a>
+  </div>
   <div id="checkinForm" style="display:none">
+    <button type="button" class="routeBack" id="reservationBack" onclick="returnToWelcome()"></button>
     <div class="eyebrow" id="checkinStepLabel"></div>
     <h1 id="title">
       Check-in
@@ -319,6 +386,28 @@ const texts = {
     languageTitle: "Select your language",
     languageHint: "Choose your preferred language to continue.",
     languageContinue: "Continue",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "Your arrival, made easy.",
+    welcomeLead: "Choose the option that matches where you are now.",
+    welcomeStepsTitle: "Your check-in in 3 steps",
+    welcomeStep1: "From 9:00 PM to 9:00 AM, the entrance is locked. Confirm your reservation, unlock the door, and enter.",
+    welcomeStep2: "After entering, go to the 2F lounge and complete the check-in form.",
+    welcomeStep3: "A staff member will check your form and passport, complete check-in, and show you to your room.",
+    welcomeChoiceTitle: "Choose your next step",
+    entryChoiceTitle: "I’m arriving and need to enter",
+    entryChoiceCopy: "Confirm your reservation to unlock the entrance.",
+    entryChoiceAction: "Confirm reservation  ›",
+    formChoiceTitle: "I’m already inside",
+    formChoiceCopy: "Go straight to the check-in form. No reservation name needed.",
+    formChoiceAction: "Open check-in form  ›",
+    welcomeHelp: "At the 2F lounge, call staff if no one is there.",
+    reservationBack: "‹  Back to arrival guide",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "Complete your check-in",
+    directFormIntro: "Please fill out and submit the form below. When you’re done, meet staff in the 2F lounge. They will check your passport and check-in form, then show you to your room.",
+    directStaffText: "No staff in the 2F lounge? Tap below to notify them.",
+    directStaffCall: "Call staff to the lounge",
+    directFormFallback: "Form not showing? Open it in a new tab.",
     subtitle: "Enter the surname used for your reservation.",
     nameLabel: "Surname",
     nameHint: "Enter the surname used for your reservation. Please check your booking website or confirmation email.",
@@ -378,16 +467,16 @@ const texts = {
     doneInstruction:
       "Reservation confirmed. Follow these steps to enter and finish check-in.",
     quickStepsTitle: "HERE'S WHAT TO DO",
-    quickStep1: "Unlock the entrance between 9:00 PM and 9:00 AM.",
-    quickStep2: "Submit the form below.",
-    quickStep3: "Wait in the 2F lounge. Call staff if no one is there.",
+    quickStep1: "Confirm your reservation, unlock the entrance, and enter.",
+    quickStep2: "Go to the 2F lounge and submit the check-in form.",
+    quickStep3: "Staff will check your form and passport, then show you to your room.",
     step1Title: "1. Enter the building",
-    step1Text: "The entrance is locked from 9:00 PM to 9:00 AM. Use the button below to unlock it.",
+    step1Text: "From 9:00 PM to 9:00 AM, the entrance is locked. Use the button below to unlock it and enter.",
     step2Title: "2. Complete the check-in form",
-    step2Text: "Fill in and submit the form below. After submitting, continue to the next step.",
+    step2Text: "After entering, go to the 2F lounge and fill in and submit the form below.",
     formFallback: "Form not showing? Open it in a new tab.",
-    step3Title: "3. Wait in the 2F lounge",
-    step3Text: "Staff will check your form and passport, then show you to your room. Please wait in the 2F lounge.",
+    step3Title: "3. Staff check and room guidance",
+    step3Text: "A staff member will check your form and passport in the 2F lounge. Check-in is complete after confirmation, and staff will show you to your room.",
     notDoneInstruction:
       "Reservation confirmed. Follow these steps to enter and finish check-in.",
     key:
@@ -411,6 +500,28 @@ const texts = {
     languageTitle: "言語を選択してください",
     languageHint: "使用する言語を選んでください。",
     languageContinue: "次へ",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "ご到着後のご案内",
+    welcomeLead: "現在の状況に合わせてお進みください。",
+    welcomeStepsTitle: "チェックインの3ステップ",
+    welcomeStep1: "21:00〜翌9:00は入口が施錠されています。予約を確認して解錠し、入館してください。",
+    welcomeStep2: "入館後は2階へ上がり、チェックインフォームを入力・送信してください。",
+    welcomeStep3: "2階ラウンジでスタッフがフォームとパスポートを確認します。確認後、チェックイン完了となり、お部屋へご案内します。",
+    welcomeChoiceTitle: "現在の状況をお選びください",
+    entryChoiceTitle: "これから入館される方",
+    entryChoiceCopy: "予約を確認して入口を解錠し、入館します。",
+    entryChoiceAction: "予約を確認する  ›",
+    formChoiceTitle: "すでに入館済みの方",
+    formChoiceCopy: "予約名の入力は不要です。チェックインフォームへ進みます。",
+    formChoiceAction: "フォームへ進む  ›",
+    welcomeHelp: "2階ラウンジにスタッフが不在の場合は、呼び出しボタンをご利用ください。",
+    reservationBack: "‹  ご到着後のご案内に戻る",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "チェックインフォーム",
+    directFormIntro: "必要事項を入力して送信してください。入力後は2階ラウンジへお越しください。スタッフがパスポートとチェックインフォームを確認し、お部屋へご案内します。",
+    directStaffText: "2階ラウンジにスタッフが不在の場合は、下のボタンでお呼びください。",
+    directStaffCall: "スタッフを呼び出す",
+    directFormFallback: "フォームが表示されない場合はこちら（新しいタブで開く）",
     subtitle: "予約に使用されている名前の名字を入力してください。",
     nameLabel: "名字",
     nameHint: "予約に使用されている名前の名字を入力してください。予約サイトまたは予約確認メールで名前をご確認ください。",
@@ -470,16 +581,16 @@ const texts = {
     doneInstruction:
       "ご予約を確認しました。以下の手順で入館し、チェックインを完了してください。",
     quickStepsTitle: "このあとの流れ",
-    quickStep1: "21:00〜翌9:00は入口を解錠する",
-    quickStep2: "下のフォームを入力して送信する",
-    quickStep3: "2階ラウンジで待つ（スタッフ不在時は呼び出す）",
+    quickStep1: "予約を確認して入口を解錠し、入館する",
+    quickStep2: "2階へ上がり、チェックインフォームを送信する",
+    quickStep3: "スタッフがフォームとパスポートを確認し、お部屋へご案内",
     step1Title: "1. 入館する",
-    step1Text: "21:00〜翌9:00は入口が施錠されています。下のボタンで解錠してください。",
+    step1Text: "21:00〜翌9:00は入口が施錠されています。下のボタンで解錠して入館してください。",
     step2Title: "2. チェックインフォームを送信する",
-    step2Text: "フォームに必要事項を入力して送信してください。送信後は、下の手順をご確認ください。",
+    step2Text: "入館後は2階へ上がり、フォームに必要事項を入力して送信してください。",
     formFallback: "フォームが表示されない場合はこちら（新しいタブで開く）",
-    step3Title: "3. 2階ラウンジで待つ",
-    step3Text: "スタッフがフォームの内容とパスポートを確認後、お部屋へご案内します。2階ラウンジでお待ちください。",
+    step3Title: "3. スタッフの確認後、お部屋へご案内",
+    step3Text: "2階ラウンジでスタッフがフォームとパスポートを確認します。確認後、チェックイン完了となり、お部屋へご案内します。",
     notDoneInstruction:
       "ご予約を確認しました。以下の手順で入館し、チェックインを完了してください。",
     key:
@@ -503,6 +614,28 @@ const texts = {
     languageTitle: "언어를 선택해 주세요",
     languageHint: "계속하려면 사용할 언어를 선택해 주세요.",
     languageContinue: "다음",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "도착 후 안내",
+    welcomeLead: "현재 상황에 맞는 항목을 선택해 주세요.",
+    welcomeStepsTitle: "체크인 3단계",
+    welcomeStep1: "21:00부터 다음 날 9:00까지 출입문이 잠겨 있습니다. 예약을 확인하고 문을 연 뒤 입장해 주세요.",
+    welcomeStep2: "입장 후 2층으로 올라가 체크인 양식을 작성해 제출해 주세요.",
+    welcomeStep3: "2층 라운지에서 직원이 양식과 여권을 확인합니다. 확인 후 체크인이 완료되며 객실로 안내해 드립니다.",
+    welcomeChoiceTitle: "현재 상황을 선택해 주세요",
+    entryChoiceTitle: "이제 입장하실 분",
+    entryChoiceCopy: "예약을 확인한 뒤 출입문을 열고 입장합니다.",
+    entryChoiceAction: "예약 확인하기  ›",
+    formChoiceTitle: "이미 입장하신 분",
+    formChoiceCopy: "예약자 이름을 입력하지 않고 체크인 양식으로 이동합니다.",
+    formChoiceAction: "양식으로 이동  ›",
+    welcomeHelp: "2층 라운지에 직원이 없으면 호출 버튼을 이용해 주세요.",
+    reservationBack: "‹  도착 안내로 돌아가기",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "체크인 양식",
+    directFormIntro: "필요한 정보를 입력하고 제출해 주세요. 작성 후 2층 라운지로 오시면 직원이 여권과 체크인 양식을 확인한 후 객실로 안내해 드립니다.",
+    directStaffText: "2층 라운지에 직원이 없으면 아래 버튼을 눌러 호출해 주세요.",
+    directStaffCall: "직원 호출하기",
+    directFormFallback: "양식이 보이지 않나요? 새 탭에서 열기",
     subtitle: "예약에 사용된 이름의 성을 입력해 주세요.",
     nameLabel: "성",
     nameHint: "예약에 사용된 이름의 성을 입력해 주세요. 예약 사이트 또는 예약 확인 이메일에서 이름을 확인해 주세요.",
@@ -562,16 +695,16 @@ const texts = {
     doneInstruction:
       "예약을 확인했습니다. 아래 순서대로 입장하고 체크인을 완료해 주세요.",
     quickStepsTitle: "이렇게 진행해 주세요",
-    quickStep1: "21:00부터 다음 날 9:00까지 출입문 열기",
-    quickStep2: "아래 양식을 작성하고 제출하기",
-    quickStep3: "2층 라운지에서 기다리기 (직원이 없으면 호출)",
+    quickStep1: "예약을 확인하고 출입문을 연 뒤 입장하기",
+    quickStep2: "2층으로 올라가 체크인 양식 제출하기",
+    quickStep3: "직원이 양식과 여권을 확인한 후 객실로 안내",
     step1Title: "1. 건물에 입장하기",
-    step1Text: "21:00부터 다음 날 9:00까지 출입문이 잠겨 있습니다. 아래 버튼으로 잠금을 해제해 주세요.",
+    step1Text: "21:00부터 다음 날 9:00까지 출입문이 잠겨 있습니다. 아래 버튼으로 문을 연 뒤 입장해 주세요.",
     step2Title: "2. 체크인 양식 제출하기",
-    step2Text: "양식에 필요한 정보를 입력하고 제출해 주세요. 제출 후 아래 순서를 확인해 주세요.",
+    step2Text: "입장 후 2층으로 올라가 양식에 필요한 정보를 입력하고 제출해 주세요.",
     formFallback: "양식이 보이지 않나요? 새 탭에서 열기",
-    step3Title: "3. 2층 라운지에서 기다리기",
-    step3Text: "직원이 양식과 여권을 확인한 후 객실로 안내해 드립니다. 2층 라운지에서 기다려 주세요.",
+    step3Title: "3. 직원 확인 후 객실 안내",
+    step3Text: "2층 라운지에서 직원이 양식과 여권을 확인합니다. 확인 후 체크인이 완료되며 객실로 안내해 드립니다.",
     notDoneInstruction:
       "예약을 확인했습니다. 아래 순서대로 입장하고 체크인을 완료해 주세요.",
     key:
@@ -595,6 +728,28 @@ const texts = {
     languageTitle: "请选择语言",
     languageHint: "请选择您使用的语言以继续。",
     languageContinue: "继续",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "抵达后指南",
+    welcomeLead: "请选择符合您当前情况的选项。",
+    welcomeStepsTitle: "入住登记分三步",
+    welcomeStep1: "21:00至次日9:00入口会上锁。请确认预订、解锁入口后进入大楼。",
+    welcomeStep2: "进入后请上到2楼，填写并提交入住登记表。",
+    welcomeStep3: "工作人员会在2楼休息室确认登记表和护照。确认后即完成入住登记，并带您前往房间。",
+    welcomeChoiceTitle: "请选择您当前的情况",
+    entryChoiceTitle: "我还没有进入大楼",
+    entryChoiceCopy: "确认预订后解锁入口并进入大楼。",
+    entryChoiceAction: "确认预订  ›",
+    formChoiceTitle: "我已经进入大楼",
+    formChoiceCopy: "无需输入预订姓名，直接填写入住登记表。",
+    formChoiceAction: "填写登记表  ›",
+    welcomeHelp: "如果2楼休息室没有工作人员，请使用呼叫按钮。",
+    reservationBack: "‹  返回抵达指南",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "填写入住登记表",
+    directFormIntro: "请填写并提交下方表格。完成后请前往2楼休息室，工作人员会确认您的护照和入住登记表，然后带您前往房间。",
+    directStaffText: "如果2楼休息室没有工作人员，请点击下方按钮呼叫。",
+    directStaffCall: "呼叫工作人员",
+    directFormFallback: "表单无法显示？在新标签页中打开",
     subtitle: "请输入预订时使用的姓氏。",
     nameLabel: "姓氏",
     nameHint: "请输入预订时使用的姓氏。请查看预订网站或预订确认邮件，确认您使用的姓名。",
@@ -654,16 +809,16 @@ const texts = {
     doneInstruction:
       "已确认您的预订。请按以下步骤入馆并完成入住登记。",
     quickStepsTitle: "接下来请按以下步骤办理",
-    quickStep1: "21:00至次日9:00请解锁入口",
-    quickStep2: "填写并提交下方登记表",
-    quickStep3: "在2楼休息室等候（没有工作人员时请呼叫）",
+    quickStep1: "确认预订、解锁入口并进入大楼",
+    quickStep2: "前往2楼并填写入住登记表",
+    quickStep3: "工作人员确认表格和护照后带您前往房间",
     step1Title: "1. 进入大楼",
-    step1Text: "晚上21:00至次日9:00入口会上锁。请使用下方按钮开门。",
+    step1Text: "21:00至次日9:00入口会上锁。请使用下方按钮解锁后进入大楼。",
     step2Title: "2. 提交入住登记表",
-    step2Text: "请填写并提交登记表。提交后请查看下方步骤。",
+    step2Text: "进入大楼后请前往2楼，填写并提交入住登记表。",
     formFallback: "表单无法显示？在新标签页中打开",
-    step3Title: "3. 在2楼休息室等候",
-    step3Text: "工作人员确认登记表和护照后，会带您前往房间。请在2楼休息室等候。",
+    step3Title: "3. 工作人员确认并带您前往房间",
+    step3Text: "工作人员会在2楼休息室确认登记表和护照。确认后即完成入住登记，并带您前往房间。",
     notDoneInstruction:
       "已确认您的预订。请按以下步骤入馆并完成入住登记。",
     key:
@@ -704,6 +859,29 @@ let doorIssueMessageType =
 function setLanguage(language) {
   currentLanguage = language;
   const t = texts[language];
+  document.getElementById("welcomeEyebrow").textContent = t.welcomeEyebrow;
+  document.getElementById("welcomeTitle").textContent = t.welcomeTitle;
+  document.getElementById("welcomeLead").textContent = t.welcomeLead;
+  document.getElementById("welcomeStepsTitle").textContent = t.welcomeStepsTitle;
+  document.getElementById("welcomeStep1").textContent = t.welcomeStep1;
+  document.getElementById("welcomeStep2").textContent = t.welcomeStep2;
+  document.getElementById("welcomeStep3").textContent = t.welcomeStep3;
+  document.getElementById("welcomeChoiceTitle").textContent = t.welcomeChoiceTitle;
+  document.getElementById("entryChoiceTitle").textContent = t.entryChoiceTitle;
+  document.getElementById("entryChoiceCopy").textContent = t.entryChoiceCopy;
+  document.getElementById("entryChoiceAction").textContent = t.entryChoiceAction;
+  document.getElementById("formChoiceTitle").textContent = t.formChoiceTitle;
+  document.getElementById("formChoiceCopy").textContent = t.formChoiceCopy;
+  document.getElementById("formChoiceAction").textContent = t.formChoiceAction;
+  document.getElementById("welcomeHelp").textContent = t.welcomeHelp;
+  document.getElementById("reservationBack").textContent = t.reservationBack;
+  document.getElementById("directFormBack").textContent = t.reservationBack;
+  document.getElementById("directFormEyebrow").textContent = t.directFormEyebrow;
+  document.getElementById("directFormTitle").textContent = t.directFormTitle;
+  document.getElementById("directFormIntro").textContent = t.directFormIntro;
+  document.getElementById("directStaffText").textContent = t.directStaffText;
+  document.getElementById("directStaffCall").textContent = t.directStaffCall;
+  document.getElementById("directFormFallback").textContent = t.directFormFallback;
   document.getElementById("languageScreenTitle").textContent = t.languageTitle;
   document.getElementById("languageScreenHint").textContent = t.languageHint;
   document.getElementById("languageContinueButton").textContent = t.languageContinue;
@@ -763,7 +941,28 @@ function chooseLanguage(language) {
 function continueToCheckin() {
   document.getElementById("languageScreen").style.display = "none";
   document.getElementById("languageSwitch").style.display = "flex";
+  document.getElementById("welcomeScreen").style.display = "block";
+}
+function showReservationRoute() {
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("directFormScreen").style.display = "none";
   document.getElementById("checkinForm").style.display = "block";
+  document.getElementById("surname").focus();
+}
+function showDirectFormRoute() {
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("checkinForm").style.display = "none";
+  document.getElementById("directFormScreen").style.display = "block";
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdlwHVKk1iQt_2DFmS1quGIPFhJPnKYDfdSdR66H-wT-gjP7g/viewform";
+  const embeddedFormUrl = new URL(formUrl);
+  embeddedFormUrl.searchParams.set("embedded", "true");
+  document.getElementById("directFormFrame").src = embeddedFormUrl.toString();
+  document.getElementById("directFormFallback").href = formUrl;
+}
+function returnToWelcome() {
+  document.getElementById("welcomeScreen").style.display = "block";
+  document.getElementById("checkinForm").style.display = "none";
+  document.getElementById("directFormScreen").style.display = "none";
 }
 function changeCandidate() {
   document.getElementById("checkinStepLabel").textContent = texts[currentLanguage].reservationStage;
@@ -979,9 +1178,11 @@ function notifyDoorIssue() {
   );
 }
 function notifyStaffArrival() {
-  const fullName = selectedGuestName || document.getElementById("surname").value.trim();
-  const button = document.getElementById("arrivalButton");
-  const message = document.getElementById("arrivalMessage");
+  const directRoute = document.getElementById("directFormScreen").style.display === "block";
+  const fullName = selectedGuestName || document.getElementById("surname").value.trim() ||
+    (directRoute ? "Already inside (name not provided)" : "");
+  const button = document.getElementById(directRoute ? "directStaffCall" : "arrivalButton");
+  const message = document.getElementById(directRoute ? "directStaffMessage" : "arrivalMessage");
   const t = texts[currentLanguage];
   if (!fullName) {
     message.style.display = "block";
@@ -1000,7 +1201,7 @@ function notifyStaffArrival() {
       if (data && data.success) {
         arrivalNotificationSent = true;
         message.style.display = "block";
-        message.style.color = "#222";
+        message.style.color = "#d5e6d6";
         message.textContent = t.arrivalSuccess;
         button.style.display = "none";
       } else {
