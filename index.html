@@ -8,7 +8,1280 @@
     content="width=device-width, initial-scale=1"
   >
 
+  <style><!DOCTYPE html>
+<html>
+<head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
   <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      background: #f5f5f5;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: #222;
+    }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 28px 24px;
+      background: white;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 20px
+        rgba(0, 0, 0, 0.08);
+    }
+    /* =========================
+       Language
+       ========================= */
+    .languages {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 25px;
+    }
+    .languageButton {
+      width: auto;
+      padding: 7px 10px;
+      border:
+        1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      color: #555;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .languageButton.active {
+      background: #222;
+      color: white;
+      border-color: #222;
+    }
+    /* =========================
+       Heading
+       ========================= */
+    h1 {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.3;
+    }
+    .subtitle {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #666;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .hint {
+      margin-top: -3px;
+      margin-bottom: 10px;
+      color: #777;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    input {
+      width: 100%;
+      padding: 14px 15px;
+      margin-bottom: 18px;
+      border:
+        1px solid #ccc;
+      border-radius: 9px;
+      font-size: 17px;
+      background: white;
+      outline: none;
+    }
+    input:focus {
+      border-color: #555;
+    }
+    /* =========================
+       Buttons
+       ========================= */
+    button {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 9px;
+      background: #222;
+      color: white;
+      font-size: 16px;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #999;
+      cursor: default;
+    }
+    #message {
+      margin-top: 18px;
+      text-align: center;
+      color: #d00;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    /* =========================
+       Result
+       ========================= */
+    #result {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      text-align: center;
+    }
+    .confirmed {
+      margin-bottom: 24px;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+    .instruction {
+      margin-bottom: 18px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #f5f5f5;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+    .linkButton {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      margin-bottom: 10px;
+      border-radius: 9px;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+      background: #222;
+    }
+    .helpTitle {
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .initialHelpSection {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+    }
+    .reservationHelpPanel {
+      padding: 20px 18px;
+      background: #fff1f3;
+      border-radius: 16px;
+    }
+    .reservationHelpTitle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: #222;
+    }
+    .reservationHelpIcon {
+      width: 30px;
+      height: 30px;
+      min-width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #f04b63;
+      border-radius: 50%;
+      color: #f04b63;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .reservationHelpText {
+      margin: 10px 0 16px 40px;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .initialHelpButton {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 0;
+      padding: 12px 15px;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .initialHelpButton:active {
+      transform: scale(0.99);
+      opacity: 0.9;
+    }
+    .initialHelpMessage {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .compactHelpTitle {
+      margin-top: 22px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #666;
+      text-align: center;
+    }
+    .compactHelpLinks {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+    .compactHelpLink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      background: #fff;
+      color: #222;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .arrivalSection {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    .arrivalMessage {
+      display: none;
+      margin-top: 12px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+        .languageScreen { text-align: center; }
+    .languageScreen p { color: #666; line-height: 1.7; margin: 0 0 18px; }
+    .languageChoices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 22px 0; }
+    .languageChoice { border: 1px solid #ddd; border-radius: 9px; background: #fff; color: #222; padding: 14px 10px; }
+    .languageChoice.active { background: #222; color: #fff; border-color: #222; }
+    #candidateResults { margin: 18px 0; }
+    #candidateHeading { font-weight: 600; margin-bottom: 10px; }
+    .candidateButton { margin: 0 0 8px; background: #fff; color: #222; border: 1px solid #ddd; text-align: left; }
+    .candidateButton:active { background: #f2f2f2; }
+    #selectedReservation { display: none; margin: 18px 0; padding: 16px; background: #f5f5f5; border-radius: 10px; }
+    #selectedReservationName { font-size: 18px; font-weight: 600; margin: 8px 0 14px; overflow-wrap: anywhere; }
+    #changeNameButton { margin-top: 9px; background: #fff; color: #222; border: 1px solid #ddd; }
+    /* =========================
+       Mobile
+       ========================= */
+    @media (max-width: 600px) {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .container {
+        width: 100%;
+        max-width: none;
+        min-height: 100vh;
+        margin: 0;
+        padding:
+          28px
+          22px
+          40px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .languages {
+        gap: 7px;
+        margin-bottom: 32px;
+      }
+      .languageButton {
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 30px;
+        margin-bottom: 13px;
+      }
+      .subtitle {
+        margin-bottom: 34px;
+        font-size: 17px;
+        line-height: 1.8;
+      }
+      label {
+        margin-bottom: 9px;
+        font-size: 18px;
+      }
+      .hint {
+        margin-bottom: 12px;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      input {
+        padding: 15px 14px;
+        margin-bottom: 18px;
+        border-radius: 9px;
+        font-size: 18px;
+        -webkit-appearance: none;
+      }
+      #checkButton {
+        padding: 14px;
+        border-radius: 9px;
+        font-size: 17px;
+        min-height: 50px;
+      }
+      .reservationHelpPanel {
+        padding: 18px 16px;
+      }
+      .reservationHelpTitle {
+        font-size: 16px;
+      }
+      .reservationHelpText {
+        margin-left: 40px;
+        font-size: 13px;
+      }
+      .initialHelpButton {
+        min-height: 50px;
+        font-size: 15px;
+      }
+      .compactHelpLink {
+        min-height: 44px;
+        font-size: 13px;
+      }
+      #message {
+        margin-top: 20px;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .confirmed {
+        font-size: 19px;
+        line-height: 1.8;
+        margin-bottom: 26px;
+      }
+      .instruction {
+        padding: 18px;
+        font-size: 17px;
+        line-height: 1.9;
+      }
+      .linkButton,
+    }
+    @media (max-width: 380px) {
+      .container {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .subtitle {
+        font-size: 16px;
+      }
+      input {
+        font-size: 18px;
+      }
+      #checkButton {
+        font-size: 17px;
+      }
+      .instruction {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div id="languageScreen" class="languageScreen">
+    <h1 id="languageScreenTitle">Select your language</h1>
+    <p id="languageScreenHint">Choose your preferred language to continue.</p>
+    <div class="languageChoices">
+      <button type="button" class="languageChoice active" id="choice-en" onclick="chooseLanguage('en')">English</button>
+      <button type="button" class="languageChoice" id="choice-ja" onclick="chooseLanguage('ja')">日本語</button>
+      <button type="button" class="languageChoice" id="choice-ko" onclick="chooseLanguage('ko')">한국어</button>
+      <button type="button" class="languageChoice" id="choice-zh" onclick="chooseLanguage('zh')">简体中文</button>
+    </div>
+    <button type="button" id="languageContinueButton" onclick="continueToCheckin()">Continue</button>
+  </div>
+  <!-- =========================
+       Language
+       ========================= -->
+  <div class="languages" id="languageSwitch" style="display:none">
+    <button
+      class="languageButton active"
+      id="lang-en"
+      onclick="setLanguage('en')"
+    >
+      EN
+    </button>
+    <button
+      class="languageButton"
+      id="lang-ja"
+      onclick="setLanguage('ja')"
+    >
+      日本語
+    </button>
+    <button
+      class="languageButton"
+      id="lang-ko"
+      onclick="setLanguage('ko')"
+    >
+      한국어
+    </button>
+    <button
+      class="languageButton"
+      id="lang-zh"
+      onclick="setLanguage('zh')"
+    >
+      中文
+    </button>
+  </div>
+  <!-- =========================
+       Check-in form
+       ========================= -->
+  <div id="checkinForm" style="display:none">
+    <h1 id="title">
+      Check-in
+    </h1>
+    <div
+      class="subtitle"
+      id="subtitle"
+    >
+      Please enter the full name<br>
+      used for your reservation.
+    </div>
+    <label id="nameLabel" for="surname">Surname</label>
+    <div class="hint" id="nameHint">Enter the surname used for your reservation. Please check your booking website or confirmation email.</div>
+    <input type="text" id="surname" placeholder="Enter your surname" autocomplete="family-name" autocapitalize="words">
+    <button id="checkButton" onclick="searchReservations()">Find Reservation</button>
+    <div id="candidateResults" style="display:none">
+      <div id="candidateHeading"></div>
+      <div id="candidateList"></div>
+    </div>
+    <div id="selectedReservation">
+      <div id="selectedReservationPrompt"></div>
+      <div id="selectedReservationName"></div>
+      <button id="confirmReservationButton" onclick="checkReservation()">Confirm Reservation</button>
+      <button id="changeNameButton" type="button" onclick="changeCandidate()">Choose Another Name</button>
+    </div>
+    <div id="message"></div>
+    <!-- =========================
+         Initial help
+         ========================= -->
+    <div class="initialHelpSection" id="initialHelpSection">
+      <div class="reservationHelpPanel">
+        <div class="reservationHelpTitle">
+          <span class="reservationHelpIcon">?</span>
+          <span id="doorIssueTitle">If you cannot confirm your reservation</span>
+        </div>
+        <div class="reservationHelpText" id="doorIssueText">
+          If you cannot find your reservation or get an error after entering your name, please tap the button below.
+        </div>
+        <button
+          class="initialHelpButton"
+          id="doorIssueButton"
+          type="button"
+          onclick="notifyDoorIssue()"
+        >
+          Reservation not found? Tap here
+        </button>
+      </div>
+      <div class="compactHelpTitle" id="initialHelpTitle">Need Help?</div>
+      <div class="compactHelpLinks">
+        <a
+          class="compactHelpLink"
+          id="phoneHelpButton"
+          href="tel:07093818951"
+        >
+          Call Staff
+        </a>
+        <a
+          class="compactHelpLink"
+          id="whatsappHelpButton"
+          href="https://wa.me/817093818951"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+      </div>
+      <div class="initialHelpMessage" id="doorIssueMessage"></div>
+    </div>
+  </div>
+  <!-- =========================
+       Result
+       ========================= -->
+  <div id="result">
+    <div
+      class="confirmed"
+      id="confirmedText"
+    ></div>
+    <div
+      class="instruction"
+      id="instructionText"
+    ></div>
+    <a
+      id="formButton"
+      class="linkButton"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    ></a>
+    <a
+      id="openKey"
+      class="linkButton"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    ></a>
+    <div class="arrivalSection" id="arrivalSection">
+      <div class="instruction" id="arrivalInstruction"></div>
+      <button
+        id="arrivalButton"
+        type="button"
+        onclick="notifyStaffArrival()"
+      ></button>
+      <div class="arrivalMessage" id="arrivalMessage"></div>
+    </div>
+    <div
+      class="helpTitle"
+      id="resultHelpTitle"
+    >
+      Need Help?
+    </div>
+    <div class="compactHelpLinks">
+      <a
+        class="compactHelpLink"
+        id="resultPhoneHelpButton"
+        href="tel:07093818951"
+      >
+        Call
+      </a>
+      <a
+        class="compactHelpLink"
+        id="resultWhatsappHelpButton"
+        href="https://wa.me/817093818951"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+/* ==================================================
+   Text
+   ================================================== */
+const texts = {
+  en: {
+    languageTitle: "Select your language",
+    languageHint: "Choose your preferred language to continue.",
+    languageContinue: "Continue",
+    subtitle: "Enter the surname used for your reservation.",
+    nameLabel: "Surname",
+    nameHint: "Enter the surname used for your reservation. Please check your booking website or confirmation email.",
+    placeholder: "Enter your surname",
+    searchButton: "Find Reservation",
+    confirmButton: "Confirm Reservation",
+    changeButton: "Choose Another Name",
+    candidateHeading: "Matching reservations",
+    selectedPrompt: "Is this your reservation name?",
+    empty: "Please enter your surname.",
+    noCandidates: "No eligible reservations found for that surname. Please check the spelling or contact staff.",
+    searching: "Searching...",
+    title:
+      "Reservation Check",
+    subtitle:
+      "Enter the surname used for your reservation.",
+    nameLabel:
+      "Surname",
+    nameHint:
+      'Enter the surname used for your reservation. Please check your booking website or confirmation email.',
+    placeholder:
+      "Enter your surname",
+    continue:
+      "Check Reservation",
+    helpTitle:
+      "Need Help?",
+    phoneHelp:
+      "Call Staff",
+    phoneHelpShort:
+      "Call",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "If you cannot confirm your reservation",
+    doorIssueText:
+      "If you cannot find your reservation or get an error after entering your name, please tap the button below.",
+    doorIssueButton:
+      "Reservation not found? Tap here",
+    doorIssueSending:
+      "Sending...",
+    doorIssueSuccess:
+      "Staff have been notified. Please wait.",
+    doorIssueError:
+      "Could not notify staff. Please contact staff.",
+    checking:
+      "Checking...",
+    confirmed:
+      "Reservation confirmed.",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "Please complete the check-in form, then come to the 2F lounge. Please call a staff member to complete your check-in.",
+    notDoneInstruction:
+      "Please complete the check-in form, then come to the 2F lounge. Please call a staff member to complete your check-in.",
+    key:
+      "Enter the Building",
+    form:
+      "Open Check-in Form",
+    arrivalInstruction:
+      "If there is no staff at the 2F lounge, please press the button below.",
+    arrivalButton:
+      "Call Staff to Complete Check-in",
+    arrivalSending:
+      "Sending...",
+    arrivalSuccess:
+      "Staff have been notified. Please wait at the 2F lounge.",
+    arrivalError:
+      "Could not notify staff. Please contact staff.",
+    empty:
+      "Please enter your surname.",
+    error:
+      "Something went wrong. Please try again."
+  },
+  ja: {
+    languageTitle: "言語を選択してください",
+    languageHint: "使用する言語を選んでください。",
+    languageContinue: "次へ",
+    subtitle: "予約に使用されている名前の名字を入力してください。",
+    nameLabel: "名字",
+    nameHint: "予約に使用されている名前の名字を入力してください。予約サイトまたは予約確認メールで名前をご確認ください。",
+    placeholder: "名字を入力",
+    searchButton: "予約候補を検索",
+    confirmButton: "この名前で予約を確認",
+    changeButton: "別の名前を選ぶ",
+    candidateHeading: "予約候補",
+    selectedPrompt: "こちらのお名前でよろしいですか？",
+    empty: "名字を入力してください。",
+    noCandidates: "該当する予約が見つかりません。名字をご確認いただくか、スタッフへご連絡ください。",
+    searching: "検索中...",
+    title:
+      "予約確認",
+    subtitle:
+      "予約に使用されている名前の名字を入力してください。",
+    nameLabel:
+      "名字",
+    nameHint:
+      '予約に使用されている名前の名字を入力してください。予約サイトまたは予約確認メールで名前をご確認ください。',
+    placeholder:
+      "名字を入力",
+    continue:
+      "予約を確認する",
+    helpTitle:
+      "Need Help?",
+    phoneHelp:
+      "スタッフに電話",
+    phoneHelpShort:
+      "Call",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "予約が確認できない場合",
+    doorIssueText:
+      "予約が見つからない・入力してもエラーになる場合はこちらをタップしてください。",
+    doorIssueButton:
+      "予約が見つからない場合はこちら",
+    doorIssueSending:
+      "通知中...",
+    doorIssueSuccess:
+      "スタッフに通知しました。少々お待ちください。",
+    doorIssueError:
+      "スタッフへの通知に失敗しました。直接スタッフへご連絡ください。",
+    checking:
+      "確認中...",
+    confirmed:
+      "ご予約を確認しました。",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "チェックインフォームの入力にご協力ください。入力後、2階ラウンジでチェックインを完了してください。",
+    notDoneInstruction:
+      "チェックインフォームの入力にご協力ください。入力後、2階ラウンジでチェックインを完了してください。",
+    key:
+      "入館する",
+    form:
+      "チェックインフォームを入力",
+    arrivalInstruction:
+      "2階ラウンジにスタッフがいない場合は、下記のボタンを押してください。",
+    arrivalButton:
+      "スタッフを呼び出す",
+    arrivalSending:
+      "送信中...",
+    arrivalSuccess:
+      "スタッフに通知しました。2階ラウンジでお待ちください。",
+    arrivalError:
+      "スタッフへの通知に失敗しました。スタッフへ直接ご連絡ください。",
+    empty:
+      "名字を入力してください。",
+    error:
+      "エラーが発生しました。もう一度お試しください。"
+  },
+  ko: {
+    languageTitle: "언어를 선택해 주세요",
+    languageHint: "계속하려면 사용할 언어를 선택해 주세요.",
+    languageContinue: "다음",
+    subtitle: "예약에 사용된 이름의 성을 입력해 주세요.",
+    nameLabel: "성",
+    nameHint: "예약에 사용된 이름의 성을 입력해 주세요. 예약 사이트 또는 예약 확인 이메일에서 이름을 확인해 주세요.",
+    placeholder: "성을 입력해 주세요",
+    searchButton: "예약 검색",
+    confirmButton: "이 이름으로 예약 확인",
+    changeButton: "다른 이름 선택",
+    candidateHeading: "예약 후보",
+    selectedPrompt: "예약자 이름이 맞습니까?",
+    empty: "성을 입력해 주세요.",
+    noCandidates: "해당 성으로 예약을 찾을 수 없습니다. 철자를 확인하거나 직원에게 문의해 주세요.",
+    searching: "검색 중...",
+    title:
+      "예약 확인",
+    subtitle:
+      "예약에 사용된 이름의 성을 입력해 주세요.",
+    nameLabel:
+      "성",
+    nameHint:
+      '예약에 사용된 이름의 성을 입력해 주세요. 예약 사이트 또는 예약 확인 이메일에서 이름을 확인해 주세요.',
+    placeholder:
+      "성을 입력해 주세요",
+    continue:
+      "예약 확인",
+    helpTitle:
+      "도움이 필요하신가요?",
+    phoneHelp:
+      "직원에게 전화",
+    phoneHelpShort:
+      "전화",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "예약을 확인할 수 없는 경우",
+    doorIssueText:
+      "예약을 찾을 수 없거나 이름을 입력해도 오류가 발생하는 경우 아래 버튼을 눌러 주세요.",
+    doorIssueButton:
+      "예약을 찾을 수 없는 경우 여기를 눌러 주세요",
+    doorIssueSending:
+      "전송 중...",
+    doorIssueSuccess:
+      "직원에게 알렸습니다. 잠시 기다려 주세요.",
+    doorIssueError:
+      "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
+    checking:
+      "확인 중...",
+    confirmed:
+      "예약 정보를 확인했습니다.",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "체크인 양식을 작성해 주세요. 작성 후 2층 라운지로 와 주세요. 체크인을 완료하려면 직원을 호출해 주세요.",
+    notDoneInstruction:
+      "체크인 양식을 작성해 주세요. 작성 후 2층 라운지로 와 주세요. 체크인을 완료하려면 직원을 호출해 주세요.",
+    key:
+      "입장하기",
+    form:
+      "체크인 양식 작성",
+    arrivalInstruction:
+      "2층 라운지에 직원이 없으면 아래 버튼을 눌러 주세요.",
+    arrivalButton:
+      "직원 호출하기",
+    arrivalSending:
+      "전송 중...",
+    arrivalSuccess:
+      "직원에게 알렸습니다. 2층 라운지에서 기다려 주세요.",
+    arrivalError:
+      "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
+    empty:
+      "성을 입력해 주세요.",
+    error:
+      "오류가 발생했습니다. 다시 시도해 주세요."
+  },
+  zh: {
+    languageTitle: "请选择语言",
+    languageHint: "请选择您使用的语言以继续。",
+    languageContinue: "继续",
+    subtitle: "请输入预订时使用的姓氏。",
+    nameLabel: "姓氏",
+    nameHint: "请输入预订时使用的姓氏。请查看预订网站或预订确认邮件，确认您使用的姓名。",
+    placeholder: "请输入姓氏",
+    searchButton: "搜索预订",
+    confirmButton: "确认此姓名",
+    changeButton: "选择其他姓名",
+    candidateHeading: "预订候选",
+    selectedPrompt: "这是您的预订姓名吗？",
+    empty: "请输入姓氏。",
+    noCandidates: "未找到符合条件的预订。请检查姓氏拼写或联系工作人员。",
+    searching: "搜索中...",
+    title:
+      "预订确认",
+    subtitle:
+      "请输入预订时使用的姓氏。",
+    nameLabel:
+      "姓氏",
+    nameHint:
+      '请输入预订时使用的姓氏。请查看预订网站或预订确认邮件，确认您使用的姓名。',
+    placeholder:
+      "请输入姓氏",
+    continue:
+      "确认预订",
+    helpTitle:
+      "需要帮助吗？",
+    phoneHelp:
+      "联系工作人员",
+    phoneHelpShort:
+      "电话",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "无法确认预订",
+    doorIssueText:
+      "如果找不到您的预订，或输入姓氏后出现错误，请点击下方按钮。",
+    doorIssueButton:
+      "找不到预订时请点击这里",
+    doorIssueSending:
+      "发送中...",
+    doorIssueSuccess:
+      "已通知工作人员，请稍等。",
+    doorIssueError:
+      "无法通知工作人员，请直接联系工作人员。",
+    checking:
+      "确认中...",
+    confirmed:
+      "已确认您的预订。",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "请填写入住登记表。填写后，请前往2楼休息室。要完成入住手续，请呼叫工作人员。",
+    notDoneInstruction:
+      "请填写入住登记表。填写后，请前往2楼休息室。要完成入住手续，请呼叫工作人员。",
+    key:
+      "进入大楼",
+    form:
+      "填写入住登记表",
+    arrivalInstruction:
+      "如果2楼休息室没有工作人员，请按下方按钮。",
+    arrivalButton:
+      "呼叫工作人员",
+    arrivalSending:
+      "发送中...",
+    arrivalSuccess:
+      "已通知工作人员。请在2楼休息室等待。",
+    arrivalError:
+      "无法通知工作人员，请直接联系工作人员。",
+    empty:
+      "请输入您的姓氏。",
+    error:
+      "发生错误，请重试。"
+  }
+};
+/* ==================================================
+   State
+   ================================================== */
+let currentLanguage =
+  "en";
+let reservationData =
+  null;
+let selectedGuestName = "";
+let arrivalNotificationSent =
+  false;
+let doorIssueNotificationSent =
+  false;
+let doorIssueMessageType =
+  "";
+/* ==================================================
+   Language
+   ================================================== */
+function setLanguage(language) {
+  currentLanguage = language;
+  const t = texts[language];
+  document.getElementById("languageScreenTitle").textContent = t.languageTitle;
+  document.getElementById("languageScreenHint").textContent = t.languageHint;
+  document.getElementById("languageContinueButton").textContent = t.languageContinue;
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("subtitle").textContent = t.subtitle;
+  document.getElementById("candidateHeading").textContent = t.candidateHeading;
+  document.getElementById("selectedReservationPrompt").textContent = t.selectedPrompt;
+  document.getElementById("confirmReservationButton").textContent = t.confirmButton;
+  document.getElementById("changeNameButton").textContent = t.changeButton;
+  document.getElementById("checkButton").textContent = t.searchButton;
+  document.querySelectorAll(".languageChoice").forEach(function(button) { button.classList.remove("active"); });
+  document.getElementById("choice-" + language).classList.add("active");
+  document.getElementById("nameLabel").textContent = t.nameLabel;
+  document.getElementById("nameHint").innerHTML = t.nameHint;
+  document.getElementById("surname").placeholder = t.placeholder;
+  document.getElementById("checkButton").textContent = t.searchButton;
+  document.getElementById("initialHelpTitle").textContent = t.helpTitle;
+  document.getElementById("phoneHelpButton").textContent = t.phoneHelp;
+  document.getElementById("whatsappHelpButton").textContent = t.whatsappHelp;
+  document.getElementById("doorIssueTitle").textContent = t.doorIssueTitle;
+  document.getElementById("doorIssueText").textContent = t.doorIssueText;
+  document.getElementById("doorIssueButton").textContent = t.doorIssueButton;
+  if (doorIssueMessageType === "success") {
+    document.getElementById("doorIssueMessage").textContent = t.doorIssueSuccess;
+  } else if (doorIssueMessageType === "error") {
+    document.getElementById("doorIssueMessage").textContent = t.doorIssueError;
+  }
+  document.getElementById("arrivalInstruction").textContent = t.arrivalInstruction;
+  document.getElementById("arrivalButton").textContent = t.arrivalButton;
+  document.getElementById("openKey").textContent = t.key;
+  document.getElementById("formButton").textContent = t.form;
+  document.getElementById("resultHelpTitle").textContent = t.helpTitle;
+  document.getElementById("resultPhoneHelpButton").textContent = t.phoneHelpShort;
+  document.getElementById("resultWhatsappHelpButton").textContent = t.whatsappHelp;
+  document.querySelectorAll(".languageButton").forEach(function(button) {
+    button.classList.remove("active");
+  });
+  document.getElementById("lang-" + language).classList.add("active");
+  if (document.getElementById("result").style.display === "block") {
+    document.getElementById("instructionText").textContent = t.doneInstruction;
+  }
+}
+function chooseLanguage(language) {
+  setLanguage(language);
+}
+function continueToCheckin() {
+  document.getElementById("languageScreen").style.display = "none";
+  document.getElementById("languageSwitch").style.display = "flex";
+  document.getElementById("checkinForm").style.display = "block";
+}
+function changeCandidate() {
+  selectedGuestName = "";
+  document.getElementById("selectedReservation").style.display = "none";
+  document.getElementById("surname").style.display = "block";
+  document.getElementById("nameLabel").style.display = "block";
+  document.getElementById("nameHint").style.display = "block";
+  document.getElementById("checkButton").style.display = "block";
+  document.getElementById("candidateResults").style.display = "none";
+  document.getElementById("message").textContent = "";
+}
+/* ==================================================
+   Standalone website API bridge
+   ================================================== */
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/exec";
+let apiRequestCounter = 0;
+function apiCall(action, params, successHandler, failureHandler) {
+  const callbackName =
+    "midoriApiCallback_" + (++apiRequestCounter) + "_" + Date.now();
+  const script = document.createElement("script");
+  const query = new URLSearchParams();
+  query.set("api", "1");
+  query.set("action", action);
+  query.set("callback", callbackName);
+  Object.keys(params || {}).forEach(function(key) {
+    query.set(key, params[key] == null ? "" : String(params[key]));
+  });
+  let finished = false;
+  const timeoutId = setTimeout(function() {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (failureHandler) failureHandler(new Error("API request timed out."));
+  }, 15000);
+  function cleanup() {
+    clearTimeout(timeoutId);
+    try { delete window[callbackName]; } catch (e) {}
+    if (script.parentNode) script.parentNode.removeChild(script);
+  }
+  window[callbackName] = function(data) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (successHandler) successHandler(data);
+  };
+  script.onerror = function(error) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (failureHandler) failureHandler(error);
+  };
+  script.src = API_URL + "?" + query.toString();
+  document.head.appendChild(script);
+}
+/* ==================================================
+   Reservation check
+   ================================================== */
+function searchReservations() {
+  const surname = document.getElementById("surname").value.trim();
+  const button = document.getElementById("checkButton");
+  const message = document.getElementById("message");
+  const t = texts[currentLanguage];
+  message.textContent = "";
+  document.getElementById("candidateResults").style.display = "none";
+  if (!surname) { message.textContent = t.empty; return; }
+  button.disabled = true;
+  button.textContent = t.searching;
+  apiCall("searchReservations", { surname: surname }, function(data) {
+    button.disabled = false;
+    button.textContent = t.searchButton;
+    if (!data || !data.success) {
+      message.textContent = data && data.message ? data.message : t.error;
+      return;
+    }
+    const candidates = Array.isArray(data.candidates) ? data.candidates : [];
+    const list = document.getElementById("candidateList");
+    list.textContent = "";
+    if (!candidates.length) { message.textContent = t.noCandidates; return; }
+    candidates.forEach(function(name) {
+      const candidateButton = document.createElement("button");
+      candidateButton.type = "button";
+      candidateButton.className = "candidateButton";
+      candidateButton.textContent = name;
+      candidateButton.addEventListener("click", function() { selectCandidate(name); });
+      list.appendChild(candidateButton);
+    });
+    document.getElementById("candidateResults").style.display = "block";
+  }, function(error) {
+    button.disabled = false;
+    button.textContent = t.searchButton;
+    message.textContent = t.error;
+    console.error(error);
+  });
+}
+function selectCandidate(name) {
+  selectedGuestName = name;
+  document.getElementById("selectedReservationName").textContent = name;
+  document.getElementById("surname").style.display = "none";
+  document.getElementById("nameLabel").style.display = "none";
+  document.getElementById("nameHint").style.display = "none";
+  document.getElementById("checkButton").style.display = "none";
+  document.getElementById("candidateResults").style.display = "none";
+  document.getElementById("selectedReservation").style.display = "block";
+  document.getElementById("message").textContent = "";
+}
+function checkReservation() {
+const fullName = (
+  selectedGuestName ||
+  document.getElementById("selectedReservationName").textContent ||
+  ""
+).trim();  const button = document.getElementById("confirmReservationButton");
+  const message = document.getElementById("message");
+  const t = texts[currentLanguage];
+  message.textContent = "";
+  if (!fullName) { message.textContent = t.empty; return; }
+  button.disabled = true;
+  button.textContent = t.checking;
+  apiCall("checkGuest", { fullName: fullName }, function(data) {
+    button.disabled = false;
+    button.textContent = t.confirmButton;
+    if (!data || !data.success) {
+      message.style.color = "#d00";
+      message.textContent = data && data.message ? data.message : t.error;
+      return;
+    }
+    reservationData = data;
+    document.getElementById("checkinForm").style.display = "none";
+    document.getElementById("languageSwitch").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("confirmedText").textContent = t.confirmed;
+    document.getElementById("instructionText").textContent = t.doneInstruction;
+    document.getElementById("instructionText").style.display = "block";
+    document.getElementById("formButton").href = data.formUrl;
+    document.getElementById("formButton").style.display = "flex";
+    document.getElementById("openKey").href = data.keyUrl;
+    document.getElementById("openKey").style.display = "flex";
+    document.getElementById("arrivalSection").style.display = "block";
+    message.textContent = "";
+  }, function(error) {
+    button.disabled = false;
+    button.textContent = t.confirmButton;
+    message.style.color = "#d00";
+    message.textContent = t.error;
+    console.error(error);
+  });
+}
+/* ==================================================
+   Staff arrival notification
+   ================================================== */
+function notifyDoorIssue() {
+  const fullName = selectedGuestName || document.getElementById("surname").value.trim();
+  const button = document.getElementById("doorIssueButton");
+  const message = document.getElementById("doorIssueMessage");
+  const t = texts[currentLanguage];
+  if (doorIssueNotificationSent) return;
+  doorIssueNotificationSent = true;
+  button.disabled = true;
+  button.textContent = t.doorIssueSending;
+  message.style.display = "none";
+  apiCall(
+    "notifyDoorIssue",
+    { fullName: fullName },
+    function(data) {
+      if (data && data.success) {
+        doorIssueMessageType = "success";
+        message.style.display = "block";
+        message.style.color = "#222";
+        message.textContent = t.doorIssueSuccess;
+        button.style.display = "none";
+      } else {
+        doorIssueNotificationSent = false;
+        doorIssueMessageType = "error";
+        button.disabled = false;
+        button.textContent = t.doorIssueButton;
+        message.style.display = "block";
+        message.style.color = "#d00";
+        message.textContent = t.doorIssueError;
+      }
+    },
+    function(error) {
+      console.error(error);
+      doorIssueNotificationSent = false;
+      doorIssueMessageType = "error";
+      button.disabled = false;
+      button.textContent = t.doorIssueButton;
+      message.style.display = "block";
+      message.style.color = "#d00";
+      message.textContent = t.doorIssueError;
+    }
+  );
+}
+function notifyStaffArrival() {
+  const fullName = selectedGuestName || document.getElementById("surname").value.trim();
+  const button = document.getElementById("arrivalButton");
+  const message = document.getElementById("arrivalMessage");
+  const t = texts[currentLanguage];
+  if (!fullName) {
+    message.style.display = "block";
+    message.style.color = "#d00";
+    message.textContent = t.empty;
+    return;
+  }
+  if (arrivalNotificationSent) return;
+  button.disabled = true;
+  button.textContent = t.arrivalSending;
+  message.style.display = "none";
+  apiCall(
+    "notifyStaffArrival",
+    { fullName: fullName },
+    function(data) {
+      if (data && data.success) {
+        arrivalNotificationSent = true;
+        message.style.display = "block";
+        message.style.color = "#222";
+        message.textContent = t.arrivalSuccess;
+        button.style.display = "none";
+      } else {
+        button.disabled = false;
+        button.textContent = t.arrivalButton;
+        message.style.display = "block";
+        message.style.color = "#d00";
+        message.textContent = t.arrivalError;
+      }
+    },
+    function(error) {
+      console.error(error);
+      button.disabled = false;
+      button.textContent = t.arrivalButton;
+      message.style.display = "block";
+      message.style.color = "#d00";
+      message.textContent = t.arrivalError;
+    }
+  );
+}
+/* ==================================================
+   Reset
+   ================================================== */
+function resetPage() {
+  reservationData = null;
+  arrivalNotificationSent = false;
+  doorIssueNotificationSent = false;
+  doorIssueMessageType = "";
+  document.getElementById("result").style.display = "none";
+  document.getElementById("checkinForm").style.display = "block";
+  document.getElementById("surname").value = "";
+  selectedGuestName = "";
+  document.getElementById("selectedReservation").style.display = "none";
+  document.getElementById("surname").style.display = "block";
+  document.getElementById("nameLabel").style.display = "block";
+  document.getElementById("nameHint").style.display = "block";
+  document.getElementById("checkButton").style.display = "block";
+  document.getElementById("candidateResults").style.display = "none";
+  document.getElementById("message").textContent = "";
+  document.getElementById("instructionText").style.display = "none";
+  document.getElementById("openKey").style.display = "none";
+  document.getElementById("formButton").style.display = "none";
+  document.getElementById("arrivalSection").style.display = "none";
+  document.getElementById("arrivalButton").style.display = "block";
+  document.getElementById("arrivalButton").disabled = false;
+  document.getElementById("arrivalButton").textContent =
+    texts[currentLanguage].arrivalButton;
+  document.getElementById("arrivalMessage").style.display = "none";
+  document.getElementById("arrivalMessage").textContent = "";
+  document.getElementById("doorIssueButton").style.display = "block";
+  document.getElementById("doorIssueButton").disabled = false;
+  document.getElementById("doorIssueButton").textContent =
+    texts[currentLanguage].doorIssueButton;
+  document.getElementById("doorIssueMessage").style.display = "none";
+  document.getElementById("doorIssueMessage").textContent = "";
+}
+/* ==================================================
+   Enter key
+   ================================================== */
+document
+  .getElementById("surname")
+  .addEventListener(
+    "keydown",
+    function(event) {
+      if (
+        event.key === "Enter"
+      ) {
+        searchReservations();
+      }
+    }
+  );
+/* ==================================================
+   Initial language
+   ================================================== */
+setLanguage(
+  currentLanguage
+);
+</script>
+</body>
+</html>
+
 
     * {
       box-sizing: border-box;
