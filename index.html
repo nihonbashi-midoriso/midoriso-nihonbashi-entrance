@@ -58,7 +58,6 @@
     .routeBack { margin: 0 0 20px; padding: 0; min-height: 36px; width: auto; background: transparent; color: #cde5d0; font-size: 13px; text-align: left; }
     .directFormScreen { display: none; }
     .directFormScreen h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
-    .directFormFrame { display: block; width: 100%; height: 980px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .directFormFrame { display: block; width: 100%; height: 2300px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .directFormScreen .formFallback { display: block; }
     .directStaffHelp { margin: 16px 0; padding: 14px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; color: #b7c0b7; font-size: 13px; line-height: 1.6; }
@@ -109,7 +108,6 @@
     .flowTitle { margin: 2px 0 5px; color: #f3f5f1; font-size: 15px; font-weight: 600; }
     .flowText { color: #b7c0b7; font-size: 13px; line-height: 1.6; }
     .flowStep .linkButton { margin: 13px 0 0; }
-    .formFrame { display: none; width: 100%; height: 980px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .formFrame { display: none; width: 100%; height: 2300px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .formFallback { display: none; margin-top: 10px; color: #d5e6d6; text-align: center; font-size: 13px; line-height: 1.5; }
     .flowStep .arrivalSection { margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid #343c35; }
@@ -126,8 +124,6 @@
       .languageButton { padding: 6px 8px; font-size: 12px; }
       #checkinForm h1 { font-size: 34px; }
       .subtitle { margin-bottom: 30px; }
-      .formFrame { height: 900px; }
-      .directFormFrame { height: 900px; }
       .formFrame { height: 2600px; }
       .directFormFrame { height: 2600px; }
     }
@@ -903,10 +899,11 @@ function setLanguage(language) {
   document.getElementById("phoneHelpButton").textContent = t.phoneHelp;
   document.getElementById("whatsappHelpButton").textContent = t.whatsappHelp;
   document.getElementById("doorIssueTitle").textContent = t.doorIssueTitle;
-  document.getElementById("doorIssueText").textContent = t.doorIssueText;
+  document.getElementById("doorIssueText").textContent =
+    doorIssueMessageType === "success" ? t.doorIssueSuccess : t.doorIssueText;
   document.getElementById("doorIssueButton").textContent = t.doorIssueButton;
   if (doorIssueMessageType === "success") {
-    document.getElementById("doorIssueMessage").textContent = t.doorIssueSuccess;
+    document.getElementById("doorIssueMessage").style.display = "none";
   } else if (doorIssueMessageType === "error") {
     document.getElementById("doorIssueMessage").textContent = t.doorIssueError;
   }
@@ -1151,9 +1148,9 @@ function notifyDoorIssue() {
     function(data) {
       if (data && data.success) {
         doorIssueMessageType = "success";
-        message.style.display = "block";
-        message.style.color = "#222";
-        message.textContent = t.doorIssueSuccess;
+        document.getElementById("doorIssueText").textContent = t.doorIssueSuccess;
+        message.style.display = "none";
+        message.textContent = "";
         button.style.display = "none";
       } else {
         doorIssueNotificationSent = false;
@@ -1259,6 +1256,8 @@ function resetPage() {
     texts[currentLanguage].doorIssueButton;
   document.getElementById("doorIssueMessage").style.display = "none";
   document.getElementById("doorIssueMessage").textContent = "";
+  document.getElementById("doorIssueText").textContent =
+    texts[currentLanguage].doorIssueText;
 }
 /* ==================================================
    Enter key
