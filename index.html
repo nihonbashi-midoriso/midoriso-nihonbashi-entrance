@@ -58,7 +58,7 @@
     .routeBack { margin: 0 0 20px; padding: 0; min-height: 36px; width: auto; background: transparent; color: #cde5d0; font-size: 13px; text-align: left; }
     .directFormScreen { display: none; }
     .directFormScreen h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
-    .directFormFrame { display: block; width: 100%; height: 4000px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .directFormFrame { display: block; width: 100%; height: 3200px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .directFormScreen .formFallback { display: block; }
     .directStaffHelp { margin: 16px 0; padding: 14px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; color: #b7c0b7; font-size: 13px; line-height: 1.6; }
     .directStaffHelp button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 11px; padding: 11px 14px; border: 1px solid #4c5a4d; border-radius: 11px; background: transparent; color: #d5e6d6; font: inherit; font-weight: 600; }
@@ -108,8 +108,9 @@
     .flowTitle { margin: 2px 0 5px; color: #f3f5f1; font-size: 15px; font-weight: 600; }
     .flowText { color: #b7c0b7; font-size: 13px; line-height: 1.6; }
     .flowStep .linkButton { margin: 13px 0 0; }
-    .formFrame { display: none; width: 100%; height: 4000px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .formFrame { display: none; width: 100%; height: 3200px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .formFallback { display: none; margin-top: 10px; color: #d5e6d6; text-align: center; font-size: 13px; line-height: 1.5; }
+    .flowStep .formFrame, .flowStep .formFallback { width: calc(100% + 42px); margin-left: -42px; }
     .flowStep .arrivalSection { margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid #343c35; }
     .linkButton { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin: 0 0 10px; padding: 11px 14px; border-radius: 11px; background: #a9d5b0; color: #1b281d; text-decoration: none; text-align: center; font-size: 14px; font-weight: 600; line-height: 1.45; }
     #arrivalButton { margin-top: 12px; }
@@ -143,8 +144,8 @@
       .keyIssuePrompt { font-size: 20px; }
       .keyIssueText, .keyIssueMessage { font-size: 16px; line-height: 1.6; }
       .keyIssueButton { min-height: 66px; font-size: 18px; }
-      .formFrame { height: 4600px; }
-      .directFormFrame { height: 4600px; }
+      .formFrame { height: 3600px; }
+      .directFormFrame { height: 3600px; }
     }
     @media (max-width: 380px) {
       .container { padding-left: 18px; padding-right: 18px; }
