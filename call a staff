@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e5efe3">
+<title>Guest Info | MIDORI.so Nihonbashi</title>
+<style>
+:root{color-scheme:light;--ink:#173f2c;--green:#3b8054;--mint:#e5efe3;--paper:#fffef8;--line:#c7dac2;--orange:#dc875f}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;background:var(--mint);color:var(--ink);font-family:Arial,"Yu Gothic",sans-serif;display:grid;place-items:center;padding:24px}
+main{width:min(100%,520px);background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:36px 28px 30px;text-align:center;box-shadow:0 16px 48px #173f2c14}
+.brand{font-size:14px;font-weight:700;letter-spacing:.14em}.rule{width:72px;height:3px;background:var(--green);border-radius:8px;margin:16px auto 24px}
+h1{font-size:clamp(28px,7vw,38px);line-height:1.15;margin:0 0 8px;letter-spacing:.02em}.jp-title{font-size:21px;color:var(--green);margin:0 0 28px}
+.copy{font-size:17px;line-height:1.6;margin:0 0 8px}.jp-copy{font-size:16px;line-height:1.7;margin:0 0 26px}
+button{width:100%;min-height:70px;border:0;border-radius:18px;background:var(--green);color:white;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 6px 0 #285d3b;transition:transform .1s,opacity .1s}
+button:active{transform:translateY(3px);box-shadow:0 3px 0 #285d3b}button:disabled{opacity:.62;cursor:wait}
+.note{font-size:13px;line-height:1.55;color:#607466;margin:20px 0 0}.status{display:none;margin:22px 0 0;padding:16px;border-radius:14px;background:#edf5e9;color:var(--ink);font-size:15px;line-height:1.6}.status.error{display:block;background:#fff0ea;color:#883d25}.footer{margin-top:30px;font-size:12px;color:#758579}
+</style></head><body><main>
+<div class="brand">MIDORI.so&nbsp; / &nbsp;NIHOMBASHI</div><div class="rule"></div>
+<h1>GUEST INFO</h1><p class="jp-title">ご滞在案内</p>
+<p class="copy">Need a hand? Press the button below.</p><p class="jp-copy">スタッフをお呼びする場合は、下のボタンを押してください。</p>
+<button id="call" type="button">CALL STAFF&nbsp; / &nbsp;スタッフを呼ぶ</button>
+<p class="note">After calling, please wait in the 2F lounge.<br>呼び出し後は、2階ラウンジでお待ちください。</p>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<div class="footer">MIDORI.so Nihonbashi</div></main>
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/exec";
+const button=document.getElementById("call"), statusBox=document.getElementById("status");
+let requestNumber=0, sent=false;
+function callStaff(){
+ if(sent)return;
+ sent=true; button.disabled=true; button.textContent="SENDING… / 通知中…"; statusBox.className="status"; statusBox.style.display="none";
+ const callback="midoriStaffCall_"+(++requestNumber)+"_"+Date.now();
+ const query=new URLSearchParams({api:"1",action:"notifyStaffArrival",fullName:"Guest calling via indoor QR",callback});
+ const script=document.createElement("script"); let finished=false;
+ const timer=setTimeout(()=>finish(false),15000);
+ function finish(ok){if(finished)return;finished=true;clearTimeout(timer);delete window[callback];script.remove();
+  if(ok){statusBox.className="status";statusBox.innerHTML="Staff have been notified. Please wait in the 2F lounge.<br>スタッフに通知しました。2階ラウンジでお待ちください。";statusBox.style.display="block";button.textContent="STAFF NOTIFIED / 通知済み";}
+  else{sent=false;button.disabled=false;button.textContent="CALL STAFF / スタッフを呼ぶ";statusBox.className="status error";statusBox.innerHTML="We couldn't send the request. Please try again or contact staff directly.<br>通知を送信できませんでした。もう一度お試しいただくか、スタッフへ直接お声がけください。";statusBox.style.display="block";}
+ }
+ window[callback]=data=>finish(Boolean(data&&data.success));
+ script.onerror=()=>finish(false); script.src=API_URL+"?"+query.toString(); document.body.appendChild(script);
+}
+button.addEventListener("click",callStaff);
+</script></body></html>
