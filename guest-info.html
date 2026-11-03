@@ -68,7 +68,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Yu Got
 </main>
 <script>
 // Paste the URL of the NEW standalone Apps Script web app here after deploying it.
-const API_URL="PASTE_NEW_APPS_SCRIPT_WEB_APP_URL_HERE";
+const API_URL="https://script.google.com/macros/s/AKfycbzvFSbcohFjD-QpBZMkpyU6VsjfzEIbNTgCzDW0EqZqFEE2rVHLUHIaZH8wvoLu-wop4g/exec";
 const messages={
  en:{title:'Need help?',subtitle:'Send a message to our staff.',nameLabel:'Your name',namePlaceholder:'Your name',detailsLabel:'How can we help?',detailsPlaceholder:'Please let us know what you need.',help:'Your message will be sent to the MIDORI.so Nihonbashi staff.',submit:'CALL STAFF',preview:'Preview only. Staff notifications are not enabled.',validation:'Please enter your name and let us know how we can help.',previewSubmit:'This preview cannot send a staff request.',sending:'SENDING…',sent:'Your request has been sent to our staff.',failure:'We couldn’t send your request. Please try again or contact staff directly.',retry:'TRY AGAIN'},
  ja:{title:'スタッフを呼ぶ',subtitle:'スタッフへのご用件をお送りください。',nameLabel:'お名前',namePlaceholder:'お名前を入力してください',detailsLabel:'どのようなご用件ですか？',detailsPlaceholder:'ご用件をご入力ください。',help:'入力内容はMIDORI.so Nihonbashiのスタッフに通知されます。',submit:'スタッフを呼ぶ',preview:'プレビューです。スタッフへの通知は有効になっていません。',validation:'お名前と呼び出し内容を入力してください。',previewSubmit:'このプレビューからスタッフへの通知は送信できません。',sending:'送信中…',sent:'スタッフに通知しました。',failure:'送信できませんでした。もう一度お試しいただくか、スタッフへ直接お声がけください。',retry:'もう一度送信'},
@@ -85,3 +85,4 @@ form.addEventListener('submit',e=>{e.preventDefault();const t=messages[language]
 </script>
 </body>
 </html>
+
