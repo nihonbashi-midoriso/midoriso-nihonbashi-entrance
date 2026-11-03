@@ -1,44 +1,87 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#e5efe3">
-<title>Guest Info | MIDORI.so Nihonbashi</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e9e6d7">
+<title>Staff Assistance | MIDORI.so Nihonbashi</title>
 <style>
-:root{color-scheme:light;--ink:#173f2c;--green:#3b8054;--mint:#e5efe3;--paper:#fffef8;--line:#c7dac2;--orange:#dc875f}
-*{box-sizing:border-box}body{margin:0;min-height:100svh;background:var(--mint);color:var(--ink);font-family:Arial,"Yu Gothic",sans-serif;display:grid;place-items:center;padding:24px}
-main{width:min(100%,520px);background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:36px 28px 30px;text-align:center;box-shadow:0 16px 48px #173f2c14}
-.brand{font-size:14px;font-weight:700;letter-spacing:.14em}.rule{width:72px;height:3px;background:var(--green);border-radius:8px;margin:16px auto 24px}
-h1{font-size:clamp(28px,7vw,38px);line-height:1.15;margin:0 0 8px;letter-spacing:.02em}.jp-title{font-size:21px;color:var(--green);margin:0 0 28px}
-.copy{font-size:17px;line-height:1.6;margin:0 0 8px}.jp-copy{font-size:16px;line-height:1.7;margin:0 0 26px}
-button{width:100%;min-height:70px;border:0;border-radius:18px;background:var(--green);color:white;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 6px 0 #285d3b;transition:transform .1s,opacity .1s}
-button:active{transform:translateY(3px);box-shadow:0 3px 0 #285d3b}button:disabled{opacity:.62;cursor:wait}
-.note{font-size:13px;line-height:1.55;color:#607466;margin:20px 0 0}.status{display:none;margin:22px 0 0;padding:16px;border-radius:14px;background:#edf5e9;color:var(--ink);font-size:15px;line-height:1.6}.status.error{display:block;background:#fff0ea;color:#883d25}.footer{margin-top:30px;font-size:12px;color:#758579}
-</style></head><body><main>
-<div class="brand">MIDORI.so&nbsp; / &nbsp;NIHOMBASHI</div><div class="rule"></div>
-<h1>GUEST INFO</h1><p class="jp-title">ご滞在案内</p>
-<p class="copy">Need a hand? Press the button below.</p><p class="jp-copy">スタッフをお呼びする場合は、下のボタンを押してください。</p>
-<button id="call" type="button">CALL STAFF&nbsp; / &nbsp;スタッフを呼ぶ</button>
-<p class="note">After calling, please wait in the 2F lounge.<br>呼び出し後は、2階ラウンジでお待ちください。</p>
-<div id="status" class="status" role="status" aria-live="polite"></div>
-<div class="footer">MIDORI.so Nihonbashi</div></main>
+:root{--paper:#e9e6d7;--ink:#172820;--green:#345b42;--rule:#aaa996;--white:#f7f5eb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Yu Gothic",YuGothic,"Hiragino Kaku Gothic ProN",sans-serif}
+.page{max-width:600px;margin:0 auto;padding:25px 20px 50px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--rule);padding-bottom:14px}
+.brand{font-size:12px;font-weight:800;letter-spacing:.1em;line-height:1.5}.brand small{display:block;font-size:9px;font-weight:500;letter-spacing:.13em;margin-top:3px}
+.language-switch{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.language-switch button{border:1px solid var(--rule);background:transparent;color:var(--ink);padding:6px 8px;font-size:11px;cursor:pointer}
+.language-switch button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:white}
+.title{font-size:clamp(34px,8vw,48px);letter-spacing:-.06em;margin:32px 0 10px}
+.subtitle{margin:0 0 23px;color:var(--green);font-size:16px;line-height:1.55}
+.panel{background:var(--white);border:1px solid var(--ink);padding:20px}
+.field{margin:0 0 18px}.field label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}
+.field input,.field textarea{width:100%;padding:13px;border:1px solid var(--rule);background:white;color:var(--ink);font:inherit;font-size:16px;border-radius:0}
+.field textarea{min-height:125px;resize:vertical;line-height:1.5}
+.help{font-size:12px;line-height:1.6;color:#60665c;margin:-6px 0 18px}
+.submit{width:100%;padding:16px;border:0;background:var(--green);color:white;font-weight:800;font-size:16px;cursor:pointer}
+.submit:disabled{opacity:.55;cursor:wait}
+.status{display:none;margin-top:13px;padding:14px;font-size:13px;line-height:1.6}
+.status.show{display:block;background:#e1ebc7;border:1px solid var(--green)}
+.status.error{display:block;background:#f5e6d8;border:1px solid #e57648}
+.preview{display:none;margin-top:13px;padding:11px;background:#fff2cd;border:1px solid #ac8b38;font-size:11px;line-height:1.6}
+.foot{font-size:10px;margin-top:24px;border-top:1px solid var(--rule);padding-top:11px;color:#60665c}
+[data-i18n-secondary]{display:block;margin-top:3px;font-size:.84em;font-weight:400;line-height:1.45;opacity:.86}
+.honeypot{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+@media(max-width:450px){.page{padding:18px 15px 36px}.panel{padding:15px}.topbar{align-items:flex-start;flex-direction:column}.language-switch{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <div class="brand">MIDORI.so Nihonbashi <small>STAFF ASSISTANCE</small></div>
+    <nav class="language-switch" aria-label="Choose language">
+      <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+      <button type="button" data-language="en" aria-pressed="true">English</button>
+      <button type="button" data-language="zh" aria-pressed="false">中文</button>
+      <button type="button" data-language="ko" aria-pressed="false">한국어</button>
+    </nav>
+  </header>
+  <h1 class="title" data-i18n="title">Need help?</h1>
+  <p class="subtitle" data-i18n="subtitle">Send a message to our staff.</p>
+  <section class="panel">
+    <form id="callForm">
+      <div class="field">
+        <label for="guestName" data-i18n="nameLabel">Your name</label>
+        <input id="guestName" name="guestName" type="text" maxlength="100" autocomplete="name" required data-i18n-placeholder="namePlaceholder" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="requestDetails" data-i18n="detailsLabel">How can we help?</label>
+        <textarea id="requestDetails" name="requestDetails" maxlength="500" required data-i18n-placeholder="detailsPlaceholder" placeholder="Please let us know what you need."></textarea>
+      </div>
+      <p class="help" data-i18n="help">Your message will be sent to the MIDORI.so Nihonbashi staff.</p>
+      <div class="honeypot" aria-hidden="true"><label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button class="submit" id="submitBtn" type="submit" data-i18n="submit">CALL STAFF</button>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </form>
+    <div class="preview" id="preview" data-i18n="preview">Preview only. Staff notifications are not enabled.</div>
+  </section>
+  <div class="foot">MIDORI.so Nihonbashi</div>
+</main>
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/exec";
-const button=document.getElementById("call"), statusBox=document.getElementById("status");
-let requestNumber=0, sent=false;
-function callStaff(){
- if(sent)return;
- sent=true; button.disabled=true; button.textContent="SENDING… / 通知中…"; statusBox.className="status"; statusBox.style.display="none";
- const callback="midoriStaffCall_"+(++requestNumber)+"_"+Date.now();
- const query=new URLSearchParams({api:"1",action:"notifyStaffArrival",fullName:"Guest calling via indoor QR",callback});
- const script=document.createElement("script"); let finished=false;
- const timer=setTimeout(()=>finish(false),15000);
- function finish(ok){if(finished)return;finished=true;clearTimeout(timer);delete window[callback];script.remove();
-  if(ok){statusBox.className="status";statusBox.innerHTML="Staff have been notified. Please wait in the 2F lounge.<br>スタッフに通知しました。2階ラウンジでお待ちください。";statusBox.style.display="block";button.textContent="STAFF NOTIFIED / 通知済み";}
-  else{sent=false;button.disabled=false;button.textContent="CALL STAFF / スタッフを呼ぶ";statusBox.className="status error";statusBox.innerHTML="We couldn't send the request. Please try again or contact staff directly.<br>通知を送信できませんでした。もう一度お試しいただくか、スタッフへ直接お声がけください。";statusBox.style.display="block";}
- }
- window[callback]=data=>finish(Boolean(data&&data.success));
- script.onerror=()=>finish(false); script.src=API_URL+"?"+query.toString(); document.body.appendChild(script);
-}
-button.addEventListener("click",callStaff);
-</script></body></html>
+// Paste the URL of the NEW standalone Apps Script web app here after deploying it.
+const API_URL="PASTE_NEW_APPS_SCRIPT_WEB_APP_URL_HERE";
+const messages={
+ en:{title:'Need help?',subtitle:'Send a message to our staff.',nameLabel:'Your name',namePlaceholder:'Your name',detailsLabel:'How can we help?',detailsPlaceholder:'Please let us know what you need.',help:'Your message will be sent to the MIDORI.so Nihonbashi staff.',submit:'CALL STAFF',preview:'Preview only. Staff notifications are not enabled.',validation:'Please enter your name and let us know how we can help.',previewSubmit:'This preview cannot send a staff request.',sending:'SENDING…',sent:'Your request has been sent to our staff.',failure:'We couldn’t send your request. Please try again or contact staff directly.',retry:'TRY AGAIN'},
+ ja:{title:'スタッフを呼ぶ',subtitle:'スタッフへのご用件をお送りください。',nameLabel:'お名前',namePlaceholder:'お名前を入力してください',detailsLabel:'どのようなご用件ですか？',detailsPlaceholder:'ご用件をご入力ください。',help:'入力内容はMIDORI.so Nihonbashiのスタッフに通知されます。',submit:'スタッフを呼ぶ',preview:'プレビューです。スタッフへの通知は有効になっていません。',validation:'お名前と呼び出し内容を入力してください。',previewSubmit:'このプレビューからスタッフへの通知は送信できません。',sending:'送信中…',sent:'スタッフに通知しました。',failure:'送信できませんでした。もう一度お試しいただくか、スタッフへ直接お声がけください。',retry:'もう一度送信'},
+ zh:{title:'需要帮助吗？',subtitle:'请给工作人员发送消息。',nameLabel:'姓名',namePlaceholder:'请输入姓名',detailsLabel:'我们可以为您提供什么帮助？',detailsPlaceholder:'请告诉我们您的需求。',help:'您的消息将发送给MIDORI.so Nihonbashi的工作人员。',submit:'呼叫工作人员',preview:'预览模式：不会发送工作人员通知。',validation:'请输入姓名和需要帮助的内容。',previewSubmit:'预览模式无法发送工作人员请求。',sending:'正在发送…',sent:'已通知工作人员。',failure:'发送失败，请重试或直接联系工作人员。',retry:'重试'},
+ ko:{title:'도움이 필요하신가요?',subtitle:'직원에게 메시지를 보내 주세요.',nameLabel:'이름',namePlaceholder:'이름을 입력해 주세요',detailsLabel:'어떤 도움이 필요하신가요?',detailsPlaceholder:'필요하신 내용을 입력해 주세요.',help:'메시지가 MIDORI.so Nihonbashi 직원에게 전달됩니다.',submit:'직원 호출하기',preview:'미리보기입니다. 직원 알림은 사용할 수 없습니다.',validation:'이름과 요청 내용을 입력해 주세요.',previewSubmit:'미리보기에서는 직원 호출을 전송할 수 없습니다.',sending:'전송 중…',sent:'직원에게 요청을 보냈습니다.',failure:'전송하지 못했습니다. 다시 시도하거나 직원에게 직접 말씀해 주세요.',retry:'다시 시도'}
+};
+const form=document.querySelector('#callForm'),button=document.querySelector('#submitBtn'),statusBox=document.querySelector('#status');
+const isConfigured=API_URL.startsWith('https://script.google.com/macros/s/')&&!API_URL.includes('PASTE_');
+if(!isConfigured)document.querySelector('#preview').style.display='block';
+function setLanguage(lang){const t=messages[lang]||messages.en;document.documentElement.lang=lang==='zh'?'zh-Hans':lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k]});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.dataset.i18nPlaceholder;if(t[k]!==undefined)el.placeholder=t[k]});document.querySelectorAll('.language-switch button').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.language===lang)));document.querySelector('.language-switch').setAttribute('aria-label',({ja:'言語を選択',en:'Choose language',zh:'选择语言',ko:'언어 선택'})[lang]||'Choose language');try{localStorage.setItem('midori-staff-call-language',lang)}catch(e){}return t}
+let language='en';try{const saved=localStorage.getItem('midori-staff-call-language');if(saved&&messages[saved])language=saved;else{const langs=(navigator.languages||[navigator.language||'en']).map(x=>x.toLowerCase());for(const l of langs){if(l.startsWith('ja')){language='ja';break}if(l.startsWith('zh')){language='zh';break}if(l.startsWith('ko')){language='ko';break}if(l.startsWith('en')){language='en';break}}}}catch(e){}
+setLanguage(language);document.querySelectorAll('.language-switch button').forEach(b=>b.addEventListener('click',()=>{language=b.dataset.language;setLanguage(language)}));
+form.addEventListener('submit',e=>{e.preventDefault();const t=messages[language]||messages.en;statusBox.className='status';statusBox.textContent='';const name=document.querySelector('#guestName').value.trim(),details=document.querySelector('#requestDetails').value.trim(),website=form.website.value;if(!name||!details){statusBox.textContent=t.validation;statusBox.className='status error';return}if(!isConfigured){statusBox.textContent=t.previewSubmit;statusBox.className='status error';return}button.disabled=true;button.textContent=t.sending;const callback='midoriCall_'+Date.now()+'_'+Math.floor(Math.random()*100000);const params=new URLSearchParams({action:'notifyStaffRoomCall',guestName:name,requestDetails:details,language,website,callback});const script=document.createElement('script');let done=false;const timer=setTimeout(()=>finish(false),15000);function finish(ok){if(done)return;done=true;clearTimeout(timer);delete window[callback];script.remove();if(ok){statusBox.textContent=t.sent;statusBox.className='status show';button.textContent=t.sent;form.querySelectorAll('input,textarea,button').forEach(el=>el.disabled=true)}else{button.disabled=false;button.textContent=t.retry;statusBox.textContent=t.failure;statusBox.className='status error'}}window[callback]=data=>finish(Boolean(data&&data.success));script.onerror=()=>finish(false);script.src=API_URL+'?'+params.toString();document.body.appendChild(script)});
+</script>
+</body>
+</html>
