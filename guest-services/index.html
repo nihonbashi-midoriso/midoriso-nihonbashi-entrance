@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2efe5">
+<title>MIDORI.so Nihonbashi</title>
+<style>
+:root{--paper:#f2efe5;--white:#fffdf8;--ink:#18382d;--green:#285940;--sage:#dfe4d4;--muted:#657166;--line:#d1d0c3;--rust:#c87552;--shadow:0 9px 28px #233b2b0b}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,"Yu Gothic",YuGothic,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}.shell{width:min(100%,900px);margin:auto;padding:0 24px}.topbar{border-bottom:1px solid var(--line)}.topbarInner{height:66px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:14px;font-weight:700;letter-spacing:.01em}.brand small{display:block;margin-top:1px;color:var(--muted);font-size:9px;font-weight:500;letter-spacing:.14em}.mark{width:29px;height:29px;border:1px solid #aab59c;border-radius:50%;display:grid;place-items:center;font:italic 15px Georgia,serif;color:var(--green)}main{min-height:calc(100svh - 67px)}.screen{padding:clamp(35px,8vh,86px) 0 55px;animation:appear .26s ease}@keyframes appear{from{opacity:.45;transform:translateY(5px)}to{opacity:1;transform:none}}[hidden]{display:none!important}.home{max-width:730px;margin:0 auto}.home h1{font:500 clamp(38px,7vw,58px)/1 Georgia,"Times New Roman",serif;letter-spacing:-.04em;margin:0 0 7px}.homeLead{margin:0 0 29px;color:var(--muted);font-size:14px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.choice{min-height:115px;padding:17px 19px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;background:var(--white);color:var(--ink);border:1px solid var(--line);cursor:pointer;transition:transform .18s,border-color .18s,background .18s}.choice:hover,.choice:focus-visible{transform:translateY(-2px);border-color:var(--green);outline:none}.choice:nth-child(2){background:#e7e8dc}.choice:nth-child(3){background:#e5e9e2}.choice:nth-child(4){background:#efe1d5}.choiceTop{display:flex;justify-content:space-between;align-items:start}.choice h2{font:italic 22px/1.12 Georgia,"Times New Roman",serif;margin:0}.choiceArrow{font-size:18px;color:var(--rust)}.choiceJa{font-size:12px;color:var(--muted)}.detail{max-width:760px;margin:0 auto}.back{border:0;background:transparent;padding:0;margin:0 0 24px;color:var(--green);font-size:11px;cursor:pointer;letter-spacing:.06em}.back:hover{text-decoration:underline;text-underline-offset:4px}.detailTitle{font:500 clamp(34px,6vw,48px)/1 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0 0 7px}.detailSub{margin:0 0 27px;color:var(--muted);font-size:14px}.cta{display:inline-flex;align-items:center;gap:15px;background:var(--green);color:#fffdf8;padding:13px 16px;font-size:10px;font-weight:700;letter-spacing:.08em}.cta span{font-size:17px}.steps{border-top:1px solid var(--line)}.step{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}.stepMark{width:25px;height:25px;border-radius:50%;background:var(--sage);display:grid;place-items:center;color:var(--green);font:italic 13px Georgia,serif}.step h3{margin:0 0 3px;font-size:13px}.step p{margin:0;color:#506056;font-size:12px}.step .jp{display:block;margin-top:3px;color:var(--muted);font-size:11px}.luggage{margin:15px 0 18px;padding:13px 15px;background:#e7e8dc;border-left:3px solid var(--rust);font-size:12px}.luggage strong{display:block;margin-bottom:3px}.luggage .jp{display:block;color:var(--muted);font-size:11px;margin-top:3px}.callNote{padding:16px;background:var(--white);border:1px solid var(--line);margin:19px 0}.callNote p{font-size:13px;margin:0}.callNote .jp{display:block;color:var(--muted);font-size:12px;margin-top:4px}.board{background:var(--white);border:1px solid var(--line);padding:18px}.boardTop{display:flex;justify-content:space-between;align-items:center}.board h3{font-size:14px;margin:0}.boardTop small{color:var(--rust);font-size:9px;letter-spacing:.12em}.empty{margin-top:13px;padding:15px;background:var(--paper);color:var(--muted);font-size:12px}.empty .jp{display:block;margin-top:4px;color:var(--ink);font-size:11px}.wifi{margin-top:12px;padding:17px;background:var(--sage)}.wifi h3{font-size:13px;margin:0}.wifiGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.wifiItem{font-size:9px;letter-spacing:.12em;color:var(--muted)}.wifiValue{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px;font:600 12px/1.4 ui-monospace,Consolas,monospace;color:var(--ink);letter-spacing:0;overflow-wrap:anywhere}.copy{flex:none;border:1px solid #aeb8a5;background:transparent;padding:5px 7px;font:10px Arial,sans-serif;color:var(--green);cursor:pointer}.copy:hover{background:#fffdf8}.footer{max-width:760px;margin:0 auto;padding:0 0 24px;color:var(--muted);font-size:10px;display:flex;justify-content:space-between}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:9px 13px;font-size:12px;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:560px){.shell{padding:0 17px}.topbarInner{height:60px}.screen{padding:48px 0 42px}.home h1{font-size:43px}.homeLead{margin-bottom:21px}.choices{gap:8px}.choice{min-height:112px;padding:14px 13px}.choice h2{font-size:19px}.choiceJa{font-size:11px}.detailTitle{font-size:37px}.detailSub{margin-bottom:22px}.wifiGrid{grid-template-columns:1fr}.footer{display:block;line-height:1.9}.footer span{display:block}}
+.detailSub .jp{display:block;margin-top:5px}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="shell topbarInner"><a class="brand" href="#top">MIDORI.so Nihonbashi<small>NIHONBASHI · 日本橋</small></a></div></header>
+<main class="shell" id="top">
+  <section class="screen home" id="home">
+    <h1>What do you need?</h1><p class="homeLead">ご用件をお選びください</p>
+    <div class="choices">
+      <button class="choice" data-view="checkin"><span class="choiceTop"><h2>Checking in?</h2><span class="choiceArrow">↗</span></span><span class="choiceJa">チェックイン</span></button>
+      <button class="choice" data-view="checkout"><span class="choiceTop"><h2>Checking out?</h2><span class="choiceArrow">↗</span></span><span class="choiceJa">チェックアウト</span></button>
+      <button class="choice" data-view="help"><span class="choiceTop"><h2>Need help?</h2><span class="choiceArrow">↗</span></span><span class="choiceJa">スタッフを呼ぶ</span></button>
+      <button class="choice" data-view="events"><span class="choiceTop"><h2>Events &amp; information</h2><span class="choiceArrow">↗</span></span><span class="choiceJa">イベント・館内情報</span></button>
+    </div>
+  </section>
+
+  <section class="screen detail" id="checkin" hidden>
+    <button class="back">← ALL OPTIONS / 戻る</button><div class="eyebrow">CHECK IN</div><h1 class="detailTitle">Checking in?</h1><p class="detailSub">Arrival guidance and the check-in form.<span class="jp">到着後の案内とチェックインフォームはこちら。</span></p><a class="cta" href="https://nihonbashi-midoriso.github.io/midoriso-nihonbashi-entrance/">OPEN CHECK-IN PAGE <span>↗</span></a><p class="jp" style="font-size:11px;color:var(--muted)">チェックインページを開く</p>
+  </section>
+
+  <section class="screen detail" id="checkout" hidden>
+    <button class="back">← ALL OPTIONS / 戻る</button><div class="eyebrow">CHECK OUT</div><h1 class="detailTitle">Checking out?</h1><p class="detailSub">Before submitting the checkout form, please complete these steps.<span class="jp">チェックアウトフォームを送信する前に、以下をご確認ください。</span></p>
+    <div class="steps">
+      <div class="step"><span class="stepMark">↗</span><div><h3>Return your key card</h3><p>Please hand your key card to a staff member. If no staff member is present, leave it on the lounge desk.<span class="jp">キーカードはスタッフへお渡しください。不在の場合はラウンジのデスクに置いてください。</span></p></div></div>
+      <div class="step"><span class="stepMark">✓</span><div><h3>Check your belongings</h3><p>Make sure you have not left anything behind.<span class="jp">忘れ物がないか、お部屋を確認してください。</span></p></div></div>
+      <div class="step"><span class="stepMark">Aa</span><div><h3>Enter your name</h3><p>Enter your name in the checkout form.<span class="jp">チェックアウトフォームにお名前を入力してください。</span></p></div></div>
+    </div>
+    <div class="luggage"><strong>Luggage storage?</strong>If you need luggage storage, select “Yes” in the form and wait for a staff member to arrive.<span class="jp">荷物預かりを希望する場合は、フォームで「あり」を選択し、スタッフが到着するまでお待ちください。</span></div>
+    <a class="cta" href="https://nihonbashi-midoriso.github.io/check-out-notification/">OPEN CHECK-OUT FORM <span>↗</span></a><p class="jp" style="font-size:11px;color:var(--muted)">チェックアウトフォームを開く</p>
+  </section>
+
+  <section class="screen detail" id="help" hidden>
+    <button class="back">← ALL OPTIONS / 戻る</button><div class="eyebrow">NEED HELP?</div><h1 class="detailTitle">Need help?</h1><p class="detailSub">Open the call page and tap CALL STAFF.<span class="jp">呼び出しページを開き、「CALL STAFF」を押してください。</span></p><div class="callNote"><p>Tap CALL STAFF on the next page to notify the team.</p><span class="jp">次のページで「CALL STAFF」を押すとスタッフに通知されます。</span></div><a class="cta" href="https://nihonbashi-midoriso.github.io/midoriso-nihonbashi-entrance/guest-info.html">OPEN STAFF CALL PAGE <span>↗</span></a><p class="jp" style="font-size:11px;color:var(--muted)">スタッフ呼び出しページを開く</p>
+  </section>
+
+  <section class="screen detail" id="events" hidden>
+    <button class="back">← ALL OPTIONS / 戻る</button><div class="eyebrow">EVENTS &amp; INFORMATION</div><h1 class="detailTitle">What's happening?</h1><p class="detailSub">Events, notices, and useful details for your stay.<span class="jp">イベント・お知らせ・ご滞在中の情報</span></p>
+    <article class="board"><div class="boardTop"><h3>Notice board</h3><small>UPDATES</small></div><div class="empty">Events and notices will be posted here.<span class="jp">イベントやお知らせをこちらに掲載します。</span></div></article>
+    <section class="wifi"><h3>Wi-Fi</h3><div class="wifiGrid"><div class="wifiItem">SSID<div class="wifiValue"><span>midoriso-nihonbashi</span><button class="copy" data-copy="midoriso-nihonbashi">COPY</button></div></div><div class="wifiItem">PASSWORD<div class="wifiValue"><span>worktogether</span><button class="copy" data-copy="worktogether">COPY</button></div></div></div></section>
+  </section>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const screens=[...document.querySelectorAll('.screen')],home=document.querySelector('#home'),toast=document.querySelector('#toast');
+function show(id){screens.forEach(screen=>screen.hidden=screen.id!==id);window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+id)}
+document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>show(button.dataset.view)));
+document.querySelectorAll('.back').forEach(button=>button.addEventListener('click',()=>show('home')));
+document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(button.dataset.copy);toast.textContent='Copied / コピーしました'}catch{toast.textContent=button.dataset.copy}toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}));
+if(location.hash&&document.querySelector(location.hash+'.screen'))show(location.hash.slice(1));
+</script>
+</body>
+</html>
