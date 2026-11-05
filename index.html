@@ -1,72 +1,1411 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f2efe5">
-<title>MIDORI.so Nihonbashi</title>
-<style>
-:root{--bg:#101111;--surface:#141616;--card:#1b1d1d;--paper:#f2efe7;--ink:#f2efe7;--green:#a3e4b8;--greenDeep:#27543a;--line:#716d62;--lineSoft:#3e403c;--muted:#c5c4bd;--lime:#b4eac2;--rust:#e39a78}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Arial,"Yu Gothic",YuGothic,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit}.shell{width:min(100%,760px);min-height:0;margin:auto;padding:0 30px;background:var(--surface);border-left:1px solid var(--lineSoft);border-right:1px solid var(--lineSoft)}.topbar{border-bottom:1px solid var(--lineSoft)}.topbarInner{height:66px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:13px;font-weight:800;letter-spacing:.07em}.brand small{display:block;margin-top:1px;color:var(--green);font-size:9px;font-weight:600;letter-spacing:.14em}.langPicker{display:flex;border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}.langPicker button{border:0;border-radius:8px;background:transparent;padding:6px 8px;color:var(--muted);font-size:9px;cursor:pointer}.langPicker button[aria-pressed="true"]{background:#2c5940;color:#d8f2df}main.shell{min-height:calc(100svh - 67px)}.screen{padding:clamp(34px,7vh,58px) 0 55px;animation:appear .25s ease}@keyframes appear{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}[hidden]{display:none!important}body[data-lang="en"] .jp,body[data-lang="en"] .zh,body[data-lang="en"] .ko{display:none!important}body[data-lang="ja"] .en,body[data-lang="ja"] .zh,body[data-lang="ja"] .ko{display:none!important}body[data-lang="zh"] .en,body[data-lang="zh"] .jp,body[data-lang="zh"] .ko{display:none!important}body[data-lang="ko"] .en,body[data-lang="ko"] .jp,body[data-lang="ko"] .zh{display:none!important}.home{max-width:none;margin:0 auto}.homeTitle{font:750 clamp(31px,6vw,42px)/1.12 Arial,"Yu Gothic",sans-serif;letter-spacing:-.045em;margin:0 0 24px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{min-height:132px;padding:17px 19px;display:flex;flex-direction:column;justify-content:center;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;cursor:pointer;transition:transform .17s,border-color .17s,background .17s}.choice:hover,.choice:focus-visible{transform:translateY(-1px);border-color:var(--green);background:#202422;outline:none}.choiceTop{display:flex;justify-content:space-between;align-items:center;gap:15px}.choice h2{font:700 18px/1.25 Arial,"Yu Gothic",sans-serif;margin:0}.choiceArrow{font-size:19px;color:var(--green)}.wifiChoice{margin-top:14px;min-height:62px;width:100%;padding:14px 18px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;background:transparent;border-color:var(--line);border-radius:16px}.wifiChoice h2{font-size:14px;letter-spacing:.07em}.wifiChoice .choiceJa{margin-left:auto;margin-right:10px;color:var(--muted);font-size:11px}.wifiChoice .en,.wifiChoice .zh,.wifiChoice .ko{font-size:11px;color:var(--muted)}.detail{max-width:none;margin:0 auto}.back{border:0;background:transparent;padding:0;margin:0 0 23px;color:var(--green);font-size:11px;cursor:pointer;letter-spacing:.025em}.back:hover{text-decoration:underline;text-underline-offset:4px}.eyebrow{display:flex;align-items:center;gap:9px;color:var(--green);font-size:10px;font-weight:700;letter-spacing:.1em}.eyebrow:before{content:"";width:20px;height:2px;background:var(--green)}.detailTitle{font:750 clamp(33px,6vw,43px)/1.1 Arial,"Yu Gothic",sans-serif;letter-spacing:-.045em;margin:8px 0 8px}.detailSub{margin:0 0 24px;color:var(--muted);font-size:14px}.cta{display:inline-flex;align-items:center;gap:13px;background:transparent;color:var(--green);border:1px solid var(--line);border-radius:12px;padding:12px 15px;font-size:12px;font-weight:700;transition:border-color .17s,background .17s}.cta:hover{border-color:var(--green);background:#1c2720}.ctaArrow{font-size:17px}.steps{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:16px 17px;margin:18px 0}.step{display:grid;grid-template-columns:30px 1fr;gap:11px;padding:8px 0}.step+.step{border-top:1px solid var(--lineSoft)}.stepMark{width:25px;height:25px;border-radius:50%;background:#2c5940;display:grid;place-items:center;color:#d8f2df;font:700 12px Arial,sans-serif}.step h3{margin:0 0 3px;font-size:14px}.step p{margin:0;color:#d1d0ca;font-size:13px}.luggage{margin:14px 0 18px;padding:14px 15px;background:var(--card);border:1px solid var(--line);border-radius:16px;font-size:13px;color:#d1d0ca}.luggage strong{display:block;margin-bottom:4px;color:var(--green);font-size:14px}.board{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px}.boardTop{display:flex;justify-content:space-between;align-items:center}.board h3,.wifi h3{font-size:14px;margin:0}.boardTop small{color:var(--green);font-size:9px;letter-spacing:.1em}.empty{margin-top:12px;padding:14px;background:#161818;color:var(--muted);font-size:12px;border:1px dashed var(--line);border-radius:12px}.wifiPanel{margin-top:12px;padding:17px;background:var(--card);border:1px solid var(--line);border-radius:18px}.wifiPanel h3{font-size:14px;margin:0}.wifiGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.wifiItem{font-size:9px;letter-spacing:.1em;color:var(--muted)}.wifiValue{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:3px;font:600 12px/1.4 ui-monospace,Consolas,monospace;color:var(--paper);letter-spacing:0;overflow-wrap:anywhere}.copy{flex:none;border:1px solid var(--line);border-radius:8px;background:transparent;padding:6px 8px;font:10px Arial,sans-serif;color:var(--green);cursor:pointer}.copy:hover{border-color:var(--green);background:#1c2720}.footer{padding:0 0 24px;color:var(--muted);font-size:10px}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:#2c5940;color:#e9f7ec;padding:9px 13px;border-radius:10px;font-size:12px;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:560px){.shell{padding:0 18px}.topbarInner{height:61px}.brand{font-size:11px}.brand small{font-size:8px}.langPicker button{padding:5px 6px;font-size:8px}.screen{padding:34px 0 40px}.homeTitle{font-size:31px;margin-bottom:19px}.choices{grid-template-columns:1fr 1fr;gap:9px}.choice{min-height:112px;padding:15px 13px}.choice h2{font-size:16px}.wifiChoice{min-height:58px;padding:13px 15px}.wifiChoice h2{font-size:12px}.detailTitle{font-size:34px}.detailSub{font-size:13px;margin-bottom:20px}.wifiGrid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-</style>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+    <style>
+    * { box-sizing: border-box; }
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 18px;
+      background: #151814;
+      color: #f3f5f1;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .container {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 24px 24px 28px;
+      border: 1px solid #2b312b;
+      border-radius: 24px;
+      background: #191d19;
+      box-shadow: 0 18px 50px rgba(0,0,0,.22);
+    }
+    .brandHeader { display: flex; align-items: center; gap: 11px; margin: 2px 0 28px; }
+    .brandMark { position: relative; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; background: #a9d5b0; }
+    .brandMark::after { content: ""; position: absolute; left: 13px; top: 13px; width: 8px; height: 8px; border-radius: 50%; background: #1b2a1e; }
+    .brandName { font-size: 15px; line-height: 1.25; font-weight: 600; letter-spacing: .025em; }
+    .brandName span { display: block; margin-top: 2px; }
+    .languageScreen { max-width: 440px; margin: 0 auto; text-align: left; }
+    .languageScreen h1 { text-align: left; }
+    .languageScreen p { margin: 0 0 18px; color: #b7c0b7; line-height: 1.65; }
+    .languageChoices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 22px 0; }
+    .languageChoice { min-height: 48px; padding: 12px; border: 1px solid #394139; border-radius: 12px; background: #222822; color: #f3f5f1; font-size: 15px; }
+    .languageChoice.active { border-color: #a9d5b0; background: #29372c; color: #d8efda; }
+    .languages { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 0 48px; }
+    .languageButtons { display: flex; align-items: center; gap: 2px; padding: 4px; border: 1px solid #394139; border-radius: 999px; }
+    .languageButton { width: auto; min-height: 36px; padding: 6px 11px; border: 0; border-radius: 999px; background: transparent; color: #b7c0b7; font-size: 13px; }
+    .languageButton.active { background: #252c25; color: #f4f7f2; }
+    .welcomeScreen { display: none; }
+    .welcomeScreen h1 { margin: 0 0 9px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
+    .welcomeLead { margin: 0 0 20px; color: #b7c0b7; font-size: 14px; line-height: 1.6; }
+    .welcomeSteps { display: grid; gap: 9px; margin: 0 0 22px; padding: 14px; border: 1px solid #3a433b; border-radius: 15px; background: #202520; }
+    .welcomeStepsTitle { margin: 0 0 2px; color: #a9d5b0; font-size: 13px; font-weight: 700; }
+    .welcomeStep { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 9px; align-items: start; color: #e7ece6; font-size: 13px; line-height: 1.45; }
+    .welcomeStepNumber { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #a9d5b0; color: #1b281d; font-size: 12px; font-weight: 700; }
+    .choiceTitle { margin: 0 0 11px; font-size: 17px; }
+    .welcomeChoices { display: grid; gap: 11px; }
+    .welcomeChoice { display: block; width: 100%; min-height: 0; padding: 16px; border: 1px solid #435044; border-radius: 16px; background: #222822; color: #f3f5f1; text-align: left; cursor: pointer; }
+    .welcomeChoiceTitle { display: block; margin-bottom: 5px; font-size: 16px; font-weight: 700; line-height: 1.4; }
+    .welcomeChoiceCopy { display: block; color: #b7c0b7; font-size: 13px; line-height: 1.5; }
+    .welcomeChoiceAction { display: block; margin-top: 12px; color: #cde5d0; font-size: 13px; font-weight: 650; }
+    .welcomeHelp { margin: 18px 0 0; color: #aeb8af; font-size: 12px; line-height: 1.5; }
+    .routeBack { margin: 0 0 20px; padding: 0; min-height: 36px; width: auto; background: transparent; color: #cde5d0; font-size: 13px; text-align: left; }
+    .directFormScreen { display: none; }
+    .directFormScreen h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
+    .directFormFrame { display: block; width: 100%; height: 3200px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .directFormScreen .formFallback { display: block; }
+    .directStaffHelp { margin: 16px 0; padding: 14px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; color: #b7c0b7; font-size: 13px; line-height: 1.6; }
+    .directStaffHelp button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 11px; padding: 11px 14px; border: 1px solid #4c5a4d; border-radius: 11px; background: transparent; color: #d5e6d6; font: inherit; font-weight: 600; }
+    .directStaffMessage { display: none; margin-top: 10px; color: #d5e6d6; font-size: 13px; line-height: 1.5; }
+    #checkinForm h1 { margin: 0 0 10px; text-align: left; font-size: 36px; line-height: 1.2; letter-spacing: -.025em; }
+    .eyebrow { margin: 0 0 16px; color: #a9d5b0; font-size: 13px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
+    .subtitle { margin: 0 0 34px; color: #b7c0b7; text-align: left; font-size: 17px; line-height: 1.55; }
+    label { display: block; margin-bottom: 9px; color: #f3f5f1; font-size: 15px; font-weight: 600; }
+    .hint { margin: -2px 0 12px; color: #aeb8af; font-size: 13px; line-height: 1.6; }
+    input { width: 100%; min-height: 58px; margin: 0 0 18px; padding: 14px 16px; border: 1px solid #3a433b; border-radius: 14px; outline: none; background: #222822; color: #f5f7f3; font: inherit; font-size: 17px; }
+    input:focus { border-color: #a9d5b0; box-shadow: 0 0 0 3px rgba(169,213,176,.14); }
+    button { width: 100%; min-height: 50px; padding: 12px 15px; border: 0; border-radius: 12px; background: #a9d5b0; color: #1b281d; font: inherit; font-size: 16px; font-weight: 600; line-height: 1.4; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: default; }
+    #message { margin-top: 16px; color: #ffaaa7; text-align: left; font-size: 14px; line-height: 1.6; }
+    #candidateResults { margin: 30px 0 0; }
+    #candidateHeading { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 11px; color: #f3f5f1; font-size: 15px; font-weight: 600; }
+    #candidateList { display: grid; gap: 10px; }
+    .candidateButton { position: relative; min-height: 78px; margin: 0; padding: 15px 16px 15px 62px; border: 1px solid #3a433b; border-radius: 16px; background: #222822; color: #f3f5f1; text-align: left; font-size: 16px; font-weight: 600; }
+    .candidateButton::before { content: ""; position: absolute; left: 18px; top: 50%; width: 22px; height: 22px; border: 2px solid #465148; border-radius: 50%; transform: translateY(-50%); }
+    .candidateButton.selected { border-color: #a9d5b0; }
+    .candidateButton.selected::before { border-color: #a9d5b0; box-shadow: inset 0 0 0 5px #222822; background: #a9d5b0; }
+    .candidateOption { display: grid; gap: 10px; }
+    #selectedReservation { display: none; margin: 0 0 4px; }
+    #selectedReservationPrompt, #selectedReservationName { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    #confirmReservationButton { background: #a9d5b0; color: #1b281d; }
+    #changeNameButton { display: none; }
+    .initialHelpSection { margin-top: 34px; padding-top: 22px; border-top: 1px solid #343b34; }
+    .reservationHelpPanel { padding: 16px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; }
+    .reservationHelpTitle { display: flex; align-items: center; gap: 9px; color: #f3f5f1; font-size: 14px; font-weight: 600; }
+    .reservationHelpIcon { display: grid; place-items: center; flex: 0 0 24px; height: 24px; border-radius: 50%; background: #303a31; color: #c6e4ca; }
+    .reservationHelpText { margin: 9px 0 13px; color: #b7c0b7; font-size: 13px; line-height: 1.55; }
+    .initialHelpButton { min-height: 44px; border: 1px solid #4c5a4d; background: transparent; color: #d5e6d6; font-size: 14px; }
+    .initialHelpMessage { display: none; margin-top: 10px; color: #d5e6d6; font-size: 13px; line-height: 1.5; }
+    .compactHelpTitle, .helpTitle { margin: 18px 0 10px; color: #aeb8af; font-size: 13px; font-weight: 600; }
+    .compactHelpLinks { display: flex; flex-wrap: wrap; gap: 8px; }
+    .compactHelpLink { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px 13px; border: 1px solid #3a433b; border-radius: 10px; background: #222822; color: #dce3dc; text-decoration: none; font-size: 13px; }
+    #result { display: none; margin-top: 10px; padding-top: 4px; text-align: left; }
+    .confirmed { margin: 0 0 12px; font-size: 23px; line-height: 1.35; font-weight: 600; }
+    .instruction { margin-bottom: 20px; color: #b7c0b7; font-size: 14px; line-height: 1.6; }
+    .quickSteps { display: grid; gap: 8px; margin: 0 0 20px; padding: 14px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; }
+    .quickStepsTitle { margin: 0 0 2px; color: #a9d5b0; font-size: 13px; font-weight: 700; letter-spacing: .04em; }
+    .quickStep { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 9px; align-items: start; color: #e8ece7; font-size: 13px; line-height: 1.45; }
+    .quickStepNumber { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #a9d5b0; color: #1b281d; font-size: 12px; font-weight: 700; }
+    .checkinFlow { display: grid; gap: 12px; }
+    .flowStep { display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 12px; align-items: start; padding: 16px; border: 1px solid #343c35; border-radius: 14px; background: #202520; }
+    .flowNumber { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #a9d5b0; color: #1b281d; font-size: 14px; font-weight: 700; }
+    .flowTitle { margin: 2px 0 5px; color: #f3f5f1; font-size: 15px; font-weight: 600; }
+    .flowText { color: #b7c0b7; font-size: 13px; line-height: 1.6; }
+    .flowStep .linkButton { margin: 13px 0 0; }
+    .formFrame { display: none; width: 100%; height: 3200px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .formFallback { display: none; margin-top: 10px; color: #d5e6d6; text-align: center; font-size: 13px; line-height: 1.5; }
+    .flowStep .formFrame, .flowStep .formFallback { width: calc(100% + 42px); margin-left: -42px; }
+    .flowStep .arrivalSection { margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid #343c35; }
+    .linkButton { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin: 0 0 10px; padding: 11px 14px; border-radius: 11px; background: #a9d5b0; color: #1b281d; text-decoration: none; text-align: center; font-size: 14px; font-weight: 600; line-height: 1.45; }
+    #arrivalButton { margin-top: 12px; }
+    .arrivalMessage { display: none; margin-top: 12px; color: #d5e6d6; font-size: 14px; line-height: 1.6; }
+    .keyIssuePanel { margin: 14px 0 0; padding: 18px; border: 2px solid #b6954d; border-radius: 16px; background: #302b1f; }
+    .keyIssuePrompt { margin: 0 0 7px; color: #ffe6a6; font-size: 19px; line-height: 1.3; font-weight: 750; }
+    .keyIssueText { margin: 0 0 14px; color: #f3eee0; font-size: 15px; line-height: 1.5; }
+    .keyIssueButton { min-height: 62px; background: #e1c46c; color: #1b281d; font-size: 18px; font-weight: 750; }
+    .keyIssueMessage { display: none; margin-top: 12px; font-size: 15px; line-height: 1.55; }
+    .languageScreen [type="button"] { width: 100%; }
+    #languageContinueButton { margin-top: 2px; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid #d3efd7; outline-offset: 3px; }
+    @media (max-width: 600px) {
+      body { padding: 0; }
+      .container { min-height: 100vh; padding: 24px 22px 36px; border: 0; border-radius: 0; box-shadow: none; }
+      .languages { margin-bottom: 42px; }
+      .languageButton { padding: 6px 8px; font-size: 13px; }
+      #checkinForm h1 { font-size: 34px; }
+      .subtitle { margin-bottom: 30px; }
+      .welcomeLead, .directStaffHelp, .hint, .reservationHelpText, .flowText { font-size: 15px; line-height: 1.65; }
+      .welcomeStepsTitle, .quickStepsTitle, .eyebrow, .compactHelpTitle { font-size: 14px; }
+      .welcomeStep, .welcomeChoiceCopy, .routeBack, .directStaffMessage, .formFallback, .initialHelpMessage, .compactHelpLink, .initialHelpButton { font-size: 15px; line-height: 1.55; }
+      .welcomeChoiceAction, .reservationHelpTitle { font-size: 15px; }
+      .welcomeHelp { font-size: 14px; line-height: 1.6; }
+      label { font-size: 16px; }
+      #message, .instruction, .arrivalMessage { font-size: 16px; line-height: 1.65; }
+      #candidateHeading { font-size: 16px; }
+      .quickStep { font-size: 15px; line-height: 1.55; }
+      .flowTitle { font-size: 17px; }
+      .linkButton { font-size: 16px; }
+      .keyIssuePrompt { font-size: 20px; }
+      .keyIssueText, .keyIssueMessage { font-size: 16px; line-height: 1.6; }
+      .keyIssueButton { min-height: 66px; font-size: 18px; }
+      .formFrame { height: 3600px; }
+      .directFormFrame { height: 3600px; }
+    }
+    @media (max-width: 380px) {
+      .container { padding-left: 18px; padding-right: 18px; }
+      .brandName { font-size: 14px; }
+      .brandMark { flex-basis: 30px; width: 30px; height: 30px; }
+      .brandMark::after { left: 11px; top: 11px; }
+      .languages { gap: 8px; }
+      .languageButton { min-height: 34px; padding: 5px 6px; font-size: 12px; }
+      #checkinForm h1 { font-size: 30px; }
+      .welcomeScreen h1 { font-size: 27px; }
+    }
+  </style>
 </head>
-<body data-lang="en">
-<header class="topbar"><div class="shell topbarInner"><a class="brand" href="#top">MIDORI.so Nihonbashi<small>NIHONBASHI · 日本橋</small></a><div class="langPicker" role="group" aria-label="Language / 言語 / 语言 / 언어"><button type="button" data-language="ja" aria-pressed="false">日本語</button><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="zh" aria-pressed="false">中文</button><button type="button" data-language="ko" aria-pressed="false">한국어</button></div></div></header>
-<main class="shell" id="top">
-  <section class="screen home" id="home">
-<div class="choices">
-      <button class="choice" data-view="checkin"><span class="choiceTop"><h2><span class="en">Checking in?</span><span class="jp">チェックイン</span><span class="zh">办理入住？</span><span class="ko">체크인하시나요?</span></h2><span class="choiceArrow">↗</span></span></button>
-      <button class="choice" data-view="checkout"><span class="choiceTop"><h2><span class="en">Checking out?</span><span class="jp">チェックアウト</span><span class="zh">办理退房？</span><span class="ko">체크아웃하시나요?</span></h2><span class="choiceArrow">↗</span></span></button>
-      <button class="choice" data-view="help"><span class="choiceTop"><h2><span class="en">Need help?</span><span class="jp">スタッフを呼ぶ</span><span class="zh">需要帮助？</span><span class="ko">도움이 필요하신가요?</span></h2><span class="choiceArrow">↗</span></span></button>
-      <button class="choice" data-view="events"><span class="choiceTop"><h2><span class="en">Events &amp; information</span><span class="jp">イベント・館内情報</span><span class="zh">活动与住宿信息</span><span class="ko">이벤트 및 숙박 정보</span></h2><span class="choiceArrow">↗</span></span></button>
+<body>
+<div class="container">
+  <div id="languageScreen" class="languageScreen">
+    <div class="brandHeader" aria-label="MIDORI.so Nihonbashi"><span class="brandMark" aria-hidden="true"></span><div class="brandName">MIDORI.so<span>Nihonbashi</span></div></div>
+    <h1 id="languageScreenTitle">Select your language</h1>
+    <p id="languageScreenHint">Choose your preferred language to continue.</p>
+    <div class="languageChoices">
+      <button type="button" class="languageChoice active" id="choice-en" onclick="chooseLanguage('en')">English</button>
+      <button type="button" class="languageChoice" id="choice-ja" onclick="chooseLanguage('ja')">日本語</button>
+      <button type="button" class="languageChoice" id="choice-ko" onclick="chooseLanguage('ko')">한국어</button>
+      <button type="button" class="languageChoice" id="choice-zh" onclick="chooseLanguage('zh')">简体中文</button>
     </div>
-    <button class="choice wifiChoice" data-view="wifi"><h2>WI-FI</h2><span class="choiceJa jp">Wi-Fi</span><span class="en" style="font-size:11px;color:var(--muted)">Network details</span><span class="zh" style="font-size:11px;color:var(--muted)">网络信息</span><span class="ko" style="font-size:11px;color:var(--muted)">네트워크 정보</span><span class="choiceArrow">↗</span></button>
-  </section>
-
-  <section class="screen detail" id="checkin" hidden>
-    <button class="back"><span class="en">← ALL OPTIONS</span><span class="jp">← 選択肢に戻る</span><span class="zh">← 返回选项</span><span class="ko">← 옵션으로 돌아가기</span></button><div class="eyebrow"><span class="en">CHECK IN</span><span class="jp">チェックイン</span><span class="zh">入住</span><span class="ko">체크인</span></div><h1 class="detailTitle"><span class="en">Checking in?</span><span class="jp">チェックイン</span><span class="zh">办理入住？</span><span class="ko">체크인하시나요?</span></h1><p class="detailSub"><span class="en">Arrival guidance and the check-in form.</span><span class="jp">到着後の案内とチェックインフォームはこちら。</span><span class="zh">查看入住指引并填写入住登记表。</span><span class="ko">도착 안내를 확인하고 체크인 양식을 작성해 주세요.</span></p><a class="cta" href="https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/exec"><span class="en">OPEN CHECK-IN PAGE</span><span class="jp">チェックイン案内を開く</span><span class="zh">打开入住页面</span><span class="ko">체크인 페이지 열기</span><span class="ctaArrow">↗</span></a>
-  </section>
-
-  <section class="screen detail" id="checkout" hidden>
-    <button class="back"><span class="en">← ALL OPTIONS</span><span class="jp">← 選択肢に戻る</span><span class="zh">← 返回选项</span><span class="ko">← 옵션으로 돌아가기</span></button><div class="eyebrow"><span class="en">CHECK OUT</span><span class="jp">チェックアウト</span><span class="zh">退房</span><span class="ko">체크아웃</span></div><h1 class="detailTitle"><span class="en">Checking out?</span><span class="jp">チェックアウト</span><span class="zh">办理退房？</span><span class="ko">체크아웃하시나요?</span></h1><p class="detailSub"><span class="en">Before submitting the checkout form, please complete these steps.</span><span class="jp">チェックアウトフォームを送信する前に、以下をご確認ください。</span><span class="zh">提交退房表单前，请完成以下事项。</span><span class="ko">체크아웃 양식을 제출하기 전에 아래 항목을 확인해 주세요.</span></p>
-    <div class="steps">
-      <div class="step"><span class="stepMark">↗</span><div><h3><span class="en">Return your key card</span><span class="jp">キーカードを返却</span><span class="zh">归还房卡</span><span class="ko">키카드 반납</span></h3><p><span class="en">Please hand your key card to a staff member. If no staff member is present, leave it on the lounge desk.</span><span class="jp">キーカードはスタッフへお渡しください。不在の場合はラウンジのデスクに置いてください。</span><span class="zh">请将房卡交给工作人员。如果没有工作人员，请将房卡放在休息区的桌子上。</span><span class="ko">키카드는 직원에게 반납해 주세요. 직원이 없으면 라운지 데스크에 놓아 주세요.</span></p></div></div>
-      <div class="step"><span class="stepMark">✓</span><div><h3><span class="en">Check your belongings</span><span class="jp">忘れ物を確認</span><span class="zh">检查个人物品</span><span class="ko">소지품 확인</span></h3><p><span class="en">Make sure you have not left anything behind.</span><span class="jp">忘れ物がないか、お部屋を確認してください。</span><span class="zh">请确认没有遗落物品。</span><span class="ko">두고 가는 물건이 없는지 확인해 주세요.</span></p></div></div>
-      <div class="step"><span class="stepMark">Aa</span><div><h3><span class="en">Enter your name</span><span class="jp">お名前を入力</span><span class="zh">填写姓名</span><span class="ko">성함 입력</span></h3><p><span class="en">Enter your name in the checkout form.</span><span class="jp">チェックアウトフォームにお名前を入力してください。</span><span class="zh">请在退房表单中填写您的姓名。</span><span class="ko">체크아웃 양식에 성함을 입력해 주세요.</span></p></div></div>
+    <button type="button" id="languageContinueButton" onclick="continueToCheckin()">Continue</button>
+  </div>
+  <!-- =========================
+       Language
+       ========================= -->
+  <div class="languages" id="languageSwitch" style="display:none">
+    <div class="brandHeader" style="margin:0"><span class="brandMark" aria-hidden="true"></span><div class="brandName">MIDORI.so<span>Nihonbashi</span></div></div>
+    <div class="languageButtons" aria-label="Language">
+    <button
+      class="languageButton active"
+      id="lang-en"
+      onclick="setLanguage('en')"
+    >
+      EN
+    </button>
+    <button
+      class="languageButton"
+      id="lang-ja"
+      onclick="setLanguage('ja')"
+    >
+      日本語
+    </button>
+    <button
+      class="languageButton"
+      id="lang-ko"
+      onclick="setLanguage('ko')"
+    >
+      한국어
+    </button>
+    <button
+      class="languageButton"
+      id="lang-zh"
+      onclick="setLanguage('zh')"
+    >
+      中文
+    </button>
     </div>
-    <div class="luggage"><strong><span class="en">Luggage storage?</span><span class="jp">荷物預かりを希望しますか？</span><span class="zh">需要寄存行李吗？</span><span class="ko">짐을 맡기시겠어요?</span></strong><span class="en">If you need luggage storage, select “Yes” in the form and wait for a staff member to arrive.</span><span class="jp">荷物預かりを希望する場合は、フォームで「あり」を選択し、スタッフが到着するまでお待ちください。</span><span class="zh">如需寄存行李，请在表单中选择“是”，并等候工作人员到达。</span><span class="ko">짐 보관이 필요하면 양식에서 “있음”을 선택하고 직원이 올 때까지 기다려 주세요.</span></div>
-    <a class="cta" href="https://nihonbashi-midoriso.github.io/check-out-notification/"><span class="en">OPEN CHECK-OUT FORM</span><span class="jp">チェックアウトフォームを開く</span><span class="zh">打开退房表单</span><span class="ko">체크아웃 양식 열기</span><span class="ctaArrow">↗</span></a>
-  </section>
-
-  <section class="screen detail" id="help" hidden>
-    <button class="back"><span class="en">← ALL OPTIONS</span><span class="jp">← 選択肢に戻る</span><span class="zh">← 返回选项</span><span class="ko">← 옵션으로 돌아가기</span></button><div class="eyebrow"><span class="en">NEED HELP?</span><span class="jp">スタッフを呼ぶ</span><span class="zh">需要帮助？</span><span class="ko">도움이 필요하신가요?</span></div><h1 class="detailTitle"><span class="en">Need help?</span><span class="jp">スタッフを呼ぶ</span><span class="zh">需要帮助？</span><span class="ko">도움이 필요하신가요?</span></h1><p class="detailSub"><span class="en">Open the call page and tap CALL STAFF.</span><span class="jp">呼び出しページを開き、「CALL STAFF」を押してください。</span><span class="zh">打开呼叫页面并点击“CALL STAFF”。</span><span class="ko">호출 페이지를 열고 “CALL STAFF”를 눌러 주세요.</span></p><a class="cta" href="https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/execguest-info.html"><span class="en">OPEN STAFF CALL PAGE</span><span class="jp">スタッフ呼び出しページを開く</span><span class="zh">打开工作人员呼叫页面</span><span class="ko">직원 호출 페이지 열기</span><span class="ctaArrow">↗</span></a>
-  </section>
-
-  <section class="screen detail" id="events" hidden>
-    <button class="back"><span class="en">← ALL OPTIONS</span><span class="jp">← 選択肢に戻る</span><span class="zh">← 返回选项</span><span class="ko">← 옵션으로 돌아가기</span></button><div class="eyebrow"><span class="en">EVENTS &amp; INFORMATION</span><span class="jp">イベント・館内情報</span><span class="zh">活动与住宿信息</span><span class="ko">이벤트 및 숙박 정보</span></div><h1 class="detailTitle"><span class="en">Events &amp; information</span><span class="jp">イベント・お知らせ</span><span class="zh">活动与信息</span><span class="ko">이벤트 및 안내</span></h1><p class="detailSub"><span class="en">Event posters, notices, and useful details for your stay.</span><span class="jp">イベントのポスターやお知らせ、ご滞在中の情報を掲載します。</span><span class="zh">查看活动海报、通知和住宿相关信息。</span><span class="ko">이벤트 포스터, 공지 및 숙박 정보를 확인하세요.</span></p><article class="board"><div class="boardTop"><h3><span class="en">Notice board</span><span class="jp">お知らせ</span><span class="zh">公告栏</span><span class="ko">공지사항</span></h3><small>UPDATES</small></div><div class="empty"><span class="en">Event posters and notices will appear here.</span><span class="jp">イベントのポスターやお知らせをここに掲載します。</span><span class="zh">活动海报和通知将在此显示。</span><span class="ko">이벤트 포스터와 공지사항이 여기에 표시됩니다.</span></div></article><p style="margin-top:17px"><a class="cta" href="events/"><span class="en">OPEN EVENT BOARD</span><span class="jp">イベント掲示板を開く</span><span class="zh">打开活动公告栏</span><span class="ko">이벤트 게시판 열기</span><span class="ctaArrow">↗</span></a></p>
-  </section>
-
-  <section class="screen detail" id="wifi" hidden>
-    <button class="back"><span class="en">← ALL OPTIONS</span><span class="jp">← 選択肢に戻る</span><span class="zh">← 返回选项</span><span class="ko">← 옵션으로 돌아가기</span></button><div class="eyebrow">WI-FI</div><h1 class="detailTitle">Wi-Fi</h1><p class="detailSub"><span class="en">Network details</span><span class="jp">ネットワーク情報</span><span class="zh">网络信息</span><span class="ko">네트워크 정보</span></p><section class="wifiPanel"><h3><span class="en">Connect to Wi-Fi</span><span class="jp">Wi-Fiに接続</span><span class="zh">连接 Wi-Fi</span><span class="ko">Wi-Fi 연결</span></h3><div class="wifiGrid"><div class="wifiItem">SSID<div class="wifiValue"><span>midoriso-nihonbashi</span><button class="copy" data-copy="midoriso-nihonbashi"><span class="en">COPY</span><span class="jp">コピー</span><span class="zh">复制</span><span class="ko">복사</span></button></div></div><div class="wifiItem"><span class="en">PASSWORD</span><span class="jp">パスワード</span><span class="zh">密码</span><span class="ko">비밀번호</span><div class="wifiValue"><span>worktogether</span><button class="copy" data-copy="worktogether"><span class="en">COPY</span><span class="jp">コピー</span><span class="zh">复制</span><span class="ko">복사</span></button></div></div></div></section>
-  </section>
-</main>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <!-- =========================
+       Check-in form
+       ========================= -->
+  <div id="welcomeScreen" class="welcomeScreen">
+    <p class="eyebrow" id="welcomeEyebrow"></p>
+    <h1 id="welcomeTitle"></h1>
+    <p class="welcomeLead" id="welcomeLead"></p>
+    <section class="welcomeSteps" aria-labelledby="welcomeStepsTitle">
+      <h2 class="welcomeStepsTitle" id="welcomeStepsTitle"></h2>
+      <div class="welcomeStep"><span class="welcomeStepNumber">1</span><span id="welcomeStep1"></span></div>
+      <div class="welcomeStep"><span class="welcomeStepNumber">2</span><span id="welcomeStep2"></span></div>
+      <div class="welcomeStep"><span class="welcomeStepNumber">3</span><span id="welcomeStep3"></span></div>
+    </section>
+    <h2 class="choiceTitle" id="welcomeChoiceTitle"></h2>
+    <div class="welcomeChoices">
+      <button class="welcomeChoice" type="button" onclick="showReservationRoute()">
+        <span class="welcomeChoiceTitle" id="entryChoiceTitle"></span>
+        <span class="welcomeChoiceCopy" id="entryChoiceCopy"></span>
+        <span class="welcomeChoiceAction" id="entryChoiceAction"></span>
+      </button>
+      <button class="welcomeChoice" type="button" onclick="showDirectFormRoute()">
+        <span class="welcomeChoiceTitle" id="formChoiceTitle"></span>
+        <span class="welcomeChoiceCopy" id="formChoiceCopy"></span>
+        <span class="welcomeChoiceAction" id="formChoiceAction"></span>
+      </button>
+    </div>
+    <p class="welcomeHelp" id="welcomeHelp"></p>
+  </div>
+  <div id="directFormScreen" class="directFormScreen">
+    <button type="button" class="routeBack" id="directFormBack" onclick="returnToWelcome()"></button>
+    <p class="eyebrow" id="directFormEyebrow"></p>
+    <h1 id="directFormTitle"></h1>
+    <p class="subtitle" id="directFormIntro"></p>
+    <div class="directStaffHelp" id="directStaffHelp">
+      <span id="directStaffText"></span>
+      <button id="directStaffCall" type="button" onclick="notifyStaffArrival()"></button>
+      <div id="directStaffMessage" class="directStaffMessage"></div>
+    </div>
+    <iframe id="directFormFrame" class="directFormFrame" title="MIDORI.so check-in form" loading="lazy"></iframe>
+    <a id="directFormFallback" class="formFallback" href="#" target="_blank" rel="noopener noreferrer"></a>
+  </div>
+  <div id="checkinForm" style="display:none">
+    <button type="button" class="routeBack" id="reservationBack" onclick="returnToWelcome()"></button>
+    <div class="eyebrow" id="checkinStepLabel"></div>
+    <h1 id="title">
+      Check-in
+    </h1>
+    <div
+      class="subtitle"
+      id="subtitle"
+    >
+      Please enter the full name<br>
+      used for your reservation.
+    </div>
+    <label id="nameLabel" for="surname">Surname</label>
+    <div class="hint" id="nameHint">Enter the surname used for your reservation. Please check your booking website or confirmation email.</div>
+    <input type="text" id="surname" placeholder="Enter your surname" autocomplete="family-name" autocapitalize="words">
+    <button id="checkButton" onclick="searchReservations()">Find Reservation</button>
+    <div id="candidateResults" style="display:none">
+      <div id="candidateHeading"></div>
+      <div id="candidateList"></div>
+      <div id="selectedReservation">
+        <div id="selectedReservationPrompt"></div>
+        <div id="selectedReservationName"></div>
+        <button id="confirmReservationButton" onclick="checkReservation()" disabled>Confirm Reservation</button>
+        <button id="changeNameButton" type="button" onclick="changeCandidate()">Choose Another Name</button>
+      </div>
+    </div>
+    <div id="message"></div>
+    <!-- =========================
+         Initial help
+         ========================= -->
+    <div class="initialHelpSection" id="initialHelpSection">
+      <div class="reservationHelpPanel">
+        <div class="reservationHelpTitle">
+          <span class="reservationHelpIcon">?</span>
+          <span id="doorIssueTitle">If you cannot confirm your reservation</span>
+        </div>
+        <div class="reservationHelpText" id="doorIssueText">
+          If you cannot find your reservation or get an error after entering your name, please tap the button below.
+        </div>
+        <button
+          class="initialHelpButton"
+          id="doorIssueButton"
+          type="button"
+          onclick="notifyDoorIssue()"
+        >
+          Reservation not found? Tap here
+        </button>
+      </div>
+      <div class="compactHelpTitle" id="initialHelpTitle">Need Help?</div>
+      <div class="compactHelpLinks">
+        <a
+          class="compactHelpLink"
+          id="phoneHelpButton"
+          href="tel:07093818951"
+        >
+          Call Staff
+        </a>
+        <a
+          class="compactHelpLink"
+          id="whatsappHelpButton"
+          href="https://wa.me/817093818951"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+      </div>
+      <div class="initialHelpMessage" id="doorIssueMessage"></div>
+    </div>
+  </div>
+  <!-- =========================
+       Result
+       ========================= -->
+  <div id="result">
+    <div
+      class="confirmed"
+      id="confirmedText"
+    ></div>
+    <div class="instruction" id="instructionText"></div>
+    <div class="quickSteps" aria-labelledby="quickStepsTitle">
+      <div class="quickStepsTitle" id="quickStepsTitle"></div>
+      <div class="quickStep"><span class="quickStepNumber">1</span><span id="quickStep1"></span></div>
+      <div class="quickStep"><span class="quickStepNumber">2</span><span id="quickStep2"></span></div>
+      <div class="quickStep"><span class="quickStepNumber">3</span><span id="quickStep3"></span></div>
+    </div>
+    <div class="checkinFlow">
+      <section class="flowStep" aria-labelledby="entryStepTitle">
+        <div class="flowNumber" aria-hidden="true">1</div>
+        <div>
+          <div class="flowTitle" id="entryStepTitle"></div>
+          <div class="flowText" id="entryStepText"></div>
+          <a id="openKey" class="linkButton" href="#" target="_blank" rel="noopener noreferrer"></a>
+          <div class="keyIssuePanel" role="group" aria-labelledby="keyIssuePrompt">
+            <p class="keyIssuePrompt" id="keyIssuePrompt"></p>
+            <p class="keyIssueText" id="keyIssueText"></p>
+            <button class="keyIssueButton" id="keyIssueButton" type="button" onclick="notifyDoorIssueFromResult()"></button>
+            <div class="keyIssueMessage" id="keyIssueMessage" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+      <section class="flowStep" aria-labelledby="formStepTitle">
+        <div class="flowNumber" aria-hidden="true">2</div>
+        <div>
+          <div class="flowTitle" id="formStepTitle"></div>
+          <div class="flowText" id="formStepText"></div>
+          <iframe id="formFrame" class="formFrame" title="MIDORI.so check-in form" loading="lazy"></iframe>
+          <a id="formFallback" class="formFallback" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </section>
+      <section class="flowStep" aria-labelledby="loungeStepTitle">
+        <div class="flowNumber" aria-hidden="true">3</div>
+        <div>
+          <div class="flowTitle" id="loungeStepTitle"></div>
+          <div class="flowText" id="loungeStepText"></div>
+          <div class="arrivalSection" id="arrivalSection">
+            <div class="flowText" id="arrivalInstruction"></div>
+            <button id="arrivalButton" type="button" onclick="notifyStaffArrival()"></button>
+            <div class="arrivalMessage" id="arrivalMessage"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div
+      class="helpTitle"
+      id="resultHelpTitle"
+    >
+      Need Help?
+    </div>
+    <div class="compactHelpLinks">
+      <a
+        class="compactHelpLink"
+        id="resultPhoneHelpButton"
+        href="tel:07093818951"
+      >
+        Call
+      </a>
+      <a
+        class="compactHelpLink"
+        id="resultWhatsappHelpButton"
+        href="https://wa.me/817093818951"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
 <script>
-const screens=[...document.querySelectorAll('.screen')],toast=document.querySelector('#toast');
-function show(id){screens.forEach(screen=>screen.hidden=screen.id!==id);window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'','#'+id)}
-document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>show(button.dataset.view)));
-document.querySelectorAll('.back').forEach(button=>button.addEventListener('click',()=>show('home')));
-document.querySelectorAll('[data-language]').forEach(button=>button.addEventListener('click',()=>{const lang=button.dataset.language;document.body.dataset.lang=lang;document.documentElement.lang=lang;document.querySelectorAll('[data-language]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));try{localStorage.setItem('midori-language',lang)}catch{}}));
-try{const saved=localStorage.getItem('midori-language');if(['ja','en','zh','ko'].includes(saved))document.querySelector(`[data-language="${saved}"]`).click()}catch{}
-document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',async()=>{const lang=document.body.dataset.lang;const copied={en:'Copied',ja:'コピーしました',zh:'已复制',ko:'복사했습니다'};try{await navigator.clipboard.writeText(button.dataset.copy);toast.textContent=copied[lang]}catch{toast.textContent=button.dataset.copy}toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}));
-const hash=location.hash.slice(1);if(screens.some(screen=>screen.id===hash))show(hash);
+/* ==================================================
+   Text
+   ================================================== */
+const texts = {
+  en: {
+    languageTitle: "Select your language",
+    languageHint: "Choose your preferred language to continue.",
+    languageContinue: "Continue",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "Your arrival, made easy.",
+    welcomeLead: "Choose the option that matches where you are now.",
+    welcomeStepsTitle: "Your check-in in 3 steps",
+    welcomeStep1: "From 9:00 PM to 9:00 AM, the entrance is locked. Confirm your reservation, unlock the door, and enter.",
+    welcomeStep2: "After entering, go to the 2F lounge and complete the check-in form.",
+    welcomeStep3: "A staff member will check your form and passport, complete check-in, and show you to your room.",
+    welcomeChoiceTitle: "Choose your next step",
+    entryChoiceTitle: "I’m arriving and need to enter",
+    entryChoiceCopy: "Confirm your reservation to unlock the entrance.",
+    entryChoiceAction: "Confirm reservation  ›",
+    formChoiceTitle: "I’m already inside",
+    formChoiceCopy: "Go straight to the check-in form. No reservation name needed.",
+    formChoiceAction: "Open check-in form  ›",
+    welcomeHelp: "At the 2F lounge, call staff if no one is there.",
+    reservationBack: "‹  Back to arrival guide",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "Complete your check-in",
+    directFormIntro: "Please fill out and submit the form below. When you’re done, meet staff in the 2F lounge. They will check your passport and check-in form, then show you to your room.",
+    directStaffText: "No staff in the 2F lounge? Tap below to notify them.",
+    directStaffCall: "Call staff to the lounge",
+    directFormFallback: "Form not showing? Open it in a new tab.",
+    subtitle: "Enter the surname used for your reservation.",
+    nameLabel: "Surname",
+    nameHint: "Enter the surname used for your reservation. Please check your booking website or confirmation email.",
+    placeholder: "Enter your surname",
+    searchButton: "Find Reservation",
+    confirmButton: "Confirm Reservation",
+    changeButton: "Choose Another Name",
+    candidateHeading: "Matching reservations",
+    selectedPrompt: "Is this your reservation name?",
+    empty: "Please enter your surname.",
+    noCandidates: "No eligible reservations found for that surname. Please check the spelling or contact staff.",
+    searching: "Searching...",
+    title:
+      "Welcome in.",
+    reservationStage: "RESERVATION · 1 OF 2",
+    reservationConfirmStage: "RESERVATION · 2 OF 2",
+    subtitle:
+      "Search by the surname on your reservation.",
+    nameLabel:
+      "Surname",
+    nameHint:
+      'Enter the surname used for your reservation. Please check your booking website or confirmation email.',
+    placeholder:
+      "Enter your surname",
+    continue:
+      "Check Reservation",
+    helpTitle:
+      "Need Help?",
+    phoneHelp:
+      "Call Staff",
+    phoneHelpShort:
+      "Call",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "If you cannot confirm your reservation",
+    doorIssueText:
+      "If you cannot find your reservation or get an error after entering your name, please tap the button below.",
+    doorIssueButton:
+      "Reservation not found? Tap here",
+    doorIssueSending:
+      "Sending...",
+    doorIssueSuccess:
+      "Staff have been notified. Please wait.",
+    doorIssueError:
+      "Could not notify staff. Please contact staff.",
+    checking:
+      "Checking...",
+    confirmed:
+      "Reservation confirmed.",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "Reservation confirmed. Follow these steps to enter and finish check-in.",
+    quickStepsTitle: "HERE'S WHAT TO DO",
+    quickStep1: "Confirm your reservation, unlock the entrance, and enter.",
+    quickStep2: "Go to the 2F lounge and submit the check-in form.",
+    quickStep3: "Staff will check your form and passport, then show you to your room.",
+    step1Title: "1. Enter the building",
+    step1Text: "From 9:00 PM to 9:00 AM, the entrance is locked. Use the button below to unlock it and enter.",
+    step2Title: "2. Complete the check-in form",
+    step2Text: "After entering, go to the 2F lounge and fill in and submit the form below.",
+    formFallback: "Form not showing? Open it in a new tab.",
+    step3Title: "3. Staff check and room guidance",
+    step3Text: "A staff member will check your form and passport in the 2F lounge. Check-in is complete after confirmation, and staff will show you to your room.",
+    notDoneInstruction:
+      "Reservation confirmed. Follow these steps to enter and finish check-in.",
+    key:
+      "Unlock the entrance",
+    keyIssuePrompt:
+      "KEY WILL NOT OPEN?",
+    keyIssueText:
+      "Tap below to contact staff.",
+    keyIssueButton:
+      "Contact staff",
+    keyIssueSending:
+      "Sending...",
+    keyIssueSuccess:
+      "Staff have been notified. Please wait near the entrance.",
+    arrivalInstruction:
+      "If no staff are in the lounge, tap below to call them.",
+    arrivalButton:
+      "Call staff to the lounge",
+    arrivalSending:
+      "Sending...",
+    arrivalSuccess:
+      "Staff have been notified. Please wait at the 2F lounge.",
+    arrivalError:
+      "Could not notify staff. Please contact staff.",
+    empty:
+      "Please enter your surname.",
+    error:
+      "Something went wrong. Please try again."
+  },
+  ja: {
+    languageTitle: "言語を選択してください",
+    languageHint: "使用する言語を選んでください。",
+    languageContinue: "次へ",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "ご到着後のご案内",
+    welcomeLead: "現在の状況に合わせてお進みください。",
+    welcomeStepsTitle: "チェックインの3ステップ",
+    welcomeStep1: "21:00〜翌9:00は入口が施錠されています。予約を確認して解錠し、入館してください。",
+    welcomeStep2: "入館後は2階へ上がり、チェックインフォームを入力・送信してください。",
+    welcomeStep3: "2階ラウンジでスタッフがフォームとパスポートを確認します。確認後、チェックイン完了となり、お部屋へご案内します。",
+    welcomeChoiceTitle: "現在の状況をお選びください",
+    entryChoiceTitle: "これから入館される方",
+    entryChoiceCopy: "予約を確認して入口を解錠し、入館します。",
+    entryChoiceAction: "予約を確認する  ›",
+    formChoiceTitle: "すでに入館済みの方",
+    formChoiceCopy: "予約名の入力は不要です。チェックインフォームへ進みます。",
+    formChoiceAction: "フォームへ進む  ›",
+    welcomeHelp: "2階ラウンジにスタッフが不在の場合は、呼び出しボタンをご利用ください。",
+    reservationBack: "‹  ご到着後のご案内に戻る",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "チェックインフォーム",
+    directFormIntro: "必要事項を入力して送信してください。入力後は2階ラウンジへお越しください。スタッフがパスポートとチェックインフォームを確認し、お部屋へご案内します。",
+    directStaffText: "2階ラウンジにスタッフが不在の場合は、下のボタンでお呼びください。",
+    directStaffCall: "スタッフを呼び出す",
+    directFormFallback: "フォームが表示されない場合はこちら（新しいタブで開く）",
+    subtitle: "予約に使用されている名前の名字を入力してください。",
+    nameLabel: "名字",
+    nameHint: "予約に使用されている名前の名字を入力してください。予約サイトまたは予約確認メールで名前をご確認ください。",
+    placeholder: "名字を入力",
+    searchButton: "予約候補を検索",
+    confirmButton: "この名前で予約を確認",
+    changeButton: "別の名前を選ぶ",
+    candidateHeading: "予約候補",
+    selectedPrompt: "こちらのお名前でよろしいですか？",
+    empty: "名字を入力してください。",
+    noCandidates: "該当する予約が見つかりません。名字をご確認いただくか、スタッフへご連絡ください。",
+    searching: "検索中...",
+    title:
+      "MIDORI.soへようこそ",
+    reservationStage: "予約確認 · 1 / 2",
+    reservationConfirmStage: "予約確認 · 2 / 2",
+    subtitle:
+      "予約に使用した名字で検索してください。",
+    nameLabel:
+      "名字",
+    nameHint:
+      '予約に使用されている名前の名字を入力してください。予約サイトまたは予約確認メールで名前をご確認ください。',
+    placeholder:
+      "名字を入力",
+    continue:
+      "予約を確認する",
+    helpTitle:
+      "Need Help?",
+    phoneHelp:
+      "スタッフに電話",
+    phoneHelpShort:
+      "Call",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "予約が確認できない場合",
+    doorIssueText:
+      "予約が見つからない・入力してもエラーになる場合はこちらをタップしてください。",
+    doorIssueButton:
+      "予約が見つからない場合はこちら",
+    doorIssueSending:
+      "通知中...",
+    doorIssueSuccess:
+      "スタッフに通知しました。少々お待ちください。",
+    doorIssueError:
+      "スタッフへの通知に失敗しました。直接スタッフへご連絡ください。",
+    checking:
+      "確認中...",
+    confirmed:
+      "ご予約を確認しました。",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "ご予約を確認しました。以下の手順で入館し、チェックインを完了してください。",
+    quickStepsTitle: "このあとの流れ",
+    quickStep1: "予約を確認して入口を解錠し、入館する",
+    quickStep2: "2階へ上がり、チェックインフォームを送信する",
+    quickStep3: "スタッフがフォームとパスポートを確認し、お部屋へご案内",
+    step1Title: "1. 入館する",
+    step1Text: "21:00〜翌9:00は入口が施錠されています。下のボタンで解錠して入館してください。",
+    step2Title: "2. チェックインフォームを送信する",
+    step2Text: "入館後は2階へ上がり、フォームに必要事項を入力して送信してください。",
+    formFallback: "フォームが表示されない場合はこちら（新しいタブで開く）",
+    step3Title: "3. スタッフの確認後、お部屋へご案内",
+    step3Text: "2階ラウンジでスタッフがフォームとパスポートを確認します。確認後、チェックイン完了となり、お部屋へご案内します。",
+    notDoneInstruction:
+      "ご予約を確認しました。以下の手順で入館し、チェックインを完了してください。",
+    key:
+      "入口を解錠して入館する",
+    keyIssuePrompt:
+      "鍵が開かない場合",
+    keyIssueText:
+      "こちらをタップしてスタッフに連絡してください。",
+    keyIssueButton:
+      "スタッフに連絡する",
+    keyIssueSending:
+      "通知中...",
+    keyIssueSuccess:
+      "スタッフに通知しました。入口付近でお待ちください。",
+    arrivalInstruction:
+      "ラウンジにスタッフがいない場合は、下のボタンで呼び出してください。",
+    arrivalButton:
+      "スタッフを呼び出す",
+    arrivalSending:
+      "送信中...",
+    arrivalSuccess:
+      "スタッフに通知しました。2階ラウンジでお待ちください。",
+    arrivalError:
+      "スタッフへの通知に失敗しました。スタッフへ直接ご連絡ください。",
+    empty:
+      "名字を入力してください。",
+    error:
+      "エラーが発生しました。もう一度お試しください。"
+  },
+  ko: {
+    languageTitle: "언어를 선택해 주세요",
+    languageHint: "계속하려면 사용할 언어를 선택해 주세요.",
+    languageContinue: "다음",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "도착 후 안내",
+    welcomeLead: "현재 상황에 맞는 항목을 선택해 주세요.",
+    welcomeStepsTitle: "체크인 3단계",
+    welcomeStep1: "21:00부터 다음 날 9:00까지 출입문이 잠겨 있습니다. 예약을 확인하고 문을 연 뒤 입장해 주세요.",
+    welcomeStep2: "입장 후 2층으로 올라가 체크인 양식을 작성해 제출해 주세요.",
+    welcomeStep3: "2층 라운지에서 직원이 양식과 여권을 확인합니다. 확인 후 체크인이 완료되며 객실로 안내해 드립니다.",
+    welcomeChoiceTitle: "현재 상황을 선택해 주세요",
+    entryChoiceTitle: "이제 입장하실 분",
+    entryChoiceCopy: "예약을 확인한 뒤 출입문을 열고 입장합니다.",
+    entryChoiceAction: "예약 확인하기  ›",
+    formChoiceTitle: "이미 입장하신 분",
+    formChoiceCopy: "예약자 이름을 입력하지 않고 체크인 양식으로 이동합니다.",
+    formChoiceAction: "양식으로 이동  ›",
+    welcomeHelp: "2층 라운지에 직원이 없으면 호출 버튼을 이용해 주세요.",
+    reservationBack: "‹  도착 안내로 돌아가기",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "체크인 양식",
+    directFormIntro: "필요한 정보를 입력하고 제출해 주세요. 작성 후 2층 라운지로 오시면 직원이 여권과 체크인 양식을 확인한 후 객실로 안내해 드립니다.",
+    directStaffText: "2층 라운지에 직원이 없으면 아래 버튼을 눌러 호출해 주세요.",
+    directStaffCall: "직원 호출하기",
+    directFormFallback: "양식이 보이지 않나요? 새 탭에서 열기",
+    subtitle: "예약에 사용된 이름의 성을 입력해 주세요.",
+    nameLabel: "성",
+    nameHint: "예약에 사용된 이름의 성을 입력해 주세요. 예약 사이트 또는 예약 확인 이메일에서 이름을 확인해 주세요.",
+    placeholder: "성을 입력해 주세요",
+    searchButton: "예약 검색",
+    confirmButton: "이 이름으로 예약 확인",
+    changeButton: "다른 이름 선택",
+    candidateHeading: "예약 후보",
+    selectedPrompt: "예약자 이름이 맞습니까?",
+    empty: "성을 입력해 주세요.",
+    noCandidates: "해당 성으로 예약을 찾을 수 없습니다. 철자를 확인하거나 직원에게 문의해 주세요.",
+    searching: "검색 중...",
+    title:
+      "환영합니다.",
+    reservationStage: "예약 확인 · 1 / 2",
+    reservationConfirmStage: "예약 확인 · 2 / 2",
+    subtitle:
+      "예약에 사용된 성으로 검색해 주세요.",
+    nameLabel:
+      "성",
+    nameHint:
+      '예약에 사용된 이름의 성을 입력해 주세요. 예약 사이트 또는 예약 확인 이메일에서 이름을 확인해 주세요.',
+    placeholder:
+      "성을 입력해 주세요",
+    continue:
+      "예약 확인",
+    helpTitle:
+      "도움이 필요하신가요?",
+    phoneHelp:
+      "직원에게 전화",
+    phoneHelpShort:
+      "전화",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "예약을 확인할 수 없는 경우",
+    doorIssueText:
+      "예약을 찾을 수 없거나 이름을 입력해도 오류가 발생하는 경우 아래 버튼을 눌러 주세요.",
+    doorIssueButton:
+      "예약을 찾을 수 없는 경우 여기를 눌러 주세요",
+    doorIssueSending:
+      "전송 중...",
+    doorIssueSuccess:
+      "직원에게 알렸습니다. 잠시 기다려 주세요.",
+    doorIssueError:
+      "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
+    checking:
+      "확인 중...",
+    confirmed:
+      "예약 정보를 확인했습니다.",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "예약을 확인했습니다. 아래 순서대로 입장하고 체크인을 완료해 주세요.",
+    quickStepsTitle: "이렇게 진행해 주세요",
+    quickStep1: "예약을 확인하고 출입문을 연 뒤 입장하기",
+    quickStep2: "2층으로 올라가 체크인 양식 제출하기",
+    quickStep3: "직원이 양식과 여권을 확인한 후 객실로 안내",
+    step1Title: "1. 건물에 입장하기",
+    step1Text: "21:00부터 다음 날 9:00까지 출입문이 잠겨 있습니다. 아래 버튼으로 문을 연 뒤 입장해 주세요.",
+    step2Title: "2. 체크인 양식 제출하기",
+    step2Text: "입장 후 2층으로 올라가 양식에 필요한 정보를 입력하고 제출해 주세요.",
+    formFallback: "양식이 보이지 않나요? 새 탭에서 열기",
+    step3Title: "3. 직원 확인 후 객실 안내",
+    step3Text: "2층 라운지에서 직원이 양식과 여권을 확인합니다. 확인 후 체크인이 완료되며 객실로 안내해 드립니다.",
+    notDoneInstruction:
+      "예약을 확인했습니다. 아래 순서대로 입장하고 체크인을 완료해 주세요.",
+    key:
+      "출입문 열고 입장하기",
+    keyIssuePrompt:
+      "문이 열리지 않나요?",
+    keyIssueText:
+      "아래 버튼을 눌러 직원에게 연락해 주세요.",
+    keyIssueButton:
+      "직원에게 연락하기",
+    keyIssueSending:
+      "전송 중...",
+    keyIssueSuccess:
+      "직원에게 알렸습니다. 입구 근처에서 기다려 주세요.",
+    arrivalInstruction:
+      "라운지에 직원이 없으면 아래 버튼을 눌러 호출해 주세요.",
+    arrivalButton:
+      "직원 호출하기",
+    arrivalSending:
+      "전송 중...",
+    arrivalSuccess:
+      "직원에게 알렸습니다. 2층 라운지에서 기다려 주세요.",
+    arrivalError:
+      "직원에게 알리지 못했습니다. 직원에게 직접 연락해 주세요.",
+    empty:
+      "성을 입력해 주세요.",
+    error:
+      "오류가 발생했습니다. 다시 시도해 주세요."
+  },
+  zh: {
+    languageTitle: "请选择语言",
+    languageHint: "请选择您使用的语言以继续。",
+    languageContinue: "继续",
+    welcomeEyebrow: "CHECK-IN GUIDE",
+    welcomeTitle: "抵达后指南",
+    welcomeLead: "请选择符合您当前情况的选项。",
+    welcomeStepsTitle: "入住登记分三步",
+    welcomeStep1: "21:00至次日9:00入口会上锁。请确认预订、解锁入口后进入大楼。",
+    welcomeStep2: "进入后请上到2楼，填写并提交入住登记表。",
+    welcomeStep3: "工作人员会在2楼休息室确认登记表和护照。确认后即完成入住登记，并带您前往房间。",
+    welcomeChoiceTitle: "请选择您当前的情况",
+    entryChoiceTitle: "我还没有进入大楼",
+    entryChoiceCopy: "确认预订后解锁入口并进入大楼。",
+    entryChoiceAction: "确认预订  ›",
+    formChoiceTitle: "我已经进入大楼",
+    formChoiceCopy: "无需输入预订姓名，直接填写入住登记表。",
+    formChoiceAction: "填写登记表  ›",
+    welcomeHelp: "如果2楼休息室没有工作人员，请使用呼叫按钮。",
+    reservationBack: "‹  返回抵达指南",
+    directFormEyebrow: "CHECK-IN FORM",
+    directFormTitle: "填写入住登记表",
+    directFormIntro: "请填写并提交下方表格。完成后请前往2楼休息室，工作人员会确认您的护照和入住登记表，然后带您前往房间。",
+    directStaffText: "如果2楼休息室没有工作人员，请点击下方按钮呼叫。",
+    directStaffCall: "呼叫工作人员",
+    directFormFallback: "表单无法显示？在新标签页中打开",
+    subtitle: "请输入预订时使用的姓氏。",
+    nameLabel: "姓氏",
+    nameHint: "请输入预订时使用的姓氏。请查看预订网站或预订确认邮件，确认您使用的姓名。",
+    placeholder: "请输入姓氏",
+    searchButton: "搜索预订",
+    confirmButton: "确认此姓名",
+    changeButton: "选择其他姓名",
+    candidateHeading: "预订候选",
+    selectedPrompt: "这是您的预订姓名吗？",
+    empty: "请输入姓氏。",
+    noCandidates: "未找到符合条件的预订。请检查姓氏拼写或联系工作人员。",
+    searching: "搜索中...",
+    title:
+      "欢迎入住。",
+    reservationStage: "预订确认 · 1 / 2",
+    reservationConfirmStage: "预订确认 · 2 / 2",
+    subtitle:
+      "请使用预订时填写的姓氏进行搜索。",
+    nameLabel:
+      "姓氏",
+    nameHint:
+      '请输入预订时使用的姓氏。请查看预订网站或预订确认邮件，确认您使用的姓名。',
+    placeholder:
+      "请输入姓氏",
+    continue:
+      "确认预订",
+    helpTitle:
+      "需要帮助吗？",
+    phoneHelp:
+      "联系工作人员",
+    phoneHelpShort:
+      "电话",
+    whatsappHelp:
+      "WhatsApp",
+    doorIssueTitle:
+      "无法确认预订",
+    doorIssueText:
+      "如果找不到您的预订，或输入姓氏后出现错误，请点击下方按钮。",
+    doorIssueButton:
+      "找不到预订时请点击这里",
+    doorIssueSending:
+      "发送中...",
+    doorIssueSuccess:
+      "已通知工作人员，请稍等。",
+    doorIssueError:
+      "无法通知工作人员，请直接联系工作人员。",
+    checking:
+      "确认中...",
+    confirmed:
+      "已确认您的预订。",
+    question:
+      "",
+    yes:
+      "",
+    no:
+      "",
+    doneInstruction:
+      "已确认您的预订。请按以下步骤入馆并完成入住登记。",
+    quickStepsTitle: "接下来请按以下步骤办理",
+    quickStep1: "确认预订、解锁入口并进入大楼",
+    quickStep2: "前往2楼并填写入住登记表",
+    quickStep3: "工作人员确认表格和护照后带您前往房间",
+    step1Title: "1. 进入大楼",
+    step1Text: "21:00至次日9:00入口会上锁。请使用下方按钮解锁后进入大楼。",
+    step2Title: "2. 提交入住登记表",
+    step2Text: "进入大楼后请前往2楼，填写并提交入住登记表。",
+    formFallback: "表单无法显示？在新标签页中打开",
+    step3Title: "3. 工作人员确认并带您前往房间",
+    step3Text: "工作人员会在2楼休息室确认登记表和护照。确认后即完成入住登记，并带您前往房间。",
+    notDoneInstruction:
+      "已确认您的预订。请按以下步骤入馆并完成入住登记。",
+    key:
+      "开门并进入大楼",
+    keyIssuePrompt:
+      "门打不开？",
+    keyIssueText:
+      "点击下方按钮联系工作人员。",
+    keyIssueButton:
+      "联系工作人员",
+    keyIssueSending:
+      "发送中...",
+    keyIssueSuccess:
+      "已通知工作人员，请在入口附近等候。",
+    arrivalInstruction:
+      "如果休息室没有工作人员，请按下方按钮呼叫。",
+    arrivalButton:
+      "呼叫工作人员",
+    arrivalSending:
+      "发送中...",
+    arrivalSuccess:
+      "已通知工作人员。请在2楼休息室等待。",
+    arrivalError:
+      "无法通知工作人员，请直接联系工作人员。",
+    empty:
+      "请输入您的姓氏。",
+    error:
+      "发生错误，请重试。"
+  }
+};
+/* ==================================================
+   State
+   ================================================== */
+let currentLanguage =
+  "en";
+let reservationData =
+  null;
+let selectedGuestName = "";
+let arrivalNotificationSent =
+  false;
+let doorIssueNotificationSent =
+  false;
+let doorIssueMessageType =
+  "";
+let keyIssueMessageType = "";
+/* ==================================================
+   Language
+   ================================================== */
+function setLanguage(language) {
+  currentLanguage = language;
+  const t = texts[language];
+  document.getElementById("welcomeEyebrow").textContent = t.welcomeEyebrow;
+  document.getElementById("welcomeTitle").textContent = t.welcomeTitle;
+  document.getElementById("welcomeLead").textContent = t.welcomeLead;
+  document.getElementById("welcomeStepsTitle").textContent = t.welcomeStepsTitle;
+  document.getElementById("welcomeStep1").textContent = t.welcomeStep1;
+  document.getElementById("welcomeStep2").textContent = t.welcomeStep2;
+  document.getElementById("welcomeStep3").textContent = t.welcomeStep3;
+  document.getElementById("welcomeChoiceTitle").textContent = t.welcomeChoiceTitle;
+  document.getElementById("entryChoiceTitle").textContent = t.entryChoiceTitle;
+  document.getElementById("entryChoiceCopy").textContent = t.entryChoiceCopy;
+  document.getElementById("entryChoiceAction").textContent = t.entryChoiceAction;
+  document.getElementById("formChoiceTitle").textContent = t.formChoiceTitle;
+  document.getElementById("formChoiceCopy").textContent = t.formChoiceCopy;
+  document.getElementById("formChoiceAction").textContent = t.formChoiceAction;
+  document.getElementById("welcomeHelp").textContent = t.welcomeHelp;
+  document.getElementById("reservationBack").textContent = t.reservationBack;
+  document.getElementById("directFormBack").textContent = t.reservationBack;
+  document.getElementById("directFormEyebrow").textContent = t.directFormEyebrow;
+  document.getElementById("directFormTitle").textContent = t.directFormTitle;
+  document.getElementById("directFormIntro").textContent = t.directFormIntro;
+  document.getElementById("directStaffText").textContent = t.directStaffText;
+  document.getElementById("directStaffCall").textContent = t.directStaffCall;
+  document.getElementById("directFormFallback").textContent = t.directFormFallback;
+  document.getElementById("languageScreenTitle").textContent = t.languageTitle;
+  document.getElementById("languageScreenHint").textContent = t.languageHint;
+  document.getElementById("languageContinueButton").textContent = t.languageContinue;
+  document.getElementById("title").textContent = t.title;
+  document.getElementById("checkinStepLabel").textContent = selectedGuestName ? t.reservationConfirmStage : t.reservationStage;
+  document.getElementById("subtitle").textContent = t.subtitle;
+  document.getElementById("candidateHeading").textContent = t.candidateHeading;
+  document.getElementById("selectedReservationPrompt").textContent = t.selectedPrompt;
+  document.getElementById("confirmReservationButton").textContent = t.confirmButton;
+  document.getElementById("changeNameButton").textContent = t.changeButton;
+  document.getElementById("checkButton").textContent = t.searchButton;
+  document.querySelectorAll(".languageChoice").forEach(function(button) { button.classList.remove("active"); });
+  document.getElementById("choice-" + language).classList.add("active");
+  document.getElementById("nameLabel").textContent = t.nameLabel;
+  document.getElementById("nameHint").innerHTML = t.nameHint;
+  document.getElementById("surname").placeholder = t.placeholder;
+  document.getElementById("checkButton").textContent = t.searchButton;
+  document.getElementById("initialHelpTitle").textContent = t.helpTitle;
+  document.getElementById("phoneHelpButton").textContent = t.phoneHelp;
+  document.getElementById("whatsappHelpButton").textContent = t.whatsappHelp;
+  document.getElementById("doorIssueTitle").textContent = t.doorIssueTitle;
+  document.getElementById("doorIssueText").textContent =
+    doorIssueMessageType === "success" ? t.doorIssueSuccess : t.doorIssueText;
+  document.getElementById("doorIssueButton").textContent = t.doorIssueButton;
+  document.getElementById("keyIssuePrompt").textContent = t.keyIssuePrompt;
+  document.getElementById("keyIssueText").textContent = t.keyIssueText;
+  document.getElementById("keyIssueButton").textContent = t.keyIssueButton;
+  const keyIssueMessage = document.getElementById("keyIssueMessage");
+  if (keyIssueMessageType === "success") {
+    keyIssueMessage.style.display = "block";
+    keyIssueMessage.style.color = "#d5e6d6";
+    keyIssueMessage.textContent = t.keyIssueSuccess;
+  } else if (keyIssueMessageType === "error") {
+    keyIssueMessage.style.display = "block";
+    keyIssueMessage.style.color = "#ffaaa7";
+    keyIssueMessage.textContent = t.doorIssueError;
+  }
+  if (doorIssueMessageType === "success") {
+    document.getElementById("doorIssueMessage").style.display = "none";
+  } else if (doorIssueMessageType === "error") {
+    document.getElementById("doorIssueMessage").textContent = t.doorIssueError;
+  }
+  document.getElementById("arrivalInstruction").textContent = t.arrivalInstruction;
+  document.getElementById("quickStepsTitle").textContent = t.quickStepsTitle;
+  document.getElementById("quickStep1").textContent = t.quickStep1;
+  document.getElementById("quickStep2").textContent = t.quickStep2;
+  document.getElementById("quickStep3").textContent = t.quickStep3;
+  document.getElementById("entryStepTitle").textContent = t.step1Title;
+  document.getElementById("entryStepText").textContent = t.step1Text;
+  document.getElementById("formStepTitle").textContent = t.step2Title;
+  document.getElementById("formStepText").textContent = t.step2Text;
+  document.getElementById("loungeStepTitle").textContent = t.step3Title;
+  document.getElementById("loungeStepText").textContent = t.step3Text;
+  document.getElementById("arrivalButton").textContent = t.arrivalButton;
+  document.getElementById("openKey").textContent = t.key;
+  document.getElementById("formFallback").textContent = t.formFallback;
+  document.getElementById("resultHelpTitle").textContent = t.helpTitle;
+  document.getElementById("resultPhoneHelpButton").textContent = t.phoneHelpShort;
+  document.getElementById("resultWhatsappHelpButton").textContent = t.whatsappHelp;
+  document.querySelectorAll(".languageButton").forEach(function(button) {
+    button.classList.remove("active");
+  });
+  document.getElementById("lang-" + language).classList.add("active");
+  if (document.getElementById("result").style.display === "block") {
+    document.getElementById("instructionText").textContent = t.doneInstruction;
+  }
+}
+function chooseLanguage(language) {
+  setLanguage(language);
+}
+function continueToCheckin() {
+  document.getElementById("languageScreen").style.display = "none";
+  document.getElementById("languageSwitch").style.display = "flex";
+  document.getElementById("welcomeScreen").style.display = "block";
+}
+function showReservationRoute() {
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("directFormScreen").style.display = "none";
+  document.getElementById("checkinForm").style.display = "block";
+  document.getElementById("surname").focus();
+}
+function showDirectFormRoute() {
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("checkinForm").style.display = "none";
+  document.getElementById("directFormScreen").style.display = "block";
+  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdlwHVKk1iQt_2DFmS1quGIPFhJPnKYDfdSdR66H-wT-gjP7g/viewform";
+  const embeddedFormUrl = new URL(formUrl);
+  embeddedFormUrl.searchParams.set("embedded", "true");
+  document.getElementById("directFormFrame").src = embeddedFormUrl.toString();
+  document.getElementById("directFormFallback").href = formUrl;
+}
+function returnToWelcome() {
+  document.getElementById("welcomeScreen").style.display = "block";
+  document.getElementById("checkinForm").style.display = "none";
+  document.getElementById("directFormScreen").style.display = "none";
+}
+function changeCandidate() {
+  document.getElementById("checkinStepLabel").textContent = texts[currentLanguage].reservationStage;
+  selectedGuestName = "";
+  document.getElementById("selectedReservation").style.display = "none";
+  document.getElementById("confirmReservationButton").disabled = true;
+  document.getElementById("candidateList").appendChild(document.getElementById("selectedReservation"));
+  document.querySelectorAll(".candidateButton").forEach(function(button) {
+    button.classList.remove("selected");
+    button.setAttribute("aria-pressed", "false");
+  });
+  document.getElementById("surname").style.display = "block";
+  document.getElementById("nameLabel").style.display = "block";
+  document.getElementById("nameHint").style.display = "block";
+  document.getElementById("checkButton").style.display = "block";
+  document.getElementById("candidateResults").style.display = "none";
+  document.getElementById("message").textContent = "";
+}
+/* ==================================================
+   Standalone website API bridge
+   ================================================== */
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbyI5iKz4sG6-9hYIaU7mLedvb1a99XEqpbrgQczjKijkNJP5u_P7xkXffrqtIbG8RKO/exec";
+let apiRequestCounter = 0;
+function apiCall(action, params, successHandler, failureHandler) {
+  const callbackName =
+    "midoriApiCallback_" + (++apiRequestCounter) + "_" + Date.now();
+  const script = document.createElement("script");
+  const query = new URLSearchParams();
+  query.set("api", "1");
+  query.set("action", action);
+  query.set("callback", callbackName);
+  Object.keys(params || {}).forEach(function(key) {
+    query.set(key, params[key] == null ? "" : String(params[key]));
+  });
+  let finished = false;
+  const timeoutId = setTimeout(function() {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (failureHandler) failureHandler(new Error("API request timed out."));
+  }, 15000);
+  function cleanup() {
+    clearTimeout(timeoutId);
+    try { delete window[callbackName]; } catch (e) {}
+    if (script.parentNode) script.parentNode.removeChild(script);
+  }
+  window[callbackName] = function(data) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (successHandler) successHandler(data);
+  };
+  script.onerror = function(error) {
+    if (finished) return;
+    finished = true;
+    cleanup();
+    if (failureHandler) failureHandler(error);
+  };
+  script.src = API_URL + "?" + query.toString();
+  document.head.appendChild(script);
+}
+/* ==================================================
+   Reservation check
+   ================================================== */
+function searchReservations() {
+  const surname = document.getElementById("surname").value.trim();
+  const button = document.getElementById("checkButton");
+  const message = document.getElementById("message");
+  const t = texts[currentLanguage];
+  message.textContent = "";
+  selectedGuestName = "";
+  document.getElementById("selectedReservation").style.display = "none";
+  document.getElementById("confirmReservationButton").disabled = true;
+  document.getElementById("candidateResults").style.display = "none";
+  if (!surname) { message.textContent = t.empty; return; }
+  button.disabled = true;
+  button.textContent = t.searching;
+  apiCall("searchReservations", { surname: surname }, function(data) {
+    button.disabled = false;
+    button.textContent = t.searchButton;
+    if (!data || !data.success) {
+      message.textContent = data && data.message ? data.message : t.error;
+      return;
+    }
+    const candidates = Array.isArray(data.candidates) ? data.candidates : [];
+    const list = document.getElementById("candidateList");
+    list.textContent = "";
+    if (!candidates.length) { message.textContent = t.noCandidates; return; }
+    candidates.forEach(function(name) {
+      const option = document.createElement("div");
+      option.className = "candidateOption";
+      const candidateButton = document.createElement("button");
+      candidateButton.type = "button";
+      candidateButton.className = "candidateButton";
+      candidateButton.textContent = name;
+      candidateButton.setAttribute("aria-pressed", "false");
+      candidateButton.addEventListener("click", function() { selectCandidate(name, candidateButton); });
+      option.appendChild(candidateButton);
+      list.appendChild(option);
+    });
+    document.getElementById("candidateResults").style.display = "block";
+  }, function(error) {
+    button.disabled = false;
+    button.textContent = t.searchButton;
+    message.textContent = t.error;
+    console.error(error);
+  });
+}
+function selectCandidate(name, candidateButton) {
+  selectedGuestName = name;
+  document.getElementById("checkinStepLabel").textContent = texts[currentLanguage].reservationConfirmStage;
+  document.getElementById("selectedReservationName").textContent = name;
+  document.querySelectorAll(".candidateButton").forEach(function(button) {
+    const selected = button === candidateButton;
+    button.classList.toggle("selected", selected);
+    button.setAttribute("aria-pressed", selected ? "true" : "false");
+  });
+  candidateButton.parentNode.appendChild(document.getElementById("selectedReservation"));
+  document.getElementById("selectedReservation").style.display = "block";
+  document.getElementById("confirmReservationButton").disabled = false;
+  document.getElementById("candidateResults").style.display = "block";
+  document.getElementById("message").textContent = "";
+}
+function checkReservation() {
+const fullName = (
+  selectedGuestName ||
+  document.getElementById("selectedReservationName").textContent ||
+  ""
+).trim();  const button = document.getElementById("confirmReservationButton");
+  const message = document.getElementById("message");
+  const t = texts[currentLanguage];
+  message.textContent = "";
+  if (!fullName) { message.textContent = t.empty; return; }
+  button.disabled = true;
+  button.textContent = t.checking;
+  apiCall("checkGuest", { fullName: fullName }, function(data) {
+    button.disabled = false;
+    button.textContent = t.confirmButton;
+    if (!data || !data.success) {
+      message.style.color = "#d00";
+      message.textContent = data && data.message ? data.message : t.error;
+      return;
+    }
+    doorIssueNotificationSent = false;
+    doorIssueMessageType = "";
+    reservationData = data;
+    document.getElementById("checkinForm").style.display = "none";
+    document.getElementById("languageSwitch").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("confirmedText").textContent = t.confirmed;
+    document.getElementById("instructionText").textContent = t.doneInstruction;
+    document.getElementById("instructionText").style.display = "block";
+    const embeddedFormUrl = new URL(data.formUrl);
+    embeddedFormUrl.searchParams.set("embedded", "true");
+    document.getElementById("formFrame").src = embeddedFormUrl.toString();
+    document.getElementById("formFrame").style.display = "block";
+    document.getElementById("formFallback").href = data.formUrl;
+    document.getElementById("formFallback").style.display = "block";
+    document.getElementById("openKey").href = data.keyUrl;
+    document.getElementById("openKey").style.display = "flex";
+    document.getElementById("arrivalSection").style.display = "block";
+    message.textContent = "";
+  }, function(error) {
+    button.disabled = false;
+    button.textContent = t.confirmButton;
+    message.style.color = "#d00";
+    message.textContent = t.error;
+    console.error(error);
+  });
+}
+/* ==================================================
+   Staff arrival notification
+   ================================================== */
+function notifyDoorIssue() {
+  const fullName = selectedGuestName || document.getElementById("surname").value.trim();
+  const button = document.getElementById("doorIssueButton");
+  const message = document.getElementById("doorIssueMessage");
+  const t = texts[currentLanguage];
+  if (doorIssueNotificationSent) return;
+  doorIssueNotificationSent = true;
+  button.disabled = true;
+  button.textContent = t.doorIssueSending;
+  message.style.display = "none";
+  apiCall(
+    "notifyDoorIssue",
+    { fullName: fullName },
+    function(data) {
+      if (data && data.success) {
+        doorIssueMessageType = "success";
+        document.getElementById("doorIssueText").textContent = t.doorIssueSuccess;
+        message.style.display = "none";
+        message.textContent = "";
+        button.style.display = "none";
+      } else {
+        doorIssueNotificationSent = false;
+        doorIssueMessageType = "error";
+        button.disabled = false;
+        button.textContent = t.doorIssueButton;
+        message.style.display = "block";
+        message.style.color = "#d00";
+        message.textContent = t.doorIssueError;
+      }
+    },
+    function(error) {
+      console.error(error);
+      doorIssueNotificationSent = false;
+      doorIssueMessageType = "error";
+      button.disabled = false;
+      button.textContent = t.doorIssueButton;
+      message.style.display = "block";
+      message.style.color = "#d00";
+      message.textContent = t.doorIssueError;
+    }
+  );
+}
+function notifyDoorIssueFromResult() {
+  const fullName = selectedGuestName || document.getElementById("surname").value.trim();
+  const button = document.getElementById("keyIssueButton");
+  const message = document.getElementById("keyIssueMessage");
+  const t = texts[currentLanguage];
+  if (doorIssueNotificationSent) return;
+  doorIssueNotificationSent = true;
+  button.disabled = true;
+  button.textContent = t.keyIssueSending;
+  message.style.display = "none";
+  apiCall("notifyDoorIssue", { fullName: fullName }, function(data) {
+    if (data && data.success) {
+      keyIssueMessageType = "success";
+      message.style.display = "block";
+      message.style.color = "#d5e6d6";
+      message.textContent = t.keyIssueSuccess;
+      button.style.display = "none";
+    } else {
+      doorIssueNotificationSent = false;
+      keyIssueMessageType = "error";
+      button.disabled = false;
+      button.textContent = t.keyIssueButton;
+      message.style.display = "block";
+      message.style.color = "#ffaaa7";
+      message.textContent = t.doorIssueError;
+    }
+  }, function(error) {
+    console.error(error);
+    doorIssueNotificationSent = false;
+    keyIssueMessageType = "error";
+    button.disabled = false;
+    button.textContent = t.keyIssueButton;
+    message.style.display = "block";
+    message.style.color = "#ffaaa7";
+    message.textContent = t.doorIssueError;
+  });
+}
+function notifyStaffArrival() {
+  const directRoute = document.getElementById("directFormScreen").style.display === "block";
+  const fullName = selectedGuestName || document.getElementById("surname").value.trim() ||
+    (directRoute ? "Already inside (name not provided)" : "");
+  const button = document.getElementById(directRoute ? "directStaffCall" : "arrivalButton");
+  const message = document.getElementById(directRoute ? "directStaffMessage" : "arrivalMessage");
+  const t = texts[currentLanguage];
+  if (!fullName) {
+    message.style.display = "block";
+    message.style.color = "#d00";
+    message.textContent = t.empty;
+    return;
+  }
+  if (arrivalNotificationSent) return;
+  button.disabled = true;
+  button.textContent = t.arrivalSending;
+  message.style.display = "none";
+  apiCall(
+    "notifyStaffArrival",
+    { fullName: fullName },
+    function(data) {
+      if (data && data.success) {
+        arrivalNotificationSent = true;
+        message.style.display = "block";
+        message.style.color = "#d5e6d6";
+        message.textContent = t.arrivalSuccess;
+        button.style.display = "none";
+      } else {
+        button.disabled = false;
+        button.textContent = t.arrivalButton;
+        message.style.display = "block";
+        message.style.color = "#d00";
+        message.textContent = t.arrivalError;
+      }
+    },
+    function(error) {
+      console.error(error);
+      button.disabled = false;
+      button.textContent = t.arrivalButton;
+      message.style.display = "block";
+      message.style.color = "#d00";
+      message.textContent = t.arrivalError;
+    }
+  );
+}
+/* ==================================================
+   Reset
+   ================================================== */
+function resetPage() {
+  reservationData = null;
+  arrivalNotificationSent = false;
+  doorIssueNotificationSent = false;
+  doorIssueMessageType = "";
+  keyIssueMessageType = "";
+  document.getElementById("result").style.display = "none";
+  document.getElementById("checkinForm").style.display = "block";
+  document.getElementById("surname").value = "";
+  selectedGuestName = "";
+  document.getElementById("selectedReservation").style.display = "none";
+  document.getElementById("surname").style.display = "block";
+  document.getElementById("nameLabel").style.display = "block";
+  document.getElementById("nameHint").style.display = "block";
+  document.getElementById("checkButton").style.display = "block";
+  document.getElementById("candidateResults").style.display = "none";
+  document.getElementById("message").textContent = "";
+  document.getElementById("instructionText").style.display = "none";
+  document.getElementById("openKey").style.display = "none";
+  document.getElementById("formFrame").style.display = "none";
+  document.getElementById("formFrame").removeAttribute("src");
+  document.getElementById("formFallback").style.display = "none";
+  document.getElementById("arrivalSection").style.display = "none";
+  document.getElementById("arrivalButton").style.display = "block";
+  document.getElementById("arrivalButton").disabled = false;
+  document.getElementById("arrivalButton").textContent =
+    texts[currentLanguage].arrivalButton;
+  document.getElementById("arrivalMessage").style.display = "none";
+  document.getElementById("arrivalMessage").textContent = "";
+  document.getElementById("doorIssueButton").style.display = "block";
+  document.getElementById("doorIssueButton").disabled = false;
+  document.getElementById("doorIssueButton").textContent =
+    texts[currentLanguage].doorIssueButton;
+  document.getElementById("doorIssueMessage").style.display = "none";
+  document.getElementById("doorIssueMessage").textContent = "";
+  document.getElementById("doorIssueText").textContent =
+    texts[currentLanguage].doorIssueText;
+  document.getElementById("keyIssueButton").style.display = "block";
+  document.getElementById("keyIssueButton").disabled = false;
+  document.getElementById("keyIssueButton").textContent =
+    texts[currentLanguage].keyIssueButton;
+  document.getElementById("keyIssueMessage").style.display = "none";
+  document.getElementById("keyIssueMessage").textContent = "";
+}
+/* ==================================================
+   Enter key
+   ================================================== */
+document
+  .getElementById("surname")
+  .addEventListener(
+    "keydown",
+    function(event) {
+      if (
+        event.key === "Enter"
+      ) {
+        searchReservations();
+      }
+    }
+  );
+/* ==================================================
+   Initial language
+   ================================================== */
+setLanguage(
+  currentLanguage
+);
 </script>
 </body>
 </html>
-
-
-
-
-
-
