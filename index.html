@@ -58,8 +58,9 @@
     .routeBack { margin: 0 0 20px; padding: 0; min-height: 36px; width: auto; background: transparent; color: #cde5d0; font-size: 13px; text-align: left; }
     .directFormScreen { display: none; }
     .directFormScreen h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.22; letter-spacing: -.02em; }
-    .directFormFrame { display: block; width: 100%; height: 3200px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
+    .directFormFrame { display: block; width: 100%; height: 3000px; margin-top: 14px; border: 0; border-radius: 12px; background: #fff; }
     .directFormScreen .formFallback { display: block; }
+    .directFormSubmitHint { margin: 14px 0 8px; color: #b7c0b7; font-size: 13px; line-height: 1.6; }
     .directStaffHelp { margin: 16px 0; padding: 14px; border: 1px solid #3a433b; border-radius: 14px; background: #202520; color: #b7c0b7; font-size: 13px; line-height: 1.6; }
     .directStaffHelp button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; margin-top: 11px; padding: 11px 14px; border: 1px solid #4c5a4d; border-radius: 11px; background: transparent; color: #d5e6d6; font: inherit; font-weight: 600; }
     .directStaffMessage { display: none; margin-top: 10px; color: #d5e6d6; font-size: 13px; line-height: 1.5; }
@@ -145,7 +146,7 @@
       .keyIssueText, .keyIssueMessage { font-size: 16px; line-height: 1.6; }
       .keyIssueButton { min-height: 66px; font-size: 18px; }
       .formFrame { height: 3600px; }
-      .directFormFrame { height: 3600px; }
+      .directFormFrame { height: 3400px; }
     }
     @media (max-width: 380px) {
       .container { padding-left: 18px; padding-right: 18px; }
@@ -242,13 +243,14 @@
     <p class="eyebrow" id="directFormEyebrow"></p>
     <h1 id="directFormTitle"></h1>
     <p class="subtitle" id="directFormIntro"></p>
+    <a id="directFormFallback" class="formFallback" href="#" target="_blank" rel="noopener noreferrer"></a>
+    <iframe id="directFormFrame" class="directFormFrame" title="MIDORI.so check-in form" loading="lazy"></iframe>
+    <p id="directFormSubmitHint" class="directFormSubmitHint"></p>
     <div class="directStaffHelp" id="directStaffHelp">
       <span id="directStaffText"></span>
       <button id="directStaffCall" type="button" onclick="notifyStaffArrival()"></button>
       <div id="directStaffMessage" class="directStaffMessage"></div>
     </div>
-    <iframe id="directFormFrame" class="directFormFrame" title="MIDORI.so check-in form" loading="lazy"></iframe>
-    <a id="directFormFallback" class="formFallback" href="#" target="_blank" rel="noopener noreferrer"></a>
   </div>
   <div id="checkinForm" style="display:none">
     <button type="button" class="routeBack" id="reservationBack" onclick="returnToWelcome()"></button>
@@ -426,6 +428,7 @@ const texts = {
     reservationBack: "‹  Back to arrival guide",
     directFormEyebrow: "CHECK-IN FORM",
     directFormTitle: "Complete your check-in",
+    directFormSubmitHint: "After you submit the form, the screen will turn white.",
     directFormIntro: "Please fill out and submit the form below. When you’re done, meet staff in the 2F lounge. They will check your passport and check-in form, then show you to your room.",
     directStaffText: "No staff in the 2F lounge? Tap below to notify them.",
     directStaffCall: "Call staff to the lounge",
@@ -550,8 +553,9 @@ const texts = {
     reservationBack: "‹  ご到着後のご案内に戻る",
     directFormEyebrow: "CHECK-IN FORM",
     directFormTitle: "チェックインフォーム",
-    directFormIntro: "必要事項を入力して送信してください。入力後は2階ラウンジへお越しください。スタッフがパスポートとチェックインフォームを確認し、お部屋へご案内します。",
-    directStaffText: "2階ラウンジにスタッフが不在の場合は、下のボタンでお呼びください。",
+    directFormSubmitHint: "送信が完了すると、画面が白くなります。",
+    directFormIntro: "必要事項を入力して送信してください。入力後は2階ラウンジへお越しください。スタッフがパスポートとチェックインフォームを確認し、お部屋へご案内します。画面の下にスタッフ呼び出しボタンがあります。",
+    directStaffText: "ボタンを押してスタッフをお待ちください。",
     directStaffCall: "スタッフを呼び出す",
     directFormFallback: "フォームが表示されない場合はこちら（新しいタブで開く）",
     subtitle: "予約に使用されている名前の名字を入力してください。",
@@ -674,6 +678,7 @@ const texts = {
     reservationBack: "‹  도착 안내로 돌아가기",
     directFormEyebrow: "CHECK-IN FORM",
     directFormTitle: "체크인 양식",
+    directFormSubmitHint: "양식 제출이 완료되면 화면이 흰색으로 바뀝니다.",
     directFormIntro: "필요한 정보를 입력하고 제출해 주세요. 작성 후 2층 라운지로 오시면 직원이 여권과 체크인 양식을 확인한 후 객실로 안내해 드립니다.",
     directStaffText: "2층 라운지에 직원이 없으면 아래 버튼을 눌러 호출해 주세요.",
     directStaffCall: "직원 호출하기",
@@ -798,6 +803,7 @@ const texts = {
     reservationBack: "‹  返回抵达指南",
     directFormEyebrow: "CHECK-IN FORM",
     directFormTitle: "填写入住登记表",
+    directFormSubmitHint: "提交完成后，画面会变成白色。",
     directFormIntro: "请填写并提交下方表格。完成后请前往2楼休息室，工作人员会确认您的护照和入住登记表，然后带您前往房间。",
     directStaffText: "如果2楼休息室没有工作人员，请点击下方按钮呼叫。",
     directStaffCall: "呼叫工作人员",
@@ -942,6 +948,7 @@ function setLanguage(language) {
   document.getElementById("directFormEyebrow").textContent = t.directFormEyebrow;
   document.getElementById("directFormTitle").textContent = t.directFormTitle;
   document.getElementById("directFormIntro").textContent = t.directFormIntro;
+  document.getElementById("directFormSubmitHint").textContent = t.directFormSubmitHint;
   document.getElementById("directStaffText").textContent = t.directStaffText;
   document.getElementById("directStaffCall").textContent = t.directStaffCall;
   document.getElementById("directFormFallback").textContent = t.directFormFallback;
